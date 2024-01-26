@@ -16,7 +16,7 @@ jobs:
           files: |
              README.md
              
-      - name: Perform action when test_directory changes
+      - name: Perform action when README changes
         if: contains(steps.verify-changed-files.outputs.changed_files, 'README.md')
         run: |
           echo "README.md has changed."
