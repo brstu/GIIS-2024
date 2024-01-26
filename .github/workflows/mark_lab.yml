@@ -1,4 +1,14 @@
-...
+name: Verify Changed README
+on:
+  push:
+    branches:
+      - main
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v17
         id: verify-changed-files
