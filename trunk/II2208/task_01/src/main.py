@@ -21,10 +21,10 @@ def make_noisy(img, p):
     return noisy
 
 
-def medianBlur(img, row, column, n):
+def median_blur(img, row, column, n):
     print(row, column)
 
-    def rowMedianBlur(img):
+    def row_median_blur(img):
         h, w = img.shape
         pad = n // 2
         padded_image = np.pad(img, pad, mode='constant', constant_values=0)
@@ -36,7 +36,7 @@ def medianBlur(img, row, column, n):
                 result[i, j] = median_value
         return result
 
-    def columnMedianBlur(img):
+    def column_median_blur(img):
         h, w = img.shape
         pad = n // 2
         padded_image = np.pad(img, pad, mode='constant', constant_values=0)
@@ -51,16 +51,16 @@ def medianBlur(img, row, column, n):
     result = np.copy(img)
     if row:
         r, g, b = cv2.split(result)
-        r = rowMedianBlur(r)
-        g = rowMedianBlur(g)
-        b = rowMedianBlur(b)
+        r = row_median_blur(r)
+        g = row_median_blur(g)
+        b = row_median_blur(b)
         result = cv2.merge([r, g, b])
 
     if column:
         r, g, b = cv2.split(result)
-        r = columnMedianBlur(r)
-        g = columnMedianBlur(g)
-        b = columnMedianBlur(b)
+        r = column_median_blur(r)
+        g = column_median_blur(g)
+        b = column_median_blur(b)
         result = cv2.merge([r, g, b])
 
     return result
@@ -125,7 +125,7 @@ class ImageViewerApp:
     def apply_median_filter(self):
         if self.original_image is not None:
             filter_size = int(self.filter_size_entry.get())
-            self.noise_image = medianBlur(self.noise_image, self.row, self.column, filter_size)
+            self.noise_image = median_blur(self.noise_image, self.row, self.column, filter_size)
             self.display_image(self.noise_image)
 
     def apply_noise(self):
