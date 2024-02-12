@@ -21,29 +21,49 @@ def make_noisy(img, p):
     return noisy
 
 
-def median_blur(noisy_img, p):
+def medianBlur(img, row, column, n):
+    print(row, column)
 
-    def median_blur_gray(noisy_img, p):
-        h, w = noisy_img.shape
-        pad = p // 2
-        padded_image = np.pad(noisy_img, pad, mode='constant', constant_values=0)
-        result = np.zeros_like(noisy_img)
+    def rowMedianBlur(img):
+        h, w = img.shape
+        pad = n // 2
+        padded_image = np.pad(img, pad, mode='constant', constant_values=0)
+        result = np.zeros_like(img)
         for i in range(h):
             for j in range(w):
-                window = padded_image[i:i + p, j:j + p]
+                window = padded_image[i + pad:i + n + pad, j]
                 median_value = np.median(window)
                 result[i, j] = median_value
         return result
 
-    if len(noisy_img.shape) == 2:
-        return median_blur_gray(noisy_img, p)
-    else:
-        r, g, b = cv2.split(noisy_img)
-        r = median_blur_gray(r, p)
-        g = median_blur_gray(g, p)
-        b = median_blur_gray(b, p)
-        img = cv2.merge([r, g, b])
-        return img
+    def columnMedianBlur(img):
+        h, w = img.shape
+        pad = n // 2
+        padded_image = np.pad(img, pad, mode='constant', constant_values=0)
+        result = np.zeros_like(img)
+        for i in range(h):
+            for j in range(w):
+                window = padded_image[i, j + pad:j + n + pad]
+                median_value = np.median(window)
+                result[i, j] = median_value
+        return result
+
+    result = np.copy(img)
+    if row:
+        r, g, b = cv2.split(result)
+        r = rowMedianBlur(r)
+        g = rowMedianBlur(g)
+        b = rowMedianBlur(b)
+        result = cv2.merge([r, g, b])
+
+    if column:
+        r, g, b = cv2.split(result)
+        r = columnMedianBlur(r)
+        g = columnMedianBlur(g)
+        b = columnMedianBlur(b)
+        result = cv2.merge([r, g, b])
+
+    return result
 
 
 class ImageViewerApp:
@@ -63,17 +83,35 @@ class ImageViewerApp:
         self.noise_button = tk.Button(root, text="Применить шум", command=self.apply_noise)
         self.noise_button.pack(pady=5)
 
-        self.filter_size_label = tk.Label(root, text="Размер матрицы медианного фильтра:")
+        self.filter_size_label = tk.Label(root, text="Размер медианного фильтра:")
         self.filter_size_label.pack(pady=5)
 
         self.filter_size_entry = tk.Entry(root)
         self.filter_size_entry.pack(pady=5)
+
+        checkbox_var1 = tk.IntVar()
+        checkbox_var2 = tk.IntVar()
+
+        checkbox1 = tk.Checkbutton(root, text="по рядам", variable=checkbox_var1, onvalue=1, offvalue=0,
+                                   command=self.on_checkbox_clicked1)
+        checkbox2 = tk.Checkbutton(root, text="по колонкам", variable=checkbox_var2, onvalue=1, offvalue=0,
+                                   command=self.on_checkbox_clicked2)
+        checkbox1.pack()
+        checkbox2.pack()
 
         self.median_filter_button = tk.Button(root, text="Применить медианный фильтр", command=self.apply_median_filter)
         self.median_filter_button.pack(pady=5)
 
         self.original_image = None
         self.noise_image = None
+        self.row = False
+        self.column = False
+
+    def on_checkbox_clicked1(self):
+        self.row = not self.row
+
+    def on_checkbox_clicked2(self):
+        self.column = not self.column
 
     def load_image(self):
         initial_dir = "./asstets"
@@ -87,7 +125,7 @@ class ImageViewerApp:
     def apply_median_filter(self):
         if self.original_image is not None:
             filter_size = int(self.filter_size_entry.get())
-            self.noise_image = median_blur(self.noise_image, filter_size)
+            self.noise_image = medianBlur(self.noise_image, self.row, self.column, filter_size)
             self.display_image(self.noise_image)
 
     def apply_noise(self):
