@@ -51,4 +51,4 @@ Cтудент группы ИИ-22
 <div style="line-height: 10px; width: 100%; text-align: center; font-size: 12px; padding-bottom: 20px;">1. Исходные изображение; 2. Зашумленные изображения; 3. Востановленные по рядам; 4. Востановленные по столбцам; 5. Востановленные изображения по рядам и столбцам.</div>
 
 <h5>Код программы:</h5>
-<a href="https://github.com/brstu/GIIS-2024/tree/main/trunk/II2208/task_01/src/main.py">Перейти к коду</a>
+<a href="https://www.youtube.com/shorts/oyCyZYlJYRU">Перейти к коду</a>
