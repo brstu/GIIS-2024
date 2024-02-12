@@ -3,7 +3,7 @@ from tkinter import filedialog
 import cv2
 from PIL import Image, ImageTk
 import numpy as np
-import random
+import secrets
 from copy import copy
 
 
@@ -11,7 +11,7 @@ def make_noisy(img, p):
     noisy = img
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
-            r = random.random()
+            r = secrets.randbelow(100) / 100
             if r < p / 2:
                 noisy[i][j] = [0, 0, 0]
             elif r < p:
@@ -114,7 +114,7 @@ class ImageViewerApp:
         self.column = not self.column
 
     def load_image(self):
-        initial_dir = "./asstets"
+        initial_dir = "./assets"
         file_path = filedialog.askopenfilename(initialdir=initial_dir, filetypes=[("Image files", "*.png;*.jpg;*.jpeg;*.gif;*.bmp")])
 
         if file_path:
