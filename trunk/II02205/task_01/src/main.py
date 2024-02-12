@@ -25,14 +25,14 @@ def median_filter(params: tuple) -> None:
 
     for x in range(half_size_x, width - half_size_x):
         for y in range(half_size_y, height - half_size_y):
-            subimage = image[y - half_size_y : y + half_size_y + 1,x - half_size_x: x + half_size_x + 1]
+            subimage = image[y - half_size_y: y + half_size_y + 1, x - half_size_x: x + half_size_x + 1]
             count = subimage.shape[0] * subimage.shape[1]
             values = np.resize(subimage, (1, count))
             sorted_values = np.sort(values)
             median_value = sorted_values[0][floor(count / 2)]
             image[y, x] = median_value
     cv2.imshow('after', image)
-    cv2.imwrite('result.jpg',image)
+    cv2.imwrite('result.jpg', image)
     cv2.waitKey(0)
 
 
@@ -62,7 +62,7 @@ def check_input_params():
         size = int(size)
 
         try:
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r') as _:
                 pass
         except FileNotFoundError:
             return None
