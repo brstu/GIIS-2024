@@ -4,6 +4,14 @@ project(MyCSharpProject)
 # Настройка языка C#
 enable_language(CSharp)
 
+# Поиск компилятора C#
+find_program(CSHARP_COMPILER NAMES mono-csc REQUIRED)
+
+# Проверка наличия компилятора C#
+if(NOT CSHARP_COMPILER)
+    message(FATAL_ERROR "Компилятор C# не найден. Установите Mono и укажите правильный путь.")
+endif()
+
 # Указание исходных файлов C#
 set(CSHARP_SOURCE
     Program.cs
