@@ -1,16 +1,15 @@
 cmake_minimum_required(VERSION 3.12)
 project(MyCSharpProject)
 
+# Проверка наличия компилятора C#
+find_program(CSHARP_COMPILER csc)
+
+if(NOT CSHARP_COMPILER)
+    message(FATAL_ERROR "C# compiler not found. C# is only supported with Microsoft Visual Studio 12 2013 and later.")
+endif()
+
 # Настройка языка C#
 enable_language(CSharp)
-
-# Поиск компилятора C#
-find_program(CSHARP_COMPILER NAMES mono-csc REQUIRED)
-
-# Проверка наличия компилятора C#
-if(NOT CSHARP_COMPILER)
-    message(FATAL_ERROR "Компилятор C# не найден. Установите Mono и укажите правильный путь.")
-endif()
 
 # Указание исходных файлов C#
 set(CSHARP_SOURCE
