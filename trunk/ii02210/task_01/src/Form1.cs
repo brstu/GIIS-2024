@@ -11,7 +11,7 @@ using System.IO;
 using System.Drawing.Imaging;
 
 namespace giis_1LAB{
-    public class Form1 : Form{
+    public partial class Form1 : Form{
         private Bitmap originalImage;
         private Bitmap currentImage;
         private int noiseLevel;
