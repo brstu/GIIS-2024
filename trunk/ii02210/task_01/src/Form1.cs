@@ -11,7 +11,7 @@ using System.IO;
 using System.Drawing.Imaging;
 
 namespace giis_1LAB{
-    public partial class Form1 : Form{
+    public class Form1 : Form{
         private Bitmap originalImage;
         private Bitmap currentImage;
         private int noiseLevel;
@@ -72,35 +72,29 @@ namespace giis_1LAB{
             label2.Visible = true;
             label1.Visible = false;
         }
-
+        
         private void ApplyNoise(){
-    Random random = new Random();
-    noiseLevel += 10;
+     Random random = new Random();
+     noiseLevel += 10;
 
-    BitmapData bmpData = currentImage.LockBits(new Rectangle(0, 0, currentImage.Width, currentImage.Height), ImageLockMode.ReadWrite, currentImage.PixelFormat);
+     BitmapData bmpData = currentImage.LockBits(new Rectangle(0, 0, currentImage.Width, currentImage.Height), ImageLockMode.ReadWrite, currentImage.PixelFormat);
 
-    int bytesPerPixel = Image.GetPixelFormatSize(currentImage.PixelFormat) / 8;
-    int byteCount = bmpData.Stride * currentImage.Height;
+     int bytesPerPixel = Image.GetPixelFormatSize(currentImage.PixelFormat) / 8;
+     int byteCount = bmpData.Stride * currentImage.Height;
 
-    byte[] rgbValues = new byte[byteCount];
-    System.Runtime.InteropServices.Marshal.Copy(bmpData.Scan0, rgbValues, 0, byteCount);
+     byte[] rgbValues = new byte[byteCount];
+     System.Runtime.InteropServices.Marshal.Copy(bmpData.Scan0, rgbValues, 0, byteCount);
 
-    for (int i = 0; i < rgbValues.Length; i += bytesPerPixel){
-        for (int j = 0; j < bytesPerPixel; j++){
-            int noise = random.Next(-noiseLevel, noiseLevel + 1);
-            rgbValues[i + j] = (byte)Math.Max(0, Math.Min(255, rgbValues[i + j] + noise));
-        }
-    }
+     for (int i = 0; i < rgbValues.Length; i += bytesPerPixel){
+         for (int j = 0; j < bytesPerPixel; j++){
+             int noise = random.Next(-noiseLevel, noiseLevel + 1);
+             rgbValues[i + j] = (byte)Math.Max(0, Math.Min(255, rgbValues[i + j] + noise));
+         }
+     }
 
-    System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, bmpData.Scan0, byteCount);
-    currentImage.UnlockBits(bmpData);
-}
-
-        System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, bmpData.Scan0, byteCount);
-        currentImage.UnlockBits(bmpData);
-    }
-}
-
+     System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, bmpData.Scan0, byteCount);
+     currentImage.UnlockBits(bmpData);
+ }
         private void ApplyThresholdFilter(){
             int thresholdValue;
             if (int.TryParse(textBox1.Text, out thresholdValue)){
