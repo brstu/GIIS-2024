@@ -4,10 +4,6 @@ project(MyCSharpProject)
 # Проверка наличия компилятора C#
 find_program(CSHARP_COMPILER csc)
 
-if(NOT CSHARP_COMPILER)
-    message(FATAL_ERROR "C# compiler not found. C# is only supported with Microsoft Visual Studio 12 2013 and later.")
-endif()
-
 # Настройка языка C#
 enable_language(CSharp)
 
