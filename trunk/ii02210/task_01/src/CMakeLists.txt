@@ -1,8 +1,5 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.12)
 project(MyCSharpProject)
-
-# Проверка наличия компилятора C#
-find_program(CSHARP_COMPILER csc)
 
 # Настройка языка C#
 enable_language(CSharp)
