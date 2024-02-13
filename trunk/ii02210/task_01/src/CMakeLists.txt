@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
-project(MyCSharpProject)
+
+project(giis_1LAB)
 
 # Настройка языка C#
 enable_language(CSharp)
 
 # Указание исходных файлов C#
-set(CSHARP_SOURCE
+set(SOURCES
     Program.cs
     Form1.cs
     Form1.Designer.cs
@@ -13,7 +14,7 @@ set(CSHARP_SOURCE
 )
 
 # Создание исполняемого файла
-add_executable(MyCSharpExecutable ${CSHARP_SOURCE})
+add_executable(MyCSharpExecutable ${SOURCES})
 
 # Добавление зависимости на .NET
 set_property(TARGET MyCSharpExecutable PROPERTY VS_DOTNET_REFERENCES
@@ -28,17 +29,3 @@ set_property(TARGET MyCSharpExecutable PROPERTY VS_DOTNET_REFERENCES
     "WindowsBase"
     "System.Windows.Forms"
 )
-
-# Добавление внешнего проекта для сборки C# проекта
-include(ExternalProject)
-
-ExternalProject_Add(MyCSharpProject
-    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
-    CONFIGURE_COMMAND ""
-    BUILD_COMMAND ""
-    INSTALL_COMMAND ""
-    BUILD_BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/MyCSharpExecutable.exe
-)
-
-# Добавление зависимости от внешнего проекта
-add_dependencies(MyCSharpExecutable MyCSharpProject)
