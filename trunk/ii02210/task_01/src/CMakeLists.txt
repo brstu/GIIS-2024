@@ -13,6 +13,13 @@ set(SOURCES
     Form1.resx
 )
 
+# Поиск компилятора C#
+find_program(CSHARP_COMPILER csc)
+
+if(NOT CSHARP_COMPILER)
+    message(FATAL_ERROR "C# compiler not found. Please make sure you have Mono or .NET SDK installed.")
+endif()
+
 # Создание исполняемого файла
 add_executable(MyCSharpExecutable ${SOURCES})
 
