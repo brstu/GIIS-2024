@@ -15,3 +15,17 @@ set(SOURCES
 
 # Создание исполняемого файла
 add_executable(MyCSharpExecutable ${SOURCES})
+
+# Добавление зависимости на .NET
+set_property(TARGET MyCSharpExecutable PROPERTY VS_DOTNET_REFERENCES
+    "Microsoft.CSharp"
+    "System"
+    "System.Core"
+    "System.Data"
+    "System.Data.DataSetExtensions"
+    "System.Net.Http"
+    "System.Xml"
+    "System.Xml.Linq"
+    "WindowsBase"
+    "System.Windows.Forms"
+)
