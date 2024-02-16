@@ -8,7 +8,7 @@
 
 | №   | ФИО                                                                     | Directory name          |        #1        | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг |
 | --- | ----------------------------------------------------------------------- | ----------------------- | ---------------- | --- | --- | --- | --- | --- | --- | ------- |
-| 1   | [Борейша Олег](https://github.com/orgs/brstu/people/psijikk)            |                         |                  |     |     |     |     |     |     |         |
+| 1   | [Борейша Олег](https://github.com/orgs/brstu/people/psijikk)            |[ii02201](/trunk/ii02201)|:heavy_check_mark:|     |     |     |     |     |     |         |
 | 2   | [Варицкий Максим](https://github.com/MaximVaritskiy)                    |                         |                  |     |     |     |     |     |     |         |
 | 3   | [Гузаревич Даниил](https://github.com/orgs/brstu/people/lumonces)       |                         |                  |     |     |     |     |     |     |         |
 | 4   | [Дубина Никита](https://github.com/AfiSix)                              |                         |                  |     |     |     |     |     |     |         |
