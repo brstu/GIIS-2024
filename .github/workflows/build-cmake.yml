@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened, labeled]
 jobs:
   build-cmake:
-    name: Build and analyze
+    name: Build cmake and analyze
     runs-on: ubuntu-latest
     if: ${{ (github.repository == 'brstu/GIIS-2024') && ((github.event_name == 'push') || ((github.event_name == 'pull_request_target') && ((contains( github.event.pull_request.labels.*.name, 'c/c++'))))) }}
     env:
