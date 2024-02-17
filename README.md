@@ -15,7 +15,7 @@
 | 5   | [Заречный Адриан](https://github.com/orgs/brstu/people/Adryian4ik)      |                |     |     |     |     |     |     |     |         |
 | 6   | [Исаенко Никита](https://github.com/IsaenkoNikita)                      |                |     |     |     |     |     |     |     |         |
 | 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)           |                |     |     |     |     |     |     |     |         |
-| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |II2208|:heavy_check_mark:|     |     |     |     |     |     |         |
+| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/II2208)|:heavy_check_mark:|     |     |     |     |     |     |         |
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |                |     |     |     |     |     |     |     |         |
 | 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |                |     |     |     |     |     |     |     |         |
 
