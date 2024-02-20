@@ -54,7 +54,7 @@ class MainWindow(QMainWindow):
         name = self.input_name.text()
         address = self.input_address.text()
         self.list.clear()
-        for i, c in enumerate(self.contacts):
+        for i in self.contacts:
             if name == "" and address == "":
                 self.list.addItem(f"{self.contacts[i]['name']} - {self.contacts[i]['address']}")
             elif name in self.contacts[i]["name"] and address in self.contacts[i]["address"]:
