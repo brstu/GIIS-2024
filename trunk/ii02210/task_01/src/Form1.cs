@@ -14,7 +14,7 @@ namespace giis_1LAB{
     public partial class Form1 : Form{
         private Bitmap originalImage;
         private Bitmap currentImage;
-        private int noiseLevel = 0;
+        private int noiseLevel;
         public Form1(){
             InitializeComponent();
             textBox1.Enter += textBox1_Enter;
