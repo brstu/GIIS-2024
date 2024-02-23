@@ -19,8 +19,8 @@ class ImageFilterApp:
         self.root.grid_columnconfigure(0, weight=1)
         self.root.grid_columnconfigure(1, weight=2)
 
-        self.image_path = None  
-        self.noisy_image_path = None  
+        self.image_path = None
+        self.noisy_image_path = None
 
         self.load_button = tk.Button(self.frame1, text="Загрузить изображение", command=self.load_image)
         self.load_button.pack()
@@ -131,6 +131,7 @@ class ImageFilterApp:
                         pixel_data[i, j] = median_value
 
         return image
+
 
 if __name__ == "__main__":
     root = tk.Tk()
