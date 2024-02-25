@@ -41,7 +41,7 @@ class AdressBook:
             counter = 0
             for key, value in self.book.items():
                 counter += 1
-                str_for_file = f"{key}:{value}{'\n' if counter != len(self.book.items()) else ''}"
+                str_for_file = f"{key}:{value}" + ('\n' if counter != len(self.book.items()) else '')
                 file.write(str_for_file)
             file.close()
         except Exception as e:
