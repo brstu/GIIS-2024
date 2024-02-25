@@ -154,16 +154,15 @@ class MainWindow(QtWidgets.QMainWindow):
         self.prev_button.setEnabled(False)
         self.next_button.setEnabled(False)
         self.open_button.setEnabled(False)
-        match mode:
-            case "add":
-                self.add_button.setEnabled(True)
-            case "edit":
-                self.edit_button.setEnabled(True)
-            case "default":
-                self.add_button.setEnabled(True)
-                self.delete_button.setEnabled(True)
-                self.edit_button.setEnabled(True)
-                self.save_button.setEnabled(True)
-                self.prev_button.setEnabled(True)
-                self.next_button.setEnabled(True)
-                self.open_button.setEnabled(True)
+        if mode == "add":
+            self.add_button.setEnabled(True)
+        elif mode == "edit":
+            self.edit_button.setEnabled(True)
+        elif mode == "default":
+            self.add_button.setEnabled(True)
+            self.delete_button.setEnabled(True)
+            self.edit_button.setEnabled(True)
+            self.save_button.setEnabled(True)
+            self.prev_button.setEnabled(True)
+            self.next_button.setEnabled(True)
+            self.open_button.setEnabled(True)
