@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import tkinter as tk
 from tkinter import filedialog
 import cv2
@@ -304,4 +303,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = ImageViewerApp(root)
     root.mainloop()
->>>>>>> 57b01fa63d34a3f0322daedc0045870f7d9c1ec7
