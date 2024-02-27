@@ -150,7 +150,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = ImageViewerApp(root)
     root.mainloop()
-=======
+
 import tkinter as tk
 from tkinter import filedialog
 import cv2
