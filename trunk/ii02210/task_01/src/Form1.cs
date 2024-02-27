@@ -73,6 +73,7 @@ namespace giis_1LAB{
             label1.Visible = false;
         }
 
+
         private void ApplyNoise(){
             Random random = new Random();
             noiseLevel += 10;
