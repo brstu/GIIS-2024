@@ -31,6 +31,7 @@ jobs:
         run: |
           cmake -DPY_LANGUAGE=ON . -B build
       - name: install dependecies
+        shell: /usr/bin/bash -e {0}
         run: |
           while read -r path
           do
@@ -38,6 +39,7 @@ jobs:
           done < "python_path.txt"
 
       - name: execute python script
+        shell: /usr/bin/bash -e {0}
         run: |
           while read -r path
           do
