@@ -5,21 +5,11 @@ option(PY_LANGUAGE OFF)
 option(CXX_LANGUAGE OFF)
 
 if(PY_LANGUAGE)
-file(GLOB python_dirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "trunk/ii0*/*/src/main.py")
-file(GLOB depend_dirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "trunk/ii0*/*/src/requirements.txt")
-file(WRITE depend_path.txt "")
+file(GLOB python_dirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "trunk/ii0*/*/src/*.py")
 file(WRITE python_path.txt "")
-foreach(r_dir ${depend_dirs})
-    
-        file(GLOB r_dirs ${depend_dir})
-		file(APPEND depend_path.txt "${r_dir}\n")	
-
-endforeach()
-foreach(dir ${python_dirs})
-    
-        file(GLOB python_scripts ${dir})
-		file(APPEND python_path.txt "${dir}\n")	
-
+foreach(py_dir ${python_dirs})
+	string(REPLACE "main.py" "" PY_PATH ${py_dir}) 
+		file(APPEND python_path.txt "${PY_PATH}\n")	
 endforeach()
 endif()
 
