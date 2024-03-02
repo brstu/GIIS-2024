@@ -15,16 +15,16 @@
 
 Исходное изображение:
 
-![](test/original.png)
+![](images/start.png)
 
 Зашумленное изображение:
 
-![](test/noised.png)
+![](images/noised.png)
 
 Отфильтрованное изображение:
 
-![](test/filtered.png)
+![](images/cleared.png)
 
 Графический интерфейс приложения:
 
-![](test/gui.png)
+![](images/interface.png)
