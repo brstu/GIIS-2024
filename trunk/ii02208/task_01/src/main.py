@@ -151,4 +151,4 @@ if __name__ == "__main__":
     app = ImageViewerApp(root)
     root.mainloop()
     root.mainloop()
->>>>>>> 49f825e0711b699922906bad89b968c5995fd86b:trunk/II2208/task_01/src/main.py
+
