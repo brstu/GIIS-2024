@@ -18,7 +18,7 @@ class AddressBook : public QWidget
     Q_OBJECT
 
 public:
-    AddressBook(QWidget *parent = nullptr);
+    explicit AddressBook(QWidget *parent = nullptr);
     ~AddressBook();
 
 private slots:
@@ -45,13 +45,13 @@ private slots:
     void on_exportButton_clicked();
 
 private:
-    Ui::AddressBook *ui;
+    std::unique_ptr<Ui::AddressBook> ui;
+    std::unique_ptr<FindDialog> dialog;
     QMap<QString, QString> contacts;
     QString oldName;
     QString oldAddress;
     enum Mode { NavigationMode, AddingMode, EditingMode };
     void updateInterface(Mode mode);
     Mode currentMode;
-    FindDialog *dialog;
 };
 #endif // ADDRESSBOOK_H

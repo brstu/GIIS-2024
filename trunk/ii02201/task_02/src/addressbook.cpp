@@ -4,7 +4,8 @@
 
 AddressBook::AddressBook(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::AddressBook)
+    , ui(std::make_unique<Ui::AddressBook>())
+    , dialog(std::make_unique<FindDialog>())
 {
     ui->setupUi(this);
     ui->nameLine->setReadOnly(true);
@@ -22,16 +23,11 @@ AddressBook::AddressBook(QWidget *parent)
     ui->removeButton->setEnabled(false);
     ui->findButton->setEnabled(false);
 
-    dialog = new FindDialog;
-
     ui->loadButton->setToolTip(tr("Load contacts from a file"));
     ui->saveButton->setToolTip(tr("Save contacts to a file"));
 }
 
-AddressBook::~AddressBook()
-{
-    delete ui;
-}
+AddressBook::~AddressBook() = default;
 
 void AddressBook::on_addButton_clicked()
 {
@@ -327,7 +323,7 @@ void AddressBook::on_loadButton_clicked()
         if (contacts.isEmpty()) {
             QMessageBox::information(this, "No contacts in file", "The file you are attempting to open contains no contacts.");
         } else {
-            QMap<QString, QString>::iterator i = contacts.begin();
+            auto i = contacts.begin();
             ui->nameLine->setText(i.key());
             ui->addressText->setText(i.value());
         }
