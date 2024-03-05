@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 
 project(giis_lab2 VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 set(CMAKE_PREFIX_PATH $ENV{QTDIR})
 
 set(CMAKE_CXX_STANDARD 17)
