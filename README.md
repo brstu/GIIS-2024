@@ -10,7 +10,7 @@
 | --- | ----------------------------------------------------------------------- | ----------------------- | ---------------- | --- | --- | --- | --- | --- | --- | ------- |
 | 1   | [Борейша Олег](https://github.com/orgs/brstu/people/psijikk)            |[ii02201](/trunk/ii02201)|:heavy_check_mark:|     |     |     |     |     |     |         |
 | 2   | [Варицкий Максим](https://github.com/MaximVaritskiy)                    |                         |                  |     |     |     |     |     |     |         |
-| 3   | [Гузаревич Даниил](https://github.com/orgs/brstu/people/lumonces)       |                         |                  |     |     |     |     |     |     |         |
+| 3   | [Гузаревич Даниил](https://github.com/orgs/brstu/people/lumonces)       |[ii002203](/trunk/ii002203)|:heavy_check_mark:                        |                  |     |     |     |     |     |     |         |
 | 4   | [Дубина Никита](https://github.com/AfiSix)                              |                         |                  |     |     |     |     |     |     |         |
 | 5   | [Заречный Адриан](https://github.com/orgs/brstu/people/Adryian4ik)      |[II02205](/trunk/II02205)|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |         |
 | 6   | [Исаенко Никита](https://github.com/IsaenkoNikita)                      |                         |                  |     |     |     |     |     |     |         |
