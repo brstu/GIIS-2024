@@ -8,5 +8,5 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     w.setWindowIcon(QIcon("../images/yyyy1.ico"));
-    return a.QApplication::exec();
+    return a.exec();
 }
