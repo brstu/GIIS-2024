@@ -47,8 +47,7 @@ void MainWindow::on_pushButton_3_clicked()
 
         if (reply == QMessageBox::Yes) {
             int row = ui->listWidget->row(selectedItem);
-            ui->listWidget->removeItemWidget(selectedItem);
-            delete selectedItem;
+            ui->listWidget->takeItem(row);
         }
     } else {
         QMessageBox::warning(this, "No item selected ...", "Select an item from the list to delete.");
