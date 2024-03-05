@@ -19,7 +19,7 @@ class AddressBook : public QWidget
 
 public:
     explicit AddressBook(QWidget *parent = nullptr);
-    ~AddressBook();
+    ~AddressBook() override;
 
 private slots:
     void on_addButton_clicked();
@@ -46,7 +46,7 @@ private slots:
 
 private:
     std::unique_ptr<Ui::AddressBook> ui;
-    std::unique_ptr<FindDialog> dialog;
+    std::unique_ptr<FindDialog> dialog {std::make_unique<FindDialog>(nullptr)};
     QMap<QString, QString> contacts;
     QString oldName;
     QString oldAddress;

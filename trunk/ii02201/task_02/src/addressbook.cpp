@@ -5,7 +5,6 @@
 AddressBook::AddressBook(QWidget *parent)
     : QWidget(parent)
     , ui(std::make_unique<Ui::AddressBook>())
-    , dialog(std::make_unique<FindDialog>())
 {
     ui->setupUi(this);
     ui->nameLine->setReadOnly(true);

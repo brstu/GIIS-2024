@@ -15,7 +15,7 @@ class FindDialog : public QDialog
 
 public:
     explicit FindDialog(QWidget *parent = nullptr);
-    QString getFindText();
+    QString getFindText() const;
 
 public slots:
     void findClicked();
@@ -23,7 +23,7 @@ public slots:
 private:
     QPushButton *findButton;
     QLineEdit *lineEdit;
-    QString findText;
+    QString findText = "";
     FindDialog *dialog;
 };
 
