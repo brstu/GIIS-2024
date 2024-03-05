@@ -7,14 +7,14 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(std::make_unique<Ui::MainWindow>())
 {
     ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -50,12 +50,14 @@ void MainWindow::on_pushButton_3_clicked()
 
         if (reply == QMessageBox::Yes) {
             int row = ui->listWidget->row(selectedItem);
-            delete ui->listWidget->takeItem(row);
+            ui->listWidget->removeItemWidget(selectedItem);
+            delete selectedItem;
         }
     } else {
         QMessageBox::warning(this, "No item selected ...", "Select an item from the list to delete.");
     }
 }
+
 
 
 void MainWindow::on_pushButton_2_clicked()
