@@ -55,9 +55,9 @@ class MainWindow(QMainWindow):
         name = self.input_name.text()
         address = self.input_address.text()
         self.list.clear()
-        for i in range(len(self.contacts)):
-            if name == "" and address == "" or name in self.contacts[i]["name"] and address in self.contacts[i]['address']:
-                self.list.addItem(f"{self.contacts[i]['name']} - {self.contacts[i]['address']}")
+        for cnt in self.contacts:
+            if name == "" and address == "" or name in cnt["name"] and address in cnt['address']:
+                self.list.addItem(f"{cnt['name']} - {cnt['address']}")
     def add_contact(self):
         name = self.input_name.text()
         address = self.input_address.text()
