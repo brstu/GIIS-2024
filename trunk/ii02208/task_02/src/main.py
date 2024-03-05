@@ -55,9 +55,7 @@ class MainWindow(QMainWindow):
         address = self.input_address.text()
         self.list.clear()
         for i in self.contacts:
-            if name == "" and address == "":
-                self.list.addItem(f"{self.contacts[i]['name']} - {self.contacts[i]['address']}")
-            elif name in self.contacts[i]["name"] and address in self.contacts[i]["address"]:
+            if name == "" and address == "" or name in self.contacts[i]["name"] and address in self.contacts[i]["address"]:
                 self.list.addItem(f"{self.contacts[i]['name']} - {self.contacts[i]['address']}")
 
     def add_contact(self):
@@ -130,12 +128,12 @@ class MainWindow(QMainWindow):
             name = self.contacts[index]["name"]
             address = self.contacts[index]["address"]
 
-            fileName, _ = QFileDialog.getSaveFileName(
+            file_name, _ = QFileDialog.getSaveFileName(
                 self, "Export vCard", str(name) + ".vcf", "vCard (*.vcf)"
             )
 
-            if fileName:
-                with open(fileName, "w") as file:
+            if file_name:
+                with open(file_name, "w") as file:
                     file.write("BEGIN:VCARD\n")
                     file.write("VERSION:3.0\n")
                     file.write("N:;;;;\n")
