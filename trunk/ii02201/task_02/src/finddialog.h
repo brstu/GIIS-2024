@@ -21,8 +21,9 @@ public slots:
     void findClicked();
 
 private:
-    QPushButton *findButton;
-    QLineEdit *lineEdit;
+    std::unique_ptr<QLineEdit> lineEdit { std::make_unique<QLineEdit>() };
+    std::unique_ptr<QPushButton> findButton { std::make_unique<QPushButton>("&Find") };
+    std::unique_ptr<QLabel> findLabel { std::make_unique<QLabel>("Enter the name of a contact:") };
     QString findText = "";
     FindDialog *dialog;
 };

@@ -3,16 +3,12 @@
 FindDialog::FindDialog(QWidget *parent)
     : QDialog(parent)
 {
-    std::unique_ptr<QLabel> findLabel { std::make_unique<QLabel>("Enter the name of a contact:") };
-    std::unique_ptr<QLineEdit> lineEdit { std::make_unique<QLineEdit>() };
-    std::unique_ptr<QPushButton> findButton { std::make_unique<QPushButton>("&Find") };
-
-    QHBoxLayout *layout = new QHBoxLayout;
+    std::unique_ptr<QHBoxLayout> layout { std::make_unique<QHBoxLayout>() };
     layout->addWidget(findLabel.release());
     layout->addWidget(lineEdit.release());
     layout->addWidget(findButton.release());
 
-    this->setLayout(layout);
+    this->setLayout(layout.release());
     setWindowTitle(tr("Find a Contact"));
     connect(findButton.release(), SIGNAL(clicked()), this, SLOT(findClicked()));
 }
