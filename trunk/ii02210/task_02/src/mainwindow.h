@@ -33,6 +33,6 @@ private slots:
     void on_actionSAVE_triggered();
 
 private:
-    Ui::MainWindow *ui;
+    std::unique_ptr<Ui::MainWindow> ui;
 };
 #endif // MAINWINDOW_H
