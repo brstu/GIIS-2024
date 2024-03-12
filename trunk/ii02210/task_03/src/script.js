@@ -41,7 +41,7 @@ let swiper1 = new Swiper(".home-slider", {
 });
 
 
-let swiper2 = new Swiper(".menu-slider", {
+let swiper = new Swiper(".menu-slider", {
   grabCursor:true,
   loop: true,
   autoHeight:true,
