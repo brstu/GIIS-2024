@@ -10,7 +10,13 @@ import {
 } from "@ant-design/icons";
 import Icon from "@ant-design/icons/lib/components/Icon";
 
-export function AudioPlayer({ name, duration, image, recordName, style }) {
+export function AudioPlayer({
+  name = "",
+  duration = 0,
+  image = null,
+  recordName = "",
+  style = {},
+}) {
   const [time, setTime] = useState((duration / 3) * 1.34);
   const [isPause, setIsPause] = useState(false);
   const [volume, setVolume] = useState(50);
@@ -41,7 +47,9 @@ export function AudioPlayer({ name, duration, image, recordName, style }) {
           onClick={() => setIsPause(!isPause)}
         />
         <Icon component={StepForwardOutlined} className={styles.button} />
-        <img draggable={false} className={styles.image} src={image} alt="" />
+        {image && (
+          <img draggable={false} className={styles.image} src={image} alt="" />
+        )}
         <div className={styles.audioInfoWrap}>
           <div className={styles.titleWrap}>
             <div className={styles.name}>

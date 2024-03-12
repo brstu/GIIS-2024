@@ -10,19 +10,19 @@ function getLengthName(length) {
   return "треков";
 }
 
-export function RecordPreview({ image, name, duration, date, length }) {
+export function RecordPreview({ image=null, name="", duration=0, date="", length=0 }) {
   return (
     <div className={styles.wrap}>
       <img draggable={false} className={styles.bgImage} src={image} alt="" />
       <div className={styles.content}>
-        <img
+        {image && <img
           draggable={false}
           className={styles.image}
           src={image}
           width={300}
           height={300}
           alt={name}
-        />
+        />}
         <div className={styles.info}>
           <div className={styles.name}>{name}</div>
           <div className={styles.date}>{date}</div>
