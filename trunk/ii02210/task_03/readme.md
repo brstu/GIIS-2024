@@ -22,8 +22,6 @@
 
 
 ## Код программы ##
-
-### Конструктор и деструктор ###
 ```js
 let cart = document.querySelector('.shopping-cart');
 
