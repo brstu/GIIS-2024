@@ -1,4 +1,5 @@
 import styles from "./record-preview.module.css";
+import PropTypes from "prop-types";
 
 function getLengthName(length) {
   if (length % 10 === 1) {
@@ -10,19 +11,28 @@ function getLengthName(length) {
   return "треков";
 }
 
-export function RecordPreview({ image=null, name="", duration=0, date="", length=0 }) {
+export function RecordPreview({ image, name, duration, date, length }) {
+
+  RecordPreview.propTypes = {
+    image: PropTypes.string,
+    name: PropTypes.string, 
+    duration: PropTypes.number, 
+    date: PropTypes.string, 
+    length: PropTypes.number,
+  };
+
   return (
     <div className={styles.wrap}>
       <img draggable={false} className={styles.bgImage} src={image} alt="" />
       <div className={styles.content}>
-        {image && <img
+        <img
           draggable={false}
           className={styles.image}
           src={image}
           width={300}
           height={300}
           alt={name}
-        />}
+        />
         <div className={styles.info}>
           <div className={styles.name}>{name}</div>
           <div className={styles.date}>{date}</div>

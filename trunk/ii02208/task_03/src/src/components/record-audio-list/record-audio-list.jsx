@@ -1,24 +1,32 @@
 import styles from "./record-audio-list.module.css";
+import PropTypes from 'prop-types';
 
-export function RecordsAudioList({ trackList=[], setAudio=null, image=null }) {
+export function RecordsAudioList({ trackList, setAudio, image }) {
+
+  RecordsAudioList.propTypes = {
+    trackList: PropTypes.array,
+    setAudio: PropTypes.func,
+    image: PropTypes.string,
+  };
+
   return (
     <div className={styles.wrap}>
       {trackList.map((audio, index) => (
         <div
           className={styles.audioContent}
           key={index}
-          onClick={() => setAudio && setAudio(index)}
+          onClick={() => setAudio(index)}
         >
           <div className={styles.audioInfoWrap}>
             <div className={styles.number}>{index + 1}.</div>
-            {image && <img
+            <img
               draggable={false}
               className={styles.image}
               src={image}
               width={40}
               height={40}
               alt={index}
-            />}
+            />
             <div className={styles.name}>{audio.name}</div>
           </div>
           <div className={styles.duration}>

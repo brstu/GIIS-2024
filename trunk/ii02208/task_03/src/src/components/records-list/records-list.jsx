@@ -1,13 +1,19 @@
 import styles from "./records-list.module.css";
+import PropTypes from "prop-types";
 
-export function RecordsList({ recordPreviews=null, setRecord=null }) {
+export function RecordsList({ recordPreviews, setRecord }) {
+  RecordsList.propTypes = {
+    recordPreviews: PropTypes.array,
+    setRecord: PropTypes.func,
+  };
+
   return (
     <div className={styles.wrap}>
-      {recordPreviews && recordPreviews.map((record) => (
+      {recordPreviews.map((record) => (
         <div
           className={styles.recordItemContent}
           key={record.key}
-          onClick={() => setRecord && setRecord(record.key)}
+          onClick={() => setRecord(record.key)}
         >
           <img
             draggable={false}

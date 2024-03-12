@@ -9,14 +9,18 @@ import {
   MutedOutlined,
 } from "@ant-design/icons";
 import Icon from "@ant-design/icons/lib/components/Icon";
+import PropTypes from "prop-types";
 
-export function AudioPlayer({
-  name = "",
-  duration = 0,
-  image = null,
-  recordName = "",
-  style = {},
-}) {
+export function AudioPlayer({ name, duration, image, recordName, style }) {
+
+  AudioPlayer.propTypes = {
+    name: PropTypes.string,
+    duration: PropTypes.number,
+    image: PropTypes.string,
+    recordName: PropTypes.string,
+    style: PropTypes.object,
+  };
+
   const [time, setTime] = useState((duration / 3) * 1.34);
   const [isPause, setIsPause] = useState(false);
   const [volume, setVolume] = useState(50);
@@ -47,9 +51,7 @@ export function AudioPlayer({
           onClick={() => setIsPause(!isPause)}
         />
         <Icon component={StepForwardOutlined} className={styles.button} />
-        {image && (
-          <img draggable={false} className={styles.image} src={image} alt="" />
-        )}
+        <img draggable={false} className={styles.image} src={image} alt="" />
         <div className={styles.audioInfoWrap}>
           <div className={styles.titleWrap}>
             <div className={styles.name}>
