@@ -26,7 +26,7 @@ window.onscroll = () =>{
   navbar.classList.remove('active');
 }
 
-/*var swiper = new Swiper(".home-slider", {
+var swiper = new Swiper(".home-slider", {
   autoplay:{
     delay:7500,
     disableOnInteraction:false,
@@ -38,7 +38,7 @@ window.onscroll = () =>{
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-});*/
+});
 
 
 var swiper = new Swiper(".menu-slider", {
