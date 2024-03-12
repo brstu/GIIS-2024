@@ -10,7 +10,7 @@ export function RecordsList({ recordPreviews, setRecord }) {
   return (
     <div className={styles.wrap}>
       {recordPreviews.map((record) => (
-        <div
+        <button
           className={styles.recordItemContent}
           key={record.key}
           onClick={() => setRecord(record.key)}
@@ -25,7 +25,7 @@ export function RecordsList({ recordPreviews, setRecord }) {
           />
           <div className={styles.name}>{record.name}</div>
           <div className={styles.date}>{record.date}</div>
-        </div>
+        </button>
       ))}
     </div>
   );

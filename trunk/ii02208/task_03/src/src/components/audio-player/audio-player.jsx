@@ -21,7 +21,7 @@ export function AudioPlayer({ name, duration, image, recordName, style }) {
     style: PropTypes.object,
   };
 
-  const [time, setTime] = useState((duration / 3) * 1.34);
+  const [time] = useState((duration / 3) * 1.34);
   const [isPause, setIsPause] = useState(false);
   const [volume, setVolume] = useState(50);
 

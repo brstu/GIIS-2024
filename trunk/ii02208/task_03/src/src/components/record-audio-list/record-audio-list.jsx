@@ -12,9 +12,9 @@ export function RecordsAudioList({ trackList, setAudio, image }) {
   return (
     <div className={styles.wrap}>
       {trackList.map((audio, index) => (
-        <div
+        <button
           className={styles.audioContent}
-          key={index}
+          key={audio.name}
           onClick={() => setAudio(index)}
         >
           <div className={styles.audioInfoWrap}>
@@ -35,7 +35,7 @@ export function RecordsAudioList({ trackList, setAudio, image }) {
               ? "0" + Math.round(audio.duration % 60)
               : Math.round(audio.duration % 60)}
           </div>
-        </div>
+        </button>
       ))}
     </div>
   );
