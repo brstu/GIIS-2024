@@ -23,15 +23,7 @@ namespace laba1Giis
             trackBar2.TickStyle = TickStyle.None;
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
+       
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -61,16 +53,6 @@ namespace laba1Giis
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox1.SizeChanged += pictureBox1_SizeChanged;
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -140,11 +122,6 @@ namespace laba1Giis
                 }
             }
             pictureBox2.Image = bmp;
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
