@@ -128,7 +128,7 @@ namespace laba1Giis
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
            
-            saveFileDialog.Filter = "Image files (*.png, *.jpg)|*.png;*.jpg"; ;
+            saveFileDialog.Filter = "Image files (*.png, *.jpg)|*.png;*.jpg"; 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filename = saveFileDialog.FileName;
