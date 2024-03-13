@@ -14,6 +14,8 @@ namespace laba1Giis
     public partial class Form1 : Form
     {
         Image image;
+        private static readonly Random random = new Random();
+
         public Form1()
         {
             InitializeComponent();
@@ -65,7 +67,6 @@ namespace laba1Giis
             image = pictureBox1.Image;
             Bitmap bmp = new Bitmap(image);
             int countPixels = pictureBox1.Image.Height * pictureBox1.Width;
-            Random random = new Random();
             for (int i = 0; i < countPixels * trackBar1.Value / 100; i++)
             {
                 int x = random.Next(0,bmp.Width);
