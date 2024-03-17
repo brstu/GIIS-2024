@@ -8,16 +8,16 @@
 
 | №   | ФИО                                                                     | Directory name          |        #1        | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг |
 | --- | ----------------------------------------------------------------------- | ----------------------- | ---------------- | --- | --- | --- | --- | --- | --- | ------- |
-| 1   | [Борейша Олег](https://github.com/orgs/brstu/people/psijikk)            |[ii02201](/trunk/ii02201)|:heavy_check_mark:|     |     |     |     |     |     |         |
+| 1   | [Борейша Олег](https://github.com/orgs/brstu/people/psijikk)            |[ii02201](/trunk/ii02201)|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |    5     |
 | 2   | [Варицкий Максим](https://github.com/MaximVaritskiy)                    |                         |                  |     |     |     |     |     |     |         |
-| 3   | [Гузаревич Даниил](https://github.com/orgs/brstu/people/lumonces)       |                         |                  |     |     |     |     |     |     |         |
+| 3   | [Гузаревич Даниил](https://github.com/orgs/brstu/people/lumonces)       |[ii002203](/trunk/ii002203)|:heavy_check_mark:|     |     |     |     |     |     |   5  |
 | 4   | [Дубина Никита](https://github.com/AfiSix)                              |                         |                  |     |     |     |     |     |     |         |
-| 5   | [Заречный Адриан](https://github.com/orgs/brstu/people/Adryian4ik)      |[II02205](/trunk/II02205)|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |         |
+| 5   | [Заречный Адриан](https://github.com/orgs/brstu/people/Adryian4ik)      |[II02205](/trunk/II02205)|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |   5      |
 | 6   | [Исаенко Никита](https://github.com/IsaenkoNikita)                      |                         |                  |     |     |     |     |     |     |         |
 | 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)           |                         |                  |     |     |     |     |     |     |         |
-| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/II2208) |:heavy_check_mark:|     |     |     |     |     |     |         |
+| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |    5     |
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |                         |                  |     |     |     |     |     |     |         |
-| 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|     |     |     |     |     |     |         |
+| 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |   5      |
 
 ## Подруппа 2
 
