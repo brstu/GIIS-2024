@@ -34,12 +34,12 @@ jobs:
         run: |
           while read -r path
           do
-            pip install -r "$path"
-          done < "depend_path.txt"
+            pip install -r "$path"/requirements.txt
+          done < "python_path.txt"
 
       - name: execute python script
         run: |
           while read -r path
           do
-            python "$path"
+            python "$path"/main.py
           done < "python_path.txt"

@@ -26,7 +26,7 @@ window.onscroll = () =>{
   navbar.classList.remove('active');
 }
 
-var swiper = new Swiper(".home-slider", {
+let homeSwiper = new Swiper(".home-slider", {
   autoplay:{
     delay:7500,
     disableOnInteraction:false,
@@ -40,8 +40,7 @@ var swiper = new Swiper(".home-slider", {
   },
 });
 
-
-var swiper = new Swiper(".menu-slider", {
+let menuSwiper  = new Swiper(".menu-slider", {
   grabCursor:true,
   loop: true,
   autoHeight:true,
