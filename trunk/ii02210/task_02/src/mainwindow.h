@@ -14,8 +14,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow() override;
 
 private slots:
     void on_pushButton_clicked();
@@ -33,6 +33,6 @@ private slots:
     void on_actionSAVE_triggered();
 
 private:
-    Ui::MainWindow *ui;
+    std::unique_ptr<Ui::MainWindow> ui;
 };
 #endif // MAINWINDOW_H
