@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace laba1Giis
 {
@@ -87,10 +88,6 @@ namespace laba1Giis
             {
                 int x = generate_rnd_number(bmp.Width - 1);
                 int y = generate_rnd_number(bmp.Height - 1);
-
-                
-                /* int x = random.Next(0,bmp.Width);
-                 int y = random.Next(0, bmp.Height);*/
                 int tmp = generate_rnd_number(1);
                 Color color = (tmp == 0 ? Color.Black : Color.White);
 
@@ -109,6 +106,33 @@ namespace laba1Giis
             label4.Text = String.Format("Порог фильтра: {0} ", trackBar2.Value);
         }
 
+
+        int check_close_pixels(Bitmap bmp, int x, int y)
+        {
+            int count = 0;
+            int sum = 0;
+            for (int j = -1; j <= 1; j++)
+            {
+                for (int i = -1; i <= 1; i++)
+                {
+                    int newX = x + i;
+                    int newY = y + j;
+                    if (newX >= 0 && newX < bmp.Width && newY >= 0 && newY < bmp.Height)
+                    {
+                        Color neighborPixel = bmp.GetPixel(newX, newY);
+                        int intensity = (neighborPixel.R + neighborPixel.G + neighborPixel.B) / 3;
+                        sum += intensity;
+                        count++;
+                    }
+                }
+            }
+            return get_Average_Intensity(sum,count);
+        }
+
+        int get_Average_Intensity(int sum, int count)
+        {
+            return sum / count;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -118,24 +142,7 @@ namespace laba1Giis
                 for (int x = 0; x < bmp.Width; x++)
                 {
                     Color pixel = bmp.GetPixel(x, y);
-                    int sum = 0;
-                    int count = 0;
-                    for (int j = -1; j <= 1; j++)
-                    {
-                        for (int i = -1; i <= 1; i++)
-                        {
-                            int newX = x + i;
-                            int newY = y + j;
-                            if (newX >= 0 && newX < bmp.Width && newY >= 0 && newY < bmp.Height)
-                            {
-                                Color neighborPixel = bmp.GetPixel(newX, newY);
-                                int intensity = (neighborPixel.R + neighborPixel.G + neighborPixel.B) / 3;
-                                sum += intensity;
-                                count++;
-                            }
-                        }
-                    }
-                    int averageIntensity = sum / count;
+                    int averageIntensity = check_close_pixels(bmp,x,y);
                     if (Math.Abs((pixel.R + pixel.G + pixel.B) / 3 - averageIntensity) > trackBar2.Value)
                     {
                        
