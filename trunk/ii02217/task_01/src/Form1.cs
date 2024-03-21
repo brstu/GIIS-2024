@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace laba1Giis
@@ -14,7 +15,8 @@ namespace laba1Giis
     public partial class Form1 : Form
     {
         Image image;
-        private static readonly Random random = new Random();
+        
+        
 
         public Form1()
         {
@@ -61,17 +63,37 @@ namespace laba1Giis
         {
             label1.Text = String.Format("Уровень зашумления: {0} %", trackBar1.Value);
         }
+        
+        int generate_rnd_number(int end)
+        {
+            var random = RandomNumberGenerator.Create();
+            byte[] data = new byte[4];
+            random.GetBytes(data);
+            int rndNumber = BitConverter.ToInt32(data, 0);
+            rndNumber = Math.Abs(rndNumber);
+            rndNumber %= (end + 1);
 
+            return rndNumber;
+
+        }
         private void button2_Click(object sender, EventArgs e)
         {
+           
+           
             image = pictureBox1.Image;
             Bitmap bmp = new Bitmap(image);
             int countPixels = pictureBox1.Image.Height * pictureBox1.Width;
             for (int i = 0; i < countPixels * trackBar1.Value / 100; i++)
             {
-                int x = random.Next(0,bmp.Width);
-                int y = random.Next(0, bmp.Height);
-                Color color = (random.Next(0, 2) == 0 ? Color.Black : Color.White);
+                int x = generate_rnd_number(bmp.Width - 1);
+                int y = generate_rnd_number(bmp.Height - 1);
+
+                
+                /* int x = random.Next(0,bmp.Width);
+                 int y = random.Next(0, bmp.Height);*/
+                int tmp = generate_rnd_number(1);
+                Color color = (tmp == 0 ? Color.Black : Color.White);
+
                 bmp.SetPixel(x,y,color);
             }
             pictureBox1.Image = bmp;
