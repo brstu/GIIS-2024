@@ -13,10 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
 
 
 void MainWindow::on_pushButton_2_clicked()
@@ -27,9 +23,10 @@ void MainWindow::on_pushButton_2_clicked()
     stringList.push_back(name + ": " + adres);
     QStringListModel *model = qobject_cast<QStringListModel*>(ui->listView->model());
     if (!model) {
-        model = new QStringListModel(this);
+        auto modelPtr = std::make_unique<QStringListModel>(this);
+        model = modelPtr.get();
         model->setStringList(stringList);
-        ui->listView->setModel(model);
+        ui->listView->setModel(modelPtr.release());
     }else{
         QStringList stringListModel = model->stringList();
         stringList += stringListModel;
@@ -47,10 +44,11 @@ void MainWindow::on_pushButton_clicked()
     }
 
 }
-QVector<int> find_name(QStringListModel *model,QString name){
+QVector<int> find_name(const QStringListModel *model,QString name){
     QStringList stringList = model->stringList();
     QVector<int> indexes;
-    for(int i = 0; i< stringList.size(); i++){
+    int listViewSize = stringList.size();
+    for(int i = 0; i< listViewSize; i++){
         QStringList splitName = stringList[i].split(":");
         if(splitName[0] == name){
             indexes.push_back(i);
@@ -91,8 +89,8 @@ void MainWindow::on_pushButton_3_clicked()
            stringList2 = stringList1[i].split(":");
            stringList.push_back(stringList2[1]);
        }
-       QStringListModel *model = new QStringListModel(stringList);
-       ui->listView_2->setModel(model);
+       auto model =  std::make_unique<QStringListModel>(stringList);
+       ui->listView_2->setModel(model.release());
    }
 
 }
@@ -121,7 +119,7 @@ void MainWindow::on_action_2_triggered()
     QStringList stringList;
     QStringList stringList2;
     if(!list_veiw_model){
-        list_veiw_model = new QStringListModel();
+        list_veiw_model = std::make_unique<QStringListModel>().release();
         ui->listView->setModel(list_veiw_model);
 
     }
