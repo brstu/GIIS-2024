@@ -17,18 +17,18 @@
 | 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)           |                         |                  |     |     |     |     |     |     |         |
 | 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |    5     |
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |                         |                  |     |     |     |     |     |     |         |
-| 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |   5      |
+| 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |   5      |
 
 ## Подруппа 2
 
-| №   | ФИО                                                              | Directory name | #1  | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг |
-| --- | ---------------------------------------------------------------- | -------------- | --- | --- | --- | --- | --- | --- | --- | ------- |
-| 1   | [Кузьмич Вадим](https://github.com/orgs/brstu/people/vkn10)      |                |     |     |     |     |     |     |     |         |
-| 2   | [Любчук Илья](https://github.com/snep1one)                       |                |     |     |     |     |     |     |     |         |
-| 3   | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach) |                |     |     |     |     |     |     |     |         |
-| 4   | [Нестерчук Дмитрий](https://github.com/nesterchuk11)             |                |     |     |     |     |     |     |     |         |
-| 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |                |     |     |     |     |     |     |     |         |
-| 6   | [Полиенко Владислав](https://github.com/TomiokaGiuy)             |[ii02216](./trunk/ii02216)|:heavy_check_mark:|     |     |     |     |     |     |         |
-| 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |
-| 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |
-| 9   | [Сокол София](https://github.com/DeAiVil)                        |                |     |     |     |     |     |     |     |         |
+| №   | ФИО                                                              | Directory name | #1  | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг | Амбиции | Реальность |
+| --- | ---------------------------------------------------------------- | -------------- | --- | --- | --- | --- | --- | --- | --- | ------- | ------- | ------- |
+| 1   | [Кузьмич Вадим](https://github.com/orgs/brstu/people/vkn10)      |                |     |     |     |     |     |     |     |         |         |         |
+| 2   | [Любчук Илья](https://github.com/snep1one)                       |                |     |     |     |     |     |     |     |         |    5    |   0     |
+| 3   | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach) |                |     |     |     |     |     |     |     |         |         |         |
+| 4   | [Нестерчук Дмитрий](https://github.com/nesterchuk11)             |                |     |     |     |     |     |     |     |         |  5      |    0    |
+| 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |                |     |     |     |     |     |     |     |         |    4    |    0    |
+| 6   | [Полиенко Владислав](https://github.com/TomiokaGiuy)             |[ii02216](./trunk/ii02216)|:heavy_check_mark:|     |     |     |     |     |     |     |         |  8      |    5    |
+| 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |         |         |
+| 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |         |         |
+| 9   | [Сокол София](https://github.com/DeAiVil)                        |                |     |     |     |     |     |     |     |         |       7 |    0    |
