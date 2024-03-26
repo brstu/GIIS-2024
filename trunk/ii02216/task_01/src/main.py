@@ -91,22 +91,22 @@ class ImageFilterApp:
         filtered_image = cv2.cvtColor(filtered_image, cv2.COLOR_BGR2RGB)
         filtered_image = cv2.resize(filtered_image, (400, 300))
         filtered_image = Image.fromarray(filtered_image)
-
         filtered_image = ImageTk.PhotoImage(filtered_image)
+
         self.noisy_image_label.config(image=filtered_image)
         self.noisy_image_label.image = filtered_image
 
     @staticmethod
     def add_salt_and_pepper_noise(image, noise_level):
         noisy_image = np.copy(image)
-        height, width, channels = noisy_image.shape
+        height, width, _ = noisy_image.shape
 
         num_pixels = int(noise_level / 100 * height * width)
         for _ in range(num_pixels):
             x = secrets.randbelow(width)
             y = secrets.randbelow(height)
             color = secrets.choice([0, 255])
-            noisy_image[y, x] = [color, color, color]
+            noisy_image[y, x, :] = [color, color, color]
 
         return noisy_image
 
@@ -119,4 +119,3 @@ class ImageFilterApp:
 root = tk.Tk()
 app = ImageFilterApp(root)
 root.mainloop()
-
