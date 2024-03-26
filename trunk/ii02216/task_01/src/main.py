@@ -1,8 +1,10 @@
-
 import tkinter as tk
 from tkinter import filedialog
+import cv2
 from PIL import Image, ImageTk
 import secrets
+import numpy as np
+
 
 class ImageFilterApp:
     def __init__(self, root):
@@ -25,7 +27,7 @@ class ImageFilterApp:
         self.load_button = tk.Button(self.frame1, text="Загрузить изображение", command=self.load_image)
         self.load_button.pack()
 
-        self.add_noise_button = tk.Button(self.frame1, text="Добавить помехи", command=self.add_impulse_noise)
+        self.add_noise_button = tk.Button(self.frame1, text="Добавить помехи", command=self.add_noise)
         self.add_noise_button.pack()
 
         self.apply_filter_button = tk.Button(self.frame1, text="Применить медианный фильтр", command=self.apply_median_filter)
@@ -49,91 +51,72 @@ class ImageFilterApp:
         self.noisy_image_label.pack()
 
     def load_image(self):
-        self.image_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.png; *.jpg; *.jpeg")])
-        self.show_image(self.image_path, self.image_label)
-
-    def add_impulse_noise(self):
+        self.image_path = filedialog.askopenfilename(filetypes=(("Изображения", "*.jpg;*.jpeg;*.png"), ("Все файлы", "*.*")))
         if self.image_path:
-            image = Image.open(self.image_path)
-            noise_factor = self.noise_slider.get() / 100.0
-            noisy_image = self.add_impulse_noise_to_image(image, noise_factor)
-            self.noisy_image_path = "noisy_image.jpg"
-            noisy_image.save(self.noisy_image_path)
-            self.show_image(self.noisy_image_path, self.noisy_image_label)
+            image = cv2.imread(self.image_path)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            image = cv2.resize(image, (400, 300))
+            image = Image.fromarray(image)
+            image = ImageTk.PhotoImage(image)
+            self.image_label.config(image=image)
+            self.image_label.image = image
+
+    def add_noise(self):
+        if not self.image_path:
+            return
+
+        noise_level = self.noise_slider.get()
+        if noise_level == 0:
+            return
+
+        image = cv2.imread(self.image_path)
+        noisy_image = self.add_salt_and_pepper_noise(image, noise_level)
+        self.noisy_image_path = "noisy_image.jpg"
+        cv2.imwrite(self.noisy_image_path, noisy_image)
+
+        noisy_image = cv2.cvtColor(noisy_image, cv2.COLOR_BGR2RGB)
+        noisy_image = cv2.resize(noisy_image, (400, 300))
+        noisy_image = Image.fromarray(noisy_image)
+        noisy_image = ImageTk.PhotoImage(noisy_image)
+        self.noisy_image_label.config(image=noisy_image)
+        self.noisy_image_label.image = noisy_image
 
     def apply_median_filter(self):
-        if self.noisy_image_path:
-            noisy_image = Image.open(self.noisy_image_path)
-            apply_row_filter = self.row_checkbox_var.get() == 1
-            apply_column_filter = self.column_checkbox_var.get() == 1
-            filtered_image = self.apply_median_filter_to_image(noisy_image, apply_row_filter, apply_column_filter)
-            self.show_image(filtered_image, self.noisy_image_label)
+        if not self.noisy_image_path:
+            return
 
-    def show_image(self, image_path, image_label):
-        if image_path:
-            image = Image.open(image_path)
-            image.thumbnail((400, 400))
-            image_tk = ImageTk.PhotoImage(image)
-            image_label.config(image=image_tk)
-            image_label.image = image_tk
+        noisy_image = cv2.imread(self.noisy_image_path)
+        filtered_image = self.apply_median_filter_to_image(noisy_image)
 
-    def add_impulse_noise_to_image(self, image, noise_factor):
-        noisy_image = image.copy()
-        width, height = noisy_image.size
-        pixel_data = noisy_image.load()
+        filtered_image = cv2.cvtColor(filtered_image, cv2.COLOR_BGR2RGB)
+        filtered_image = cv2.resize(filtered_image, (400, 300))
+        filtered_image = Image.fromarray(filtered_image)
 
-        for i in range(width):
-            for j in range(height):
-                if secrets.choice([True, False]):
-                    if secrets.choice([True, False]):
-                        pixel_data[i, j] = (0, 0, 0)
-                    else:
-                        pixel_data[i, j] = (255, 255, 255)
+        filtered_image = ImageTk.PhotoImage(filtered_image)
+        self.noisy_image_label.config(image=filtered_image)
+        self.noisy_image_label.image = filtered_image
+
+    @staticmethod
+    def add_salt_and_pepper_noise(image, noise_level):
+        noisy_image = np.copy(image)
+        height, width, channels = noisy_image.shape
+
+        num_pixels = int(noise_level / 100 * height * width)
+        for _ in range(num_pixels):
+            x = secrets.randbelow(width)
+            y = secrets.randbelow(height)
+            color = secrets.choice([0, 255])
+            noisy_image[y, x] = [color, color, color]
+
         return noisy_image
 
-    def apply_median_filter_to_image(self, image, apply_row_filter, apply_column_filter):
-        width, height = image.size
-        pixel_data = image.load()
-
-        if apply_column_filter and apply_row_filter:
-            for i in range(width):
-                for j in range(height):
-                    neighbors = []
-                    for x in range(max(0, i - 1), min(width, i + 2)):
-                        for y in range(max(0, j - 1), min(height, j + 2)):
-                            neighbors.append(pixel_data[x, y])
-                    neighbors.sort()
-                    median_value = neighbors[len(neighbors) // 2]
-                    pixel_data[i, j] = median_value
-        elif apply_column_filter:
-            for i in range(width):
-                for j in range(height):
-                    if j > 0 and j < height - 1:
-                        neighbors = [
-                            pixel_data[i, j - 1],
-                            pixel_data[i, j],
-                            pixel_data[i, j + 1]
-                        ]
-                        neighbors.sort()
-                        median_value = neighbors[1]
-                        pixel_data[i, j] = median_value
-        elif apply_row_filter:
-            for i in range(width):
-                for j in range(height):
-                    if i > 0 and i < width - 1:
-                        neighbors = [
-                            pixel_data[i - 1, j],
-                            pixel_data[i, j],
-                            pixel_data[i + 1, j]
-                        ]
-                        neighbors.sort()
-                        median_value = neighbors[1]
-                        pixel_data[i, j] = median_value
-
-        return image
+    @staticmethod
+    def apply_median_filter_to_image(image):
+        filtered_image = cv2.medianBlur(image, 3)
+        return filtered_image
 
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = ImageFilterApp(root)
-    root.mainloop()
+root = tk.Tk()
+app = ImageFilterApp(root)
+root.mainloop()
+
