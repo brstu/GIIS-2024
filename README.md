@@ -21,14 +21,14 @@
 
 ## Подруппа 2
 
-| №   | ФИО                                                              | Directory name | #1  | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг |
-| --- | ---------------------------------------------------------------- | -------------- | --- | --- | --- | --- | --- | --- | --- | ------- |
-| 1   | [Кузьмич Вадим](https://github.com/orgs/brstu/people/vkn10)      |                |     |     |     |     |     |     |     |         |
-| 2   | [Любчук Илья](https://github.com/snep1one)                       |                |     |     |     |     |     |     |     |         |
-| 3   | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach) |                |     |     |     |     |     |     |     |         |
-| 4   | [Нестерчук Дмитрий](https://github.com/nesterchuk11)             |                |     |     |     |     |     |     |     |         |
-| 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |                |     |     |     |     |     |     |     |         |
-| 6   | [Полиенко Владислав](https://github.com/TomiokaGiuy)             |                |     |     |     |     |     |     |     |         |
-| 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |
-| 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |
-| 9   | [Сокол София](https://github.com/DeAiVil)                        |                |     |     |     |     |     |     |     |         |
+| №   | ФИО                                                              | Directory name | #1  | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг | Амбиции | Реальность |
+| --- | ---------------------------------------------------------------- | -------------- | --- | --- | --- | --- | --- | --- | --- | ------- | ------- | ------- |
+| 1   | [Кузьмич Вадим](https://github.com/orgs/brstu/people/vkn10)      |                |     |     |     |     |     |     |     |         |         |         |
+| 2   | [Любчук Илья](https://github.com/snep1one)                       |                |     |     |     |     |     |     |     |         |    5    |   0     |
+| 3   | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach) |                |     |     |     |     |     |     |     |         |         |         |
+| 4   | [Нестерчук Дмитрий](https://github.com/nesterchuk11)             |                |     |     |     |     |     |     |     |         |  5      |    0    |
+| 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |                |     |     |     |     |     |     |     |         |    4    |    0    |
+| 6   | [Полиенко Владислав](https://github.com/TomiokaGiuy)             |                |     |     |     |     |     |     |     |         |  8      |    0    |
+| 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |         |         |
+| 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |         |         |
+| 9   | [Сокол София](https://github.com/DeAiVil)                        |                |     |     |     |     |     |     |     |         |       7 |    0    |
