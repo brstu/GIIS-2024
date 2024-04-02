@@ -15,7 +15,7 @@
 | 5   | [Заречный Адриан](https://github.com/orgs/brstu/people/Adryian4ik)      |[ii02205](/trunk/ii02205)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |   5      |    10    |  9      |
 | 6   | [Исаенко Никита](https://github.com/IsaenkoNikita)|                         |                  |     |     |     |     |     |     |     |     5    |     0    |
 | 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)            |     |     |     |     |     |     |     |         |        | 8 | 0|
-| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |    5     |    10    |   7     |
+| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |    5     |    10    |   7     |
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |                         |                  |     |     |     |     |     |     |         |        |        |
 | 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |   5      |   10     |    9    |
 
