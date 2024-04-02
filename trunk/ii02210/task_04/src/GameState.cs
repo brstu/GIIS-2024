@@ -76,7 +76,10 @@ namespace tetris_
         {
             CurrentBlock.RotateCW();
 
-            if(!BlockFits()) CurrentBlock.RotateCCW();
+            if(!BlockFits())
+            {
+                CurrentBlock.RotateCCW();
+            }
             
         }
 
@@ -84,7 +87,10 @@ namespace tetris_
         {
             CurrentBlock.RotateCCW();
 
-            if (!BlockFits()) CurrentBlock.RotateCW();
+            if (!BlockFits()) 
+            {
+                CurrentBlock.RotateCW();
+            }
 
         }
 
@@ -92,14 +98,20 @@ namespace tetris_
         {
             CurrentBlock.Move(0, -1);
 
-            if(!BlockFits()) CurrentBlock.Move(0, 1);
+            if(!BlockFits())
+            {
+                CurrentBlock.Move(0, 1);
+            }
         }
 
         public void MoveBlockRight()
         {
             CurrentBlock.Move(0, 1);
 
-            if (!BlockFits()) CurrentBlock.Move(0, -1);
+            if (!BlockFits())
+            {
+                CurrentBlock.Move(0, -1);
+            }
         }
 
         private bool IsGameOver()
