@@ -15,7 +15,7 @@ namespace tetris_
         public abstract int Id { get; }
 
         private int rotationState;
-        private Position offset;
+        private readonly Position offset;
 
         protected Block()
         {
