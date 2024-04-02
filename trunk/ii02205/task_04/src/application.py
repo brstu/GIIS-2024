@@ -250,6 +250,26 @@ class App:
         if keys[pygame.K_UP]:
             self.game.add_player_shot()
 
+    def draw_shoots(self):
+        for shoot in self.game.shoots:
+            shoot.move()
+            if shoot.is_correct:
+                if shoot.is_player_shoot:
+                    pygame.draw.circle(self.screen, (0, 255, 0), shoot.position, 5)
+                else:
+                    pygame.draw.circle(self.screen, (255, 255, 255), shoot.position, 5)
+
+    def draw_invadors(self):
+        for invador in self.game.invadors:
+            if not invador.is_destroyed:
+                pos = invador.position - [invador.size, invador.size]
+                if invador.type_of_person == 0:
+                    self.screen.blit(invader_1, (pos[0], pos[1]))
+                elif invador.type_of_person == 1:
+                    self.screen.blit(invader_2, (pos[0], pos[1]))
+                elif invador.type_of_person == 2:
+                    self.screen.blit(invader_3, (pos[0], pos[1]))
+
     def work(self):
         while self.is_running:
             self.process_keys()
@@ -289,29 +309,14 @@ class App:
 
                 self.screen.blit(player, (pos[0], pos[1]))
 
-                for shoot in self.game.shoots:
-                    shoot.move()
-                    if shoot.is_correct:
-                        if shoot.is_player_shoot:
-                            pygame.draw.circle(self.screen, (0, 255, 0), shoot.position, 5)
-                        else:
-                            pygame.draw.circle(self.screen, (255, 255, 255), shoot.position, 5)
+                self.draw_shoots()
 
                 self.game.shoots = [shoot for shoot in self.game.shoots if shoot.is_correct]
 
                 if self.ticks in [0, 30]:
                     self.game.add_invadors_shoots()
 
-                for invador in self.game.invadors:
-                    if not invador.is_destroyed:
-                        pos = invador.position - [invador.size, invador.size]
-
-                        if invador.type_of_person == 0:
-                            self.screen.blit(invader_1, (pos[0], pos[1]))
-                        elif invador.type_of_person == 1:
-                            self.screen.blit(invader_2, (pos[0], pos[1]))
-                        elif invador.type_of_person == 2:
-                            self.screen.blit(invader_3, (pos[0], pos[1]))
+                self.draw_invadors()
 
                 self.game.invadors = [invador for invador in self.game.invadors if not invador.is_destroyed]
 
