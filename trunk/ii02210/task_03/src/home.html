@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+
+        <a href="home.html" class="logo"> <i class="fas fa-pizza-slice"></i> pizza</a>
+
+        <nav class="navbar">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="menu.html">menu</a>
+            <a href="contact.html">contact</a>
+        </nav>
+
+        <div class="icons">
+            <div id="cart" class="fas fa-shopping-cart"></div>
+            <div id="login" class="fas fa-user"></div>
+            <div id="menu" class="fas fa-bars"></div>
+        </div>
+
+        <div class="shopping-cart">
+
+            <div class="box">
+                <i class="fas fa-times"></i>
+                <img src="images/cart-1.png" alt="">
+                <div class="content">
+                    <h3>pizza</h3>
+                    <span class="quantity">1</span>
+                    <span class="multiply">x</span>
+                    <span class="price">$ 18.99</span>
+                </div>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-times"></i>
+                <img src="images/cart-2.png" alt="">
+                <div class="content">
+                    <h3>pizza</h3>
+                    <span class="quantity">1</span>
+                    <span class="multiply">x</span>
+                    <span class="price">$ 18.99</span>
+                </div>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-times"></i>
+                <img src="images/cart-3.png" alt="">
+                <div class="content">
+                    <h3>pizza</h3>
+                    <span class="quantity">1</span>
+                    <span class="multiply">x</span>
+                    <span class="price">$ 18.99</span>
+                </div>
+            </div>
+            <h3 class="total">total: $56.97</h3>
+            <a href="#" class="btn">checkout cart</a>
+        </div>
+
+        <form action="" class="login-form">
+            <h3>login form</h3>
+            <input type="email" placeholder="enter your email" class="box">
+            <input type="password" placeholder="enter your password" class="box">
+            <div class="remember">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">remember me</label>
+            </div>
+            <input type="submit" value="login" class="btn">
+        </form>
+       
+    </header>
+
+    <section class="home">
+
+        <div class="swiper home-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide" style="background: url(images/slider-1.jpg) no-repeat;">
+                    <div class="content">
+                        <h3>the <span>tastiest</span> pizza <br> on the Kievka</h3>
+                        <a href="#" class="btn">order now</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide" style="background: url(images/slider-2.jpg) no-repeat;">
+                    <div class="content">
+                        <h3>the <span>tastiest</span> pizza <br> on the Kievka</h3>
+                        <a href="#" class="btn">order now</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide" style="background: url(images/slider-3.jpg) no-repeat;">
+                    <div class="content">
+                        <h3>the <span>tastiest</span> pizza <br> on the Kievka</h3>
+                        <a href="#" class="btn">order now</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        </div>
+
+    </section>
+
+    <section class="banner">
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/banner-1.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>pizza</h3>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/banner-2.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>dessert</h3>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/banner-3.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>pasta</h3>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/banner-4.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>wines</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="steps">
+
+        <h1 class="title">how it <span>works</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images/work-1.gif" alt="">
+                <h3>choose your favorite food</h3>
+            </div>
+
+            <div class="box">
+                <img src="images/work-2.gif" alt="">
+                <h3>free and fast delivery</h3>
+            </div>
+
+            <div class="box">
+                <img src="images/work-3.gif" alt="">
+                <h3>easy payments methods</h3>
+            </div>
+
+            <div class="box">
+                <img src="images/work-4.gif" alt="">
+                <h3>and finally, enjoy your food</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="pizzas">
+
+        <h1 class="title">pizzas of the <span>month</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images/pizza-1.png" alt="">
+                <h3>olive horror</h3>
+                <p>Delicious pizza, filling pizza, no mushrooms (hopefully). Vegans, let's pass by, you have nothing to catch.</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">$15.99 <span>$20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="box">
+                <img src="images/pizza-2.png" alt="">
+                <h3>pizza so so</h3>
+                <p>Delicious pizza, filling pizza, no mushrooms (hopefully). Vegans, let's pass by, you have nothing to catch.</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">$15.99 <span>$20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="box">
+                <img src="images/pizza-3.png" alt="">
+                <h3>pizza normal</h3>
+                <p>Delicious pizza, filling pizza, no mushrooms (hopefully). Vegans, let's pass by, you have nothing to catch.</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">$15.99 <span>$20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>find us here</h3>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>contact us</h3>
+                <p>+37525530410X</p>
+                <a href="#" class="link">chipolinchikaloe@gmail.com</a>
+            </div>
+
+            <div class="box">
+                <h3>localization</h3>
+                <p>Belarus, Kievka district, 
+                   Vishnevaya street, 
+                   building 28</p>
+            </div>
+
+        </div>
+        
+
+    </section>
+
+    <script
+  src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"
+  integrity="sha256-[YOUR_HASH_HERE]"
+  crossorigin="anonymous"
+></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
