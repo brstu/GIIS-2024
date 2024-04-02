@@ -1,0 +1,284 @@
+﻿<Window x:Class="tetris_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tetris_"
+        mc:Ignorable="d"
+        Title="Tetris kotika Niki" Height="600" Width="800"
+        MinWidth = "600" MinHeight = "600"
+        Foreground="White" 
+        FontFamily="Broken Console Bold" FontSize="28"
+        KeyDown="Window_KeyDown">
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/Background.png"/>
+        </Grid.Background>
+
+        <Viewbox 
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0,0,0,20">
+            <Border BorderBrush="#FFFF00A4" BorderThickness="1" Margin="-5">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="#FFFF00A4" BlurRadius="50" ShadowDepth="0" Opacity="1"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Canvas x:Name="GameCanvas" 
+                    Background="#101010"
+                    Width="250"
+                    Height="510"
+                    ClipToBounds="True"
+                    Loaded="GameCanvas_Loaded"/>
+            </Border>
+        </Viewbox>
+
+        <TextBlock x:Name="byKotikNika"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="15,0,0,20"
+                   FontSize="18"
+                   Text="by kotik Nika"
+                   VerticalAlignment= "Bottom"
+                   HorizontalAlignment="Left">
+            <TextBlock.Effect>
+                <DropShadowEffect Color="#FFFF00A4"></DropShadowEffect>
+            </TextBlock.Effect>
+
+        </TextBlock>
+        
+        <TextBlock x:Name="ScoreText"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Text="Score: "
+                   Margin="0, 10"
+                   TextAlignment="Center">
+            <TextBlock.Effect>
+                <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+            </TextBlock.Effect>
+        </TextBlock>  
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right">
+            <TextBlock Text="Hold"
+                       TextAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Image x:Name="HoldImage"
+                   Margin="20"
+                   Width="125"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+            <TextBlock Text="Next"
+                       TextAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Image x:Name="NextImage"
+                   Margin="20"
+                   Width="125"/>
+        </StackPanel>
+
+        <Grid x:Name="Control"
+              Background="Black"
+              Grid.RowSpan="2"
+              Grid.ColumnSpan="3">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Control: ">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,20,0,0"
+                           FontSize="24">
+                    <Run Text="▶" FontFamily="Press Start 2P"/> 
+                    <Run Text= "move right"/>
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="24">
+                    <Run Text="◀" FontFamily="Press Start 2P"/>
+                    <Run Text= "move left"/>
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="24">
+                    <Run Text="▼" FontFamily="Press Start 2P"/>
+                    <Run Text= "move down"/>
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="24">
+                    <Run Text="–" FontFamily = "Press Start 2P"/>
+                    <Run Text="lower"/>
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="24">
+                    <Run Text="▲" FontFamily="Press Start 2P"/>
+                    <Run Text="rotate CW"/>
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="24"
+                           Text="Z rotate CWW">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="24"
+                            Text="C hold block">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <Button Content="Play"
+                        Padding="5,12,0,5"
+                        Margin="0,15,0,0"
+                        Click="Play_Click">
+                    <Button.Effect>
+                        <DropShadowEffect Color="#FF06AD06" BlurRadius ="100"/>
+                    </Button.Effect>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF0EDC0E"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF21770F"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+            
+        </Grid>
+        
+        <Grid x:Name="GameOverMenu"
+              Background="#CC000000"
+              Grid.RowSpan="2"
+              Grid.ColumnSpan="3"
+              Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Game Over"
+                           Foreground="Red"
+                           FontSize="48"
+                           TextAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FFAB0000"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+                
+                <TextBlock x:Name="FinalScoreText"
+                           Text="Score: "
+                           Margin="0,5,0,0"
+                           FontSize="36"
+                           TextAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#FF2300FF"></DropShadowEffect>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <Button Content="Play Again"
+                        Padding="5,12,0,5"
+                        Margin="0,15,0,0"
+                        Click="PlayAgain_Click">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FF06AD06" BlurRadius ="100"/>
+                        </Button.Effect>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#FF0EDC0E"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                Padding="{TemplateBinding Padding}">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF21770F"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
