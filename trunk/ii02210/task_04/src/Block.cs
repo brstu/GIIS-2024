@@ -37,8 +37,14 @@ namespace tetris_
 
         public void RotateCCW()
         {
-            if (rotationState == 0) rotationState = (rotationState + 4 - 1) % 4;
-            else rotationState--;
+            if (rotationState == 0)
+            { 
+                rotationState = (rotationState + 4 - 1) % 4;
+            }
+            else 
+            {
+                rotationState--;
+            }
         }
 
         public void Move(int rows,  int columns)
