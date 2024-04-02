@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -53,7 +53,7 @@ namespace tetris_
 
         private Image[,] SetupGameCanvas(GameGrid grid)
         {
-            Image[,] imageControls = new Image[grid.Rows, grid.Columns];
+            Image[,] imageControlsArray = new Image[grid.Rows, grid.Columns];
             int cellSize = 25;
 
             for(int r = 0; r < grid.Rows; r++)
@@ -69,11 +69,11 @@ namespace tetris_
                     Canvas.SetTop(imageControl, (r - 2) * cellSize + 10);
                     Canvas.SetLeft(imageControl, c * cellSize);
                     GameCanvas.Children.Add(imageControl);
-                    imageControls[r, c] = imageControl;
+                    imageControlsArray[r, c] = imageControl;
                 }
             }
 
-            return imageControls;
+            return imageControlsArray;
         }
 
         private void DrawGrid(GameGrid grid)
