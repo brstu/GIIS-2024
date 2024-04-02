@@ -85,7 +85,7 @@ class Block:
         step = (window_size[0] - 200) / 5
 
         self.center = [100 + column_index * step, window_size[1] - 200]
-        self.block = np.ones((self.size[1], self.size[0]))
+        self.matrix_of_block = np.ones((self.size[1], self.size[0]))
 
     def collision_detection(self, shoot: Shoot) -> bool:
         first_pos = shoot.position
@@ -97,10 +97,10 @@ class Block:
                        second_pos[1] - self.center[1] + self.size[1] // 2)
         for y in range(int(first_y), int(second_y + 1)):
             if 0 <= y < self.size[1]:
-                if np.sum(self.block[x - 2: x + 2, y]) >= 1:
-                    x_indices, y_indices = np.indices(self.block.shape)
+                if np.sum(self.matrix_of_block[x - 2: x + 2, y]) >= 1:
+                    x_indices, y_indices = np.indices(self.matrix_of_block.shape)
                     circle_mask = (x_indices - x) ** 2 + (y_indices - y) ** 2 <= 7 ** 2
-                    self.block[circle_mask] = 0
+                    self.matrix_of_block[circle_mask] = 0
                     return True
         return False
 
@@ -140,7 +140,7 @@ class Game:
         if not self.is_begining or not self.is_running:
             return None
         self.player.decrement_cooldown()
-        self.shoot_colision()
+        self.shoot_collision()
         if self.ticks_for_move[0] > 0:
             self.ticks_for_move[0] -= 1
 
@@ -166,36 +166,40 @@ class Game:
         if self.player.lives == 0:
             self.game_over()
 
-    def shoot_colision(self):
+    def shot_collision_with_blocks(self, shoot: Shoot):
+        for block in self.blocks:
+            if (block.center[0] - block.size[0] // 2 - 3 <= shoot.position[0] <
+                    block.center[0] + block.size[0] // 2 + 3):
+                if block.collision_detection(shoot):
+                    shoot.is_correct = False
+                    break
+
+    def shoot_collision_with_invadors(self, shoot: Shoot, first_pos: np.array, second_pos: np.array):
+        for invador in self.invadors:
+            if (min(int(first_pos[1]), int(second_pos[1])) <= invador.position[1]
+                    <= max(int(first_pos[1]), int(second_pos[1]))
+                    and abs(first_pos[0] - invador.position[0]) < invador.size):
+                invador.is_destroyed = True
+                shoot.is_correct = False
+                self.player.score += (invador.type_of_person + 1) * 10
+
+    def shoot_collision_with_player(self, shoot: Shoot, first_pos: np.array, second_pos: np.array):
+        if (min(int(first_pos[1]), int(second_pos[1])) <= self.player.position[1]
+                <= max(int(first_pos[1]), int(second_pos[1]))
+                and abs(first_pos[0] - self.player.position[0]) < self.player.size[0]):
+            self.player_minus_live()
+            shoot.is_correct = False
+
+    def shoot_collision(self):
         for shoot in self.shoots:
-
-            for block in self.blocks:
-                if (block.center[0] - block.size[0] // 2 - 3 <= shoot.position[0] <
-                        block.center[0] + block.size[0] // 2 + 3):
-                    if block.collision_detection(shoot):
-                        shoot.is_correct = False
-                        break
-
+            self.shot_collision_with_blocks(shoot)
             if shoot.is_correct:
-
                 first_pos = shoot.position.copy()
                 second_pos = [shoot.position[0] + shoot.direction[0], shoot.position[1] + shoot.direction[1]].copy()
                 if shoot.is_player_shoot:
-
-                    for invador in self.invadors:
-                        if (min(int(first_pos[1]), int(second_pos[1])) <= invador.position[1]
-                                <= max(int(first_pos[1]), int(second_pos[1]))
-                                and abs(first_pos[0] - invador.position[0]) < invador.size):
-                            invador.is_destroyed = True
-                            shoot.is_correct = False
-
-                            self.player.score += (invador.type_of_person + 1) * 10
+                    self.shoot_collision_with_invadors(shoot, first_pos, second_pos)
                 else:
-                    if (min(int(first_pos[1]), int(second_pos[1])) <= self.player.position[1]
-                            <= max(int(first_pos[1]), int(second_pos[1]))
-                            and abs(first_pos[0] - self.player.position[0]) < self.player.size[0]):
-                        self.player_minus_live()
-                        shoot.is_correct = False
+                    self.shoot_collision_with_player(shoot, first_pos, second_pos)
 
         if len(self.invadors) == 0:
             self.game_win()
@@ -232,21 +236,23 @@ class App:
     def quit(self):
         self.is_running = False
 
+    def process_keys(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.quit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                self.game.is_paused = not self.game.is_paused
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            self.game.player.update_position(False)
+        if keys[pygame.K_RIGHT]:
+            self.game.player.update_position(True)
+        if keys[pygame.K_UP]:
+            self.game.add_player_shot()
+
     def work(self):
         while self.is_running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.quit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        self.game.is_paused = not self.game.is_paused
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_LEFT]:
-                self.game.player.update_position(False)
-            if keys[pygame.K_RIGHT]:
-                self.game.player.update_position(True)
-            if keys[pygame.K_UP]:
-                self.game.add_player_shot()
+            self.process_keys()
             self.screen.fill((0, 0, 0))
             if self.game.is_gameover:
                 text = self.font.render('Game Over', True, (255, 255, 255), (0, 0, 0))
@@ -273,13 +279,11 @@ class App:
                 self.game.game_tick()
 
                 for block in self.game.blocks:
-                    a = pygame.surfarray.make_surface(block.block)
+                    a = pygame.surfarray.make_surface(block.matrix_of_block)
                     pos = block.center.copy()
                     pos[0] -= ceil(block.size[0] / 2)
                     pos[1] -= ceil(block.size[1] / 2)
                     self.screen.blit(a, pos)
-
-                # pygame.draw.circle(self.screen, (0, 255, 0), self.game.player.position, self.game.player.size)
 
                 pos = self.game.player.position - self.game.player.size
 
