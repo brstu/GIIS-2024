@@ -54,8 +54,11 @@ void MainWindow::on_pushButton_3_clicked()
     }
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e5b97fac54470d53b97f6f0b9b30d0e87b2ac468
 void MainWindow::on_pushButton_2_clicked()
 {
     QListWidgetItem *selectedItem = ui->listWidget->currentItem();
