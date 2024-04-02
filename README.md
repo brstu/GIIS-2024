@@ -17,7 +17,7 @@
 | 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)           |                         |                  |     |     |     |     |     |     |         |
 | 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |    5     |
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |                         |                  |     |     |     |     |     |     |         |
-| 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |   5      |
+| 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |   5      |
 
 ## Подруппа 2
 
