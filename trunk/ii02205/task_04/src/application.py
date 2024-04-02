@@ -1,8 +1,10 @@
-import random
+import secrets
 import pygame
 import numpy as np
 from math import ceil
 from moving import moving_pattern
+
+
 
 fps = 60
 window_size = (1000, 1000)
@@ -157,7 +159,7 @@ class Game:
 
     def add_invadors_shoots(self):
         for invador in self.invadors:
-            if abs(invador.position[0] - self.player.position[0]) < self.player.size[0] and random.random() < 0.125:
+            if abs(invador.position[0] - self.player.position[0]) < self.player.size[0] and secrets.randbits(10) < 125:#random.random() < 0.125:
                 self.shoots.append(Shoot(invador.position, False))
 
     def player_minus_live(self):
