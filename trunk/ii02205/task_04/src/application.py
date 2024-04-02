@@ -60,17 +60,12 @@ class Invador:
     is_destroyed: bool = False
 
     def __init__(self, row_index: int, column_index: int):
-        match row_index:
-            case 0:
-                self.type_of_person = 2
-            case 1:
-                self.type_of_person = 1
-            case 2:
-                self.type_of_person = 1
-            case 3:
-                self.type_of_person = 0
-            case 4:
-                self.type_of_person = 0
+        if row_index == 0:
+            self.type_of_person = 2
+        elif row_index == 1 or row_index == 2:
+            self.type_of_person = 1
+        else:
+            self.type_of_person = 0
 
         step = window_size[0] / (11 + 8)
         self.position = np.array([step * (column_index + 4), row_index * 50 + 2 * step + self.size])
