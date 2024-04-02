@@ -35,11 +35,10 @@ class Player:
     lives: int = 3
     position: np.array = np.array([window_size[0] / 2, window_size[1] - 100])
     score: int = 0
-    speed: int = 5
-    cooldown_tick: int = 0
 
     def __init__(self):
-        pass
+        self.speed: int = 5
+        self.cooldown_tick: int = 0
 
     def update_position(self, direction: bool):
         if not direction and (self.position[0] - self.size[0]) > self.speed:
@@ -78,7 +77,7 @@ class Invador:
 class Block:
     size: tuple = (51, 51)
 
-    block: np.array
+    matrix_of_block: np.array
     center: np.array
 
     def __init__(self, column_index: int):
@@ -239,7 +238,6 @@ class App:
                 if event.type == pygame.QUIT:
                     self.quit()
                 if event.type == pygame.KEYDOWN:
-                    pass
                     if event.key == pygame.K_ESCAPE:
                         self.game.is_paused = not self.game.is_paused
             keys = pygame.key.get_pressed()
