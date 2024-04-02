@@ -17,7 +17,7 @@ namespace tetris_
         private int rotationState;
         private Position @readonly;
 
-        public Block()
+        protected Block()
         {
             @readonly = new Position(StartOffset.Row, StartOffset.Column);
         }
