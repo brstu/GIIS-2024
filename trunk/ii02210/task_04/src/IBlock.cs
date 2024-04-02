@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tetris_
 {
-    public class IBlock1 : Block
+    public class IBlock : Block
     {
         private readonly Position[][] tiles = new Position[][]
         {
