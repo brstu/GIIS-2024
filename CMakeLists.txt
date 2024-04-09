@@ -5,7 +5,7 @@ option(PY_LANGUAGE OFF)
 option(CXX_LANGUAGE OFF)
 
 if(PY_LANGUAGE)
-file(GLOB python_dirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "trunk/ii0*/*/src/*.py")
+file(GLOB python_dirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "trunk/ii0*/*/src/main.py")
 file(WRITE python_path.txt "")
 foreach(py_dir ${python_dirs})
 	string(REPLACE "/main.py" "" PY_PATH ${py_dir}) 
