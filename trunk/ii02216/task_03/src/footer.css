@@ -1,0 +1,150 @@
+
+.mobile-app-info{
+    display: flex;
+    height: 300px;
+    width: 100%;
+    background: #fff0e0;
+    border-radius: 5px;
+    /* border:1px solid #ff6642; */
+}
+
+.mobile-app-info-media img{
+    margin-left: 40px;
+    margin-top: 50px;
+    height: 250px;
+    width: auto;
+}
+
+.mobile-app-info-details{
+    margin-left: auto;
+    margin-right: 60px;
+    height: 300px;
+    width: 460px;
+}
+
+.mobile-app-info-description{
+    margin-top: 16%;
+    font-size: 21px;
+}
+.mobile-app-info-buttons{
+    margin-top: 30px;
+    display: flex;
+}
+.mobile-app-info-button img{
+    margin-right: 20px;
+    height: 40px;
+    width: auto;
+}
+
+#footer{
+    display: inline-flex;
+    background: white;
+    height: 170px;
+    width: 100%;
+}
+
+.left{
+    margin-left:11% ;
+    width: 54%;
+}
+
+.footmenu{
+    margin-top: 25px;
+    list-style: none;
+    display: inline-flex    ;
+
+}
+
+.footmenu-item{
+    width: auto;
+    display: block; 
+    margin-left: 21px;
+    border-bottom: 1px solid silver;
+}
+
+.footmenu-item a{
+    text-decoration: none;
+    font-size: 13px;
+    font-weight:bolder;
+
+}
+.footmenu-item :hover{
+    color:#ff6642;
+
+}
+
+.footmenu-item:first-child{
+    margin-left: 0px;
+}
+
+  
+
+  
+
+  
+.social-links-block{
+    display: flex;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 15px;
+    
+}
+.social-links-block label{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.social-links {
+    
+}
+.social-links a img{
+    text-align: center;
+    height: 30px;
+    width: auto;
+    margin-top: 0px;
+    margin-left: 15px;
+}
+
+.foot-extra-link{
+    color: #333333;
+    margin-top: 20px;
+    font-size: 13px;
+
+}
+.foot-extra-link a:hover   {
+    color: #ff6642;
+}
+.foot-extra-link a{
+    margin-right: 20px;
+}
+
+.right{
+}
+
+.sup-button{
+    height: 17px;
+    font-size: 13px;
+    display: inline-block;
+    border: 1px solid #ff6642; 
+    border-radius: 2px;
+    color: #ff6642;
+    margin-top: 30px;
+    padding: 10px 20px; 
+    font-weight: bolder;
+    text-align: center; 
+    text-decoration: none; 
+}
+.sup-button:hover{
+    border: 1px solid #333333; 
+    color: #333333;
+}
+.copyright-text{
+    margin-top: 10px;
+    color: gray;
+}
+
+.copyright-text a{
+    color:#ff6642;
+}
+.copyright-text a:hover{
+    color:#333333;
+}
