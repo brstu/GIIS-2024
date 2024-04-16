@@ -31,4 +31,4 @@
 | 6   | [Полиенко Владислав](https://github.com/TomiokaGiuy)             |[ii02216](./trunk/ii02216)|:heavy_check_mark:|  |     |     |     |     |     |    5     |  8      |    4    |
 | 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |         |         |
 | 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |         |         |
-| 9   | [Сокол София](https://github.com/DeAiVil)                        |                |     |     |     |     |     |     |     |         |       7 |    0    |
+| 9   | [Сокол София](https://github.com/DeAiVil)                        |[ii02216](./trunk/ii02219)|:heavy_check_mark:|     |     |     |     |     |     |         |       7 |    0    |
