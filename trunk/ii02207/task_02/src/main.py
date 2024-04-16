@@ -1,7 +1,5 @@
 import sys
-import pickle
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QLineEdit, QPushButton, QMessageBox, QFileDialog
-from PyQt5.QtWidgets import QInputDialog
 
 class AddressBook(QWidget):
     def __init__(self):
@@ -127,6 +125,8 @@ class AddressBook(QWidget):
             self.address_edit.setText(address)
         else:
             print('Нет адресов для отображения')
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
