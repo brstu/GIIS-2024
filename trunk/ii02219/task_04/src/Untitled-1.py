@@ -10,10 +10,8 @@ WIDTH, HEIGHT = 800, 400
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dino Game")
 
-
 background_image = pygame.image.load('C:/Users/dende/Desktop/task_04_05/clouds.png')
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
-
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -24,17 +22,13 @@ dino_dy = 0
 gravity = 0.8
 is_jumping = False
 
-
 obstacle_width, obstacle_height = 100, 100
 obstacle_x, obstacle_y = WIDTH, HEIGHT - obstacle_height - 30
 obstacle_speed = 5.5 
 
-
 obstacle_images = []
 
-
 obstacle_images_folder = 'C:/Users/dende/Desktop/task_04_05/enemy_images'
-
 
 for filename in os.listdir(obstacle_images_folder):
     image_path = os.path.join(obstacle_images_folder, filename)
@@ -42,18 +36,12 @@ for filename in os.listdir(obstacle_images_folder):
     scaled_image = pygame.transform.scale(image, (obstacle_width, obstacle_height))
     obstacle_images.append(scaled_image)
 
-
 score = 0
 num_skin =0
 
-
 font = pygame.font.SysFont(None, 30)
-
-
 pygame.mixer.music.load('C:/Users/dende/Desktop/task_04_05/Yoari - TRUE.mp3')
 pygame.mixer.music.play(-1)   
-
-
 capybara_images_folder = 'C:/Users/dende/Desktop/task_04_05/capybara_images'
 target_size = (145, 145)  
 capybara_images = []
@@ -65,17 +53,14 @@ for filename in os.listdir(capybara_images_folder):
 
 current_capybara_image = capybara_images[0]
 
-
 def draw_capybara():
     win.blit(current_capybara_image, (dino_x, dino_y))
-
 
 def draw_obstacle():
     global obstacle_images
     obstacle_image = obstacle_images[score%2]
     obstacle_image = pygame.transform.scale(obstacle_image, (obstacle_width, obstacle_height))
     win.blit(obstacle_image, (obstacle_x, obstacle_y))
-
 
 def update():
     global dino_y, dino_dy, is_jumping, obstacle_x, score
@@ -91,9 +76,7 @@ def update():
         dino_dy = 0
         is_jumping = False
 
-    
     obstacle_x -= obstacle_speed
-
     
     if obstacle_x + obstacle_width < 0:
         global current_capybara_image
@@ -102,15 +85,11 @@ def update():
         num_skin=score%4
         current_capybara_image=capybara_images[num_skin]
 
-   
     if (dino_x + dino_width - 50 > obstacle_x and
     dino_y < obstacle_y + obstacle_height and
     dino_y + dino_height - 60 > obstacle_y):
     game_over() # type: ignore
 
-
-
-    
     draw_capybara()
     draw_obstacle()
     text = font.render("Score: " + str(score), True, BLACK)
