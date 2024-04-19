@@ -114,11 +114,12 @@ def update():
         current_capybara_image=capybara_images[num_skin]
 
     # Проверка на столкновение
-    if (dino_x < obstacle_x + obstacle_width-60 and
+    if (dino_x < obstacle_x + obstacle_width-50 and
         dino_x + dino_width-50 > obstacle_x and
         dino_y < obstacle_y + obstacle_height and
         dino_y + dino_height-60 > obstacle_y):
         game_over()
+
 
     # Рисуем все элементы
     draw_capybara()
@@ -168,10 +169,10 @@ def reset_game():
     global dino_y, dino_dy, is_jumping, obstacle_x, score
     dino_y, dino_dy, is_jumping = 0, 0, False
     obstacle_x, score = WIDTH, 0
-
+   
 # Основной игровой цикл
+global clock
 clock = pygame.time.Clock()
-bonus_count = 0
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
