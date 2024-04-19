@@ -89,12 +89,20 @@ def update():
     if (dino_x + dino_width - 50 > obstacle_x and
     dino_y < obstacle_y + obstacle_height and
 
+    
     dino_y + dino_height - 60 > obstacle_y):
+
+
         
+ 
     game_over()  # type: ignore
 
+
+
+
     draw_capybara()
-    
+
+
     draw_obstacle()
     text = font.render("Score: " + str(score), True, BLACK)
     win.blit(text, (10, 10))
@@ -135,9 +143,14 @@ def game_over():
 
 def reset_game():
     global dino_y, dino_dy, is_jumping, obstacle_x, score
-    dino_y, dino_dy, is_jumping = 0, 0, False
    
+dino_y, dino_dy, is_jumping = 0, 0, False
+
+
+
+
 obstacle_x = WIDTH
+
 score = 0
 
 global clock
