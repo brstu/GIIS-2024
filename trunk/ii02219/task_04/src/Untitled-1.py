@@ -83,9 +83,7 @@ def draw_obstacle():
     obstacle_image = obstacle_images[score%2]
     obstacle_image = pygame.transform.scale(obstacle_image, (obstacle_width, obstacle_height))
     win.blit(obstacle_image, (obstacle_x, obstacle_y))
-# def draw_obstacle():
-#     # pygame.draw.rect(win,obstacle_images, (obstacle_x, obstacle_y, obstacle_width, obstacle_height))
-#     pygame.transform.scale(image, (obstacle_width, obstacle_height))
+
 
 # Функция для обновления игры
 def update():
