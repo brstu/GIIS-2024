@@ -103,11 +103,11 @@ def update():
         current_capybara_image=capybara_images[num_skin]
 
    
-    if (dino_x < obstacle_x + obstacle_width-50 and
-        dino_x + dino_width-50 > obstacle_x and
-        dino_y < obstacle_y + obstacle_height and
-        dino_y + dino_height-60 > obstacle_y):
-        game_over()
+    if (dino_x + dino_width - 50 > obstacle_x and
+    dino_y < obstacle_y + obstacle_height and
+    dino_y + dino_height - 60 > obstacle_y):
+    game_over() # type: ignore
+
 
 
     
@@ -156,7 +156,7 @@ def reset_game():
     obstacle_x, score = WIDTH, 0
    
 global clock
-clock = pygame.time.Clock()
+clock = pygame.time.Clock() 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
