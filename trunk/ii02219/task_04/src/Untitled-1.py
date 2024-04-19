@@ -6,8 +6,6 @@ import os
 pygame.init()
 game_over_flag = False
 
-
-
 WIDTH, HEIGHT = 800, 400
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dino Game")
@@ -83,7 +81,7 @@ def update():
     global dino_y, dino_dy, is_jumping, obstacle_x, score
 
     win.blit(background_image, (0, 0))
-
+ 
     dino_y += dino_dy
     dino_dy += gravity
 
