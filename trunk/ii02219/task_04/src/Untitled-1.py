@@ -132,11 +132,14 @@ def game_over():
 def reset_game():
     global dino_y, dino_dy, is_jumping, obstacle_x, score
     dino_y, dino_dy, is_jumping = 0, 0, False
-    obstacle_x, score = WIDTH, 0
    
+    obstacle_x, score = WIDTH, 0
+
 global clock
-clock = pygame.time.Clock() 
+clock = pygame.time.Clock()
+
 while True:
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
