@@ -134,34 +134,43 @@ def jump():
         is_jumping = True
 
 # Функция для завершения игры
-def handle_events():
+def handle_game_over_events(game_over_flag):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
-                if game_over_flag:
+                if game_over_flag[0]:
                     pygame.mixer.music.play(-1)
                     reset_game()
-                    game_over_flag = False
+                    game_over_flag[0] = False
                 else:
                     jump()
+
+def display_game_over_message():
+    global game_over_text
+    game_over_text = font.render("Game Over! Press SPACE to restart.", True, BLACK)
+    win.blit(game_over_text, (WIDTH//2 - 150, HEIGHT//2))
+    pygame.display.update()
 
 def game_over():
     global game_over_flag
     pygame.mixer.music.stop()
-    game_over_flag = True
-    while True:
-        handle_events()
-        if game_over_flag == True:
-            game_over_text = font.render("Game Over! Press SPACE to restart.", True, BLACK)
-            win.blit(game_over_text, (WIDTH//2 - 150, HEIGHT//2))
-            pygame.display.update()
+    game_over_flag = [True]  # Обернуть флаг в список для передачи по ссылке
+    while game_over_flag[0]:
+        handle_game_over_events(game_over_flag)
+
+        if game_over_flag[0]:
+            display_game_over_message()
             continue
+
+        reset_game()  # Перезапуск игры
+        game_over_flag[0] = False  # Сброс флага, чтобы выйти из цикла
 
         update()
         clock.tick(30)
+
 
 
 # Функция для сброса значений и перезапуска игры
