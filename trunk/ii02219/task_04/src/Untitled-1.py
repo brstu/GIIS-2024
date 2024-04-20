@@ -154,7 +154,7 @@ def game_over():
     game_over_flag = True
     while True:
         handle_events()
-        if game_over_flag:
+        if game_over_flag == True:
             game_over_text = font.render("Game Over! Press SPACE to restart.", True, BLACK)
             win.blit(game_over_text, (WIDTH//2 - 150, HEIGHT//2))
             pygame.display.update()
