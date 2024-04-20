@@ -183,12 +183,10 @@ def reset_game():
     obstacle_x, score = WIDTH, 0
 
 
-
 # Основной игровой цикл  
- 
- 
-game_clock  = pygame.time.Clock()
 
+
+game_clock = pygame.time.Clock()
 
 bonus_count = 0
 while True:
@@ -202,5 +200,6 @@ while True:
 
     update()
     game_clock.tick(30)
+
 
 
