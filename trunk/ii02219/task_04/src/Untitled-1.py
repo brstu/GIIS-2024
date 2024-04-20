@@ -112,13 +112,14 @@ def update():
         current_capybara_image=capybara_images[num_skin]
 
     # Проверка на столкновение
-    if (dino_x < obstacle_x + obstacle_width - 60 and
+    if (
+        dino_x < obstacle_x + obstacle_width - 60 and
         dino_x + dino_width - 50 > obstacle_x and
         dino_y < obstacle_y + obstacle_height and
-        dino_y + dino_height - 60 > obstacle_y):
+        dino_y + dino_height - 60 > obstacle_y
+    ):
         game_over()
 
-    
 
 
     # Рисуем все элементы
