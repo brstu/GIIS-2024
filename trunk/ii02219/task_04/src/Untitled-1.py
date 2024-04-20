@@ -182,6 +182,8 @@ def reset_game():
     dino_y, dino_dy, is_jumping = 0, 0, False
     obstacle_x, score = WIDTH, 0
 
+
+
 # Основной игровой цикл
 game_clock  = pygame.time.Clock()
 bonus_count = 0
