@@ -184,8 +184,12 @@ def reset_game():
 
 
 
-# Основной игровой цикл
+# Основной игровой цикл  
+ 
+ 
 game_clock  = pygame.time.Clock()
+
+
 bonus_count = 0
 while True:
     for event in pygame.event.get():
