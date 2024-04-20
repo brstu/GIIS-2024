@@ -1,5 +1,4 @@
 import pygame
-import random
 import sys
 import os
 
@@ -27,6 +26,7 @@ dino_x, dino_y = 40, HEIGHT - dino_height - 40  # Увеличьте dino_y, ч�
 dino_dy = 0
 gravity = 0.8
 is_jumping = False
+game_over_text = None
 
 # Переменные для препятствия
 obstacle_width, obstacle_height = 100, 100
@@ -78,7 +78,6 @@ def draw_capybara():
 
 # Функция для рисования препятствия
 def draw_obstacle():
-    global obstacle_images
     # Выбор случайного изображения из obstacle_images
     obstacle_image = obstacle_images[score%2]
     obstacle_image = pygame.transform.scale(obstacle_image, (obstacle_width, obstacle_height))
@@ -113,11 +112,14 @@ def update():
         current_capybara_image=capybara_images[num_skin]
 
     # Проверка на столкновение
-    if (dino_x < obstacle_x + obstacle_width-60 and
-        dino_x + dino_width-50 > obstacle_x and
+    if (dino_x < obstacle_x + obstacle_width - 60 and
+        dino_x + dino_width - 50 > obstacle_x and
         dino_y < obstacle_y + obstacle_height and
-        dino_y + dino_height-60 > obstacle_y):
+        dino_y + dino_height - 60 > obstacle_y):
         game_over()
+
+    
+
 
     # Рисуем все элементы
     draw_capybara()
@@ -169,7 +171,7 @@ def game_over():
         game_over_flag[0] = False  # Сброс флага, чтобы выйти из цикла
 
         update()
-        clock.tick(30)
+        game_clock.tick(30)
 
 
 
@@ -180,7 +182,7 @@ def reset_game():
     obstacle_x, score = WIDTH, 0
 
 # Основной игровой цикл
-clock = pygame.time.Clock()
+game_clock  = pygame.time.Clock()
 bonus_count = 0
 while True:
     for event in pygame.event.get():
@@ -192,6 +194,6 @@ while True:
                 jump()
 
     update()
-    clock.tick(30)
+    game_clock.tick(30)
 
 
