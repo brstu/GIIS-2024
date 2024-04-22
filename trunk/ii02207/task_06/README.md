@@ -1,3 +1,15 @@
+# Лабораторная работа №6
+
+## Создание анимации
+
+## Цель работы
+Создать анимацию. Минимальная продолжительность не менее 5 секунд
+
+## Ход работы
+В ходе работы над лабораторной работой была реализована анимация котенка, который бегает, на языке программирования Python с использованием библиотеки pygame.
+
+## Код программы
+
 import pygame
 import sys
 
@@ -29,7 +41,6 @@ class Cat:
             self.current_frame = (self.current_frame + 1) % len(cat_frames)
             self.frame_counter = 0
 
-
 # Создание объекта котенка
 cat = Cat(0, 0)
 
@@ -56,3 +67,12 @@ while running:
 
 pygame.quit()
 sys.exit()
+
+## Результаты работы
+
+![](images/cat1.png)
+![](images/cat2.png)
+![](images/cat3.png)
+![](images/cat4.png)
+![](images/cat5.png)
+![](images/cat6.png)
