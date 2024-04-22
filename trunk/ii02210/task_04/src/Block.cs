@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using System;
+=======
+using System;
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +19,15 @@ namespace tetris_
         public abstract int Id { get; }
 
         private int rotationState;
+<<<<<<< HEAD
         private Position offset;
 
         public Block()
+=======
+        private readonly Position offset;
+
+        protected Block()
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
         {
             offset = new Position(StartOffset.Row, StartOffset.Column);
         }

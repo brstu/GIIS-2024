@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using System.Text;
+=======
+using System.Text;
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -53,7 +57,11 @@ namespace tetris_
 
         private Image[,] SetupGameCanvas(GameGrid grid)
         {
+<<<<<<< HEAD
             Image[,] imageControls = new Image[grid.Rows, grid.Columns];
+=======
+            Image[,] imageControlsArray = new Image[grid.Rows, grid.Columns];
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
             int cellSize = 25;
 
             for(int r = 0; r < grid.Rows; r++)
@@ -69,11 +77,19 @@ namespace tetris_
                     Canvas.SetTop(imageControl, (r - 2) * cellSize + 10);
                     Canvas.SetLeft(imageControl, c * cellSize);
                     GameCanvas.Children.Add(imageControl);
+<<<<<<< HEAD
                     imageControls[r, c] = imageControl;
                 }
             }
 
             return imageControls;
+=======
+                    imageControlsArray[r, c] = imageControl;
+                }
+            }
+
+            return imageControlsArray;
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
         }
 
         private void DrawGrid(GameGrid grid)
@@ -209,4 +225,8 @@ namespace tetris_
         }
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297

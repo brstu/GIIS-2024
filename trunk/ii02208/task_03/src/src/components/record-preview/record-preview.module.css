@@ -1,0 +1,54 @@
+.wrap {
+  width: calc(100% - 20px);
+  position: relative;
+  margin: 0 10px;
+}
+
+.bgImage {
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  object-fit: cover;
+  filter: blur(10px);
+}
+
+.content {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #13131388;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.image {
+  margin: 20px;
+  width: 260px;
+  height: 260px;
+  border-radius: 4px;
+}
+
+.info {
+  padding-left: 40px;
+}
+
+.name {
+  font-size: 30px;
+  color: #f3f3f3;
+}
+
+.date {
+  font-size: 14px;
+  color: #f3f3f366;
+}
+
+.time {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #f3f3f3aa;
+}

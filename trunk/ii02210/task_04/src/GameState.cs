@@ -76,7 +76,14 @@ namespace tetris_
         {
             CurrentBlock.RotateCW();
 
+<<<<<<< HEAD
             if(!BlockFits()) CurrentBlock.RotateCCW();
+=======
+            if(!BlockFits())
+            {
+                CurrentBlock.RotateCCW();
+            }
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
             
         }
 
@@ -84,7 +91,14 @@ namespace tetris_
         {
             CurrentBlock.RotateCCW();
 
+<<<<<<< HEAD
             if (!BlockFits()) CurrentBlock.RotateCW();
+=======
+            if (!BlockFits()) 
+            {
+                CurrentBlock.RotateCW();
+            }
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
 
         }
 
@@ -92,14 +106,28 @@ namespace tetris_
         {
             CurrentBlock.Move(0, -1);
 
+<<<<<<< HEAD
             if(!BlockFits()) CurrentBlock.Move(0, 1);
+=======
+            if(!BlockFits())
+            {
+                CurrentBlock.Move(0, 1);
+            }
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
         }
 
         public void MoveBlockRight()
         {
             CurrentBlock.Move(0, 1);
 
+<<<<<<< HEAD
             if (!BlockFits()) CurrentBlock.Move(0, -1);
+=======
+            if (!BlockFits())
+            {
+                CurrentBlock.Move(0, -1);
+            }
+>>>>>>> e07ee9886051c1b6bd13568b778a6a6de39b6297
         }
 
         private bool IsGameOver()
