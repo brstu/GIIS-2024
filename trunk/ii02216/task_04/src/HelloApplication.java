@@ -24,7 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class Main extends Application {
+public class HelloApplication extends Application {
 
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
@@ -49,10 +49,6 @@ public class Main extends Application {
     private static double playerY = HEIGHT-100;
     private static String[] ENEMY_IMAGIES = new String[]{"file:src/img/enemy_1.png","file:src/img/enemy_2.png",
             "file:src/img/dead_enemy.png"};
-    private static String[] IMAGE_OBJECTS = new String[]{"file:src/img/back.jpg",
-            "file:src/img/starship.png", "file:src/img/shot.png","file:src/img/enemy_1.png",
-            "file:src/img/enemy_2.png","file:src/img/dead_enemy.png",};
-
     private static Image ImageBackground = new Image("file:src/img/back.jpg");
     private static Image playersImage = new Image("file:src/img/starship.png");
     private static Image bulletImage = new Image("file:src/img/shot_2.png");
@@ -63,14 +59,11 @@ public class Main extends Application {
     private  List<ImageView>[]  enemies = new List[ROW];
     private static boolean SHOOTING = false;
     private static int[][] STATUS_ENEMY = new int[ROW][NUM_ENEMIES];
-    private static Image enemyImage = new Image(IMAGE_OBJECTS[3]);
-
     private static Timeline animationEnemy;
     private boolean moveLeft = false;
     private boolean moveRight = false;
-    private boolean moveUp = false;
-    private boolean moveDown = false;
     private Label score_table;
+    private Label textGameOver;
 
     public static void main(String[] args) {
         launch(args);
@@ -81,99 +74,23 @@ public class Main extends Application {
         primaryStage.setTitle("Space Invaders");
         Pane root = new Pane();
 
-
-
-
-
-        ImageView ImageBackgroundView = new ImageView(ImageBackground);
-        ImageBackgroundView.setFitWidth(WIDTH);
-        ImageBackgroundView.setFitHeight(HEIGHT);
-        root.getChildren().add(ImageBackgroundView);
-
-        String formatScore = String.format("Score: %04d", SCORE);
-        score_table = new Label(formatScore);
-        score_table.setFont(Font.font("Aria", FontWeight.BOLD, 25));
-        score_table.setTextFill(Color.WHITE);
-        score_table.setLayoutY(30);
-        score_table.setLayoutX(825);
-        root.getChildren().add(score_table);
-
-
-        Label textGameOver = new Label("Game Over");
-        textGameOver.setFont(Font.font("Aria", FontWeight.BOLD, 60));
-        textGameOver.setTextFill(Color.RED);
-        textGameOver.setLayoutY(HEIGHT/2-50);
-        textGameOver.setLayoutX(WIDTH/2-150);
-        textGameOver.setVisible(false);
-        root.getChildren().add(textGameOver);
-
-        Canvas canvas = new Canvas(WIDTH, HEIGHT);
-        root.getChildren().add(canvas);
-
-        player = new ImageView(playersImage);
-        player.setFitWidth(playerWidth);
-        player.setFitHeight(playerHeight);
-        player.setX(playerX);
-        player.setY(playerY);
-        root.getChildren().add(player);
-
-        for(int i = 0; i< ROW; i++){
-            enemies[i] = new ArrayList<>();
-            for(int j = 0; j < NUM_ENEMIES; j ++){
-                if (Math.random()>0.5)
-                {
-                    STATUS_ENEMY[i][j]=1;
-                } else{
-                    STATUS_ENEMY[i][j]=0;
-                }
-                //ImageView enemy = new ImageView(new Image(ENEMY_IMAGIES[STATUS_ENEMY[i]]));
-                ImageView enemy = new ImageView(enemyImage);
-                enemy.setFitHeight(enemyHeight);
-                enemy.setFitWidth(enemyWidth);
-                enemy.setX(100+j*60);
-                enemy.setY(100+ enemyWidth * 1.2 * i);
-                root.getChildren().add(enemy);
-                enemies[i].add(enemy);
-            }
-        }
-
+        createGUI(root);
 
         Scene scene = new Scene(root);
         scene.setFill(Color.rgb(31,38,107));
 
-        scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.LEFT) {
-                moveLeft = true;
-            } else if (event.getCode() == KeyCode.RIGHT) {
-                moveRight = true;
-            }
-//            else if (event.getCode() == KeyCode.UP) {
-//                moveUp = true;
-//            } else if (event.getCode() == KeyCode.DOWN) {
-//                moveDown = true;
-//            }
-            if (event.getCode() == KeyCode.SPACE && SHOOTING && !GAME_OVER ){
-                toShooting(root);
-                SHOOTING = false;
-            }
-        });
+        controllPlayer(scene, root);
+        animation(root);
 
-        scene.setOnKeyReleased(event -> {
-            if (event.getCode() == KeyCode.LEFT) {
-                moveLeft = false;
-            } else if (event.getCode() == KeyCode.RIGHT) {
-                moveRight = false;
-            }
-//            else if (event.getCode() == KeyCode.UP) {
-//                moveUp = false;
-//            } else if (event.getCode() == KeyCode.DOWN) {
-//                moveDown = false;
-//            }
-            if (event.getCode() == KeyCode.SPACE && !SHOOTING ){
-                SHOOTING=true;
-            }
-        });
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
+    private void createGUI(Pane root){
+        createLabel(root);
+        createUnits(root);
+    }
+    private void animation( Pane root){
         animationEnemy = new Timeline(new KeyFrame(Duration.millis(2000), e -> moveEnemy(root)));
         animationEnemy.setCycleCount(Animation.INDEFINITE);
         animationEnemy.play();
@@ -190,33 +107,112 @@ public class Main extends Application {
         animationEnemyBullet.setCycleCount(Animation.INDEFINITE);
         animationEnemyBullet.play();
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
         new AnimationTimer() {
             @Override
             public void handle(long now) {
                 if (GAME_OVER) {
                     animationEnemy.stop();
                     animationPlayer.stop();
-                    //                    animationBullet.stop();
-//                    animationEnemyBullet.stop();
                     textGameOver.setVisible(true);
                     root.getChildren().remove(player);
-                        for (int i = 0; i < ROW; i++){
-                            Iterator<ImageView> enemyIterator = enemies[i].iterator();
-                            while(enemyIterator.hasNext()){
-                                ImageView enemy = enemyIterator.next();
-                                root.getChildren().remove(enemy);
-                                enemyIterator.remove();
-                                enemies[i].remove(enemy);
-                            }
+                    for (int i = 0; i < ROW; i++){
+                        Iterator<ImageView> enemyIterator = enemies[i].iterator();
+                        while(enemyIterator.hasNext()){
+                            ImageView enemy = enemyIterator.next();
+                            root.getChildren().remove(enemy);
+                            enemyIterator.remove();
+                            enemies[i].remove(enemy);
                         }
+                    }
                 }
             }
         }.start();
+
+    }
+    private void controllPlayer(Scene scene, Pane root){
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.LEFT) {
+                moveLeft = true;
+            } else if (event.getCode() == KeyCode.RIGHT) {
+                moveRight = true;
+            }
+            if (event.getCode() == KeyCode.SPACE && SHOOTING && !GAME_OVER ){
+                toShooting(root);
+                SHOOTING = false;
+            }
+        });
+
+        scene.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.LEFT) {
+                moveLeft = false;
+            } else if (event.getCode() == KeyCode.RIGHT) {
+                moveRight = false;
+            }
+            if (event.getCode() == KeyCode.SPACE && !SHOOTING ){
+                SHOOTING=true;
+            }
+        });
     }
 
+    private void createLabel(Pane root){
+        ImageView ImageBackgroundView = new ImageView(ImageBackground);
+        ImageBackgroundView.setFitWidth(WIDTH);
+        ImageBackgroundView.setFitHeight(HEIGHT);
+        root.getChildren().add(ImageBackgroundView);
+
+        String formatScore = String.format("Score: %04d", SCORE);
+        score_table = new Label(formatScore);
+        score_table.setFont(Font.font("Aria", FontWeight.BOLD, 25));
+        score_table.setTextFill(Color.WHITE);
+        score_table.setLayoutY(30);
+        score_table.setLayoutX(825);
+        root.getChildren().add(score_table);
+
+
+        textGameOver = new Label("Game Over");
+        textGameOver.setFont(Font.font("Aria", FontWeight.BOLD, 60));
+        textGameOver.setTextFill(Color.RED);
+        textGameOver.setLayoutY(HEIGHT/2-50);
+        textGameOver.setLayoutX(WIDTH/2-150);
+        textGameOver.setVisible(false);
+        root.getChildren().add(textGameOver);
+
+        Canvas canvas = new Canvas(WIDTH, HEIGHT);
+        root.getChildren().add(canvas);
+    }
+    private void createUnits(Pane root){
+        createPlayer(root);
+        createEnemy(root);
+    }
+
+    private void createPlayer(Pane root){
+        player = new ImageView(playersImage);
+        player.setFitWidth(playerWidth);
+        player.setFitHeight(playerHeight);
+        player.setX(playerX);
+        player.setY(playerY);
+        root.getChildren().add(player);
+    }
+    private void createEnemy(Pane root){
+        for(int i = 0; i< ROW; i++){
+            enemies[i] = new ArrayList<>();
+            for(int j = 0; j < NUM_ENEMIES; j ++){
+                if (Math.random()>0.5)
+                {
+                    STATUS_ENEMY[i][j]=1;
+                } else{
+                    STATUS_ENEMY[i][j]=0;
+                }
+                ImageView enemy = new ImageView(new Image(ENEMY_IMAGIES[STATUS_ENEMY[i][j]]));
+                enemy.setFitHeight(enemyHeight);
+                enemy.setFitWidth(enemyWidth);
+                enemy.setX(100+j*60);
+                enemy.setY(100+ enemyWidth * 1.2 * i);
+                root.getChildren().add(enemy);
+                enemies[i].add(enemy);
+            }
+        }
+    }
     private void moveEnemy(Pane root){
         boolean isChange = false;
         int shots_taken = 0;
@@ -266,21 +262,12 @@ public class Main extends Application {
         if (moveRight) {
             deltaX += PLAYER_SPEED;
         }
-        if (moveUp) {
-            deltaY -= PLAYER_SPEED;
-        }
-        if (moveDown) {
-            deltaY += PLAYER_SPEED;
-        }
-        movePlayer(deltaX, deltaY);
+        movePlayer(deltaX);
     }
 
-    private void movePlayer(double deltaX, double deltaY) {
+    private void movePlayer(double deltaX) {
         if (player.getX() +deltaX >0 && player.getX() + playerWidth + deltaX <WIDTH){
             player.setX(player.getX()+deltaX);
-        }
-        if (player.getY() +deltaY >0 && player.getY() + playerHeight+ deltaY <HEIGHT){
-            player.setY(player.getY()+deltaY);
         }
     }
 
@@ -298,7 +285,7 @@ public class Main extends Application {
 
     }
 
-     private void toShooting (Pane root){
+    private void toShooting (Pane root){
         ImageView bullet = new ImageView(bulletImage);
 
         bullet.setFitWidth(5);
@@ -309,8 +296,8 @@ public class Main extends Application {
 
         root.getChildren().add(bullet);
         bullets.add(bullet);
-     }
-     private void moveEnemyBullets(Pane root){
+    }
+    private void moveEnemyBullets(Pane root){
         List<ImageView> bulletsToRemove = new ArrayList<>();
 
         for(ImageView bullet: enemyBullets){
@@ -321,27 +308,27 @@ public class Main extends Application {
             }
         }
 
-         for(ImageView bullet: enemyBullets){
-             Bounds playerBounds = player.getBoundsInParent();
-             Bounds bulletBounds = bullet.getBoundsInParent();
-             if (bulletBounds.intersects(playerBounds)){
-                 bulletsToRemove.add(bullet);
-                 GAME_OVER = true;
-             }
-         }
-         Iterator<ImageView> bulletIterator = bulletsToRemove.iterator();
-         while(bulletIterator.hasNext()){
-             ImageView bullet = bulletIterator.next();
-             root.getChildren().remove(bullet);
-             bulletIterator.remove();
-             for (int i = 0; i < ROW; i++){
-                 enemies[i].remove(bullet);
-             }
+        for(ImageView bullet: enemyBullets){
+            Bounds playerBounds = player.getBoundsInParent();
+            Bounds bulletBounds = bullet.getBoundsInParent();
+            if (bulletBounds.intersects(playerBounds)){
+                bulletsToRemove.add(bullet);
+                GAME_OVER = true;
+            }
+        }
+        Iterator<ImageView> bulletIterator = bulletsToRemove.iterator();
+        while(bulletIterator.hasNext()){
+            ImageView bullet = bulletIterator.next();
+            root.getChildren().remove(bullet);
+            bulletIterator.remove();
+            for (int i = 0; i < ROW; i++){
+                enemies[i].remove(bullet);
+            }
 
-         }
+        }
 
-     }
-     private void moveBullets(Pane root){
+    }
+    private void moveBullets(Pane root){
         List<ImageView> bulletsToRemove = new ArrayList<>();
 
         for (ImageView bullet: bullets){
@@ -375,7 +362,7 @@ public class Main extends Application {
             }
         }
 
-         Iterator<ImageView> enemyIterator = enemiesToRemove.iterator();
+        Iterator<ImageView> enemyIterator = enemiesToRemove.iterator();
         while(enemyIterator.hasNext()){
             ImageView enemy = enemyIterator.next();
             root.getChildren().remove(enemy);
@@ -389,5 +376,5 @@ public class Main extends Application {
             root.getChildren().remove(bullet);
             bullets.remove(bullet);
         }
-     }
+    }
 }
