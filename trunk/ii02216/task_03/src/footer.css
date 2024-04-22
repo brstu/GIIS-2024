@@ -25,10 +25,12 @@
     margin-top: 16%;
     font-size: 21px;
 }
+
 .mobile-app-info-buttons{
     margin-top: 30px;
     display: flex;
 }
+
 .mobile-app-info-button img{
     margin-right: 20px;
     height: 40px;
@@ -64,11 +66,10 @@
     text-decoration: none;
     font-size: 13px;
     font-weight:bolder;
-
 }
+
 .footmenu-item :hover{
     color:#ff6642;
-
 }
 
 .footmenu-item:first-child{
@@ -80,12 +81,13 @@
     height: 40px;
     margin-top: 30px;
     font-size: 15px;
-    
 }
+
 .social-links-block label{
     font-size: 16px;
     margin-bottom: 20px;
 }
+
 .social-links a img{
     text-align: center;
     height: 30px;
@@ -98,15 +100,15 @@
     color: #333333;
     margin-top: 20px;
     font-size: 13px;
-
 }
-.foot-extra-link a:hover   {
+
+.foot-extra-link a:hover{
     color: #ff6642;
 }
+
 .foot-extra-link a{
     margin-right: 20px;
 }
-
 
 .sup-button{
     height: 17px;
@@ -121,10 +123,12 @@
     text-align: center; 
     text-decoration: none; 
 }
+
 .sup-button:hover{
     border: 1px solid #333333; 
     color: #333333;
 }
+
 .copyright-text{
     margin-top: 10px;
     color: gray;
@@ -133,6 +137,7 @@
 .copyright-text a{
     color:#ff6642;
 }
+
 .copyright-text a:hover{
     color:#333333;
 }
