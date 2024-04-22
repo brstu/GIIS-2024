@@ -2,9 +2,9 @@ import pygame
 import sys
 import numpy as np
 from math import pi, cos, sin, sqrt, atan2
-import random
 import scipy
 import secrets
+
 
 def bezier(points: np.array) -> tuple:
     first_x = points[0, 0]
@@ -20,6 +20,7 @@ def bezier(points: np.array) -> tuple:
     y = first_y * (t ** 2) + 2 * t * (1 - t) * second_y + (1 - t) ** 2 * third_y
 
     return x, y
+
 
 bits = 20
 radius = 150
