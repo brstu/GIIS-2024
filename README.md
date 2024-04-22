@@ -14,7 +14,7 @@
 | 4   | [Дубина Никита](https://github.com/AfiSix)                              |                         |                  |     |     |     |     |     |     |         |   9     |   0     |
 | 5   | [Заречный Адриан](https://github.com/orgs/brstu/people/Adryian4ik)      |[ii02205](/trunk/ii02205)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |   5      |    10    |  9      |
 | 6   | [Исаенко Никита](https://github.com/IsaenkoNikita)|                         |                  |     |     |     |     |     |     |     |     5    |     0    |
-| 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)            |     |     |     |     |     |     |     |         |        | 8 | 0|
+| 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)            |[II02207](/trunk/II02205) |:heavy_check_mark:|     |     |     |     |     |         |        | 8 | 4|
 | 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |    5     |    10    |   7     |
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |                         |                  |     |     |     |     |     |     |         |        |        |
 | 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |   5      |   10     |    9    |
@@ -31,4 +31,4 @@
 | 6   | [Полиенко Владислав](https://github.com/TomiokaGiuy)             |[ii02216](./trunk/ii02216)|:heavy_check_mark:|  |     |     |     |     |     |    5     |  8      |    4    |
 | 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |         |         |
 | 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |         |         |
-| 9   | [Сокол София](https://github.com/DeAiVil)                        |                |     |     |     |     |     |     |     |         |       7 |    0    |
+| 9   | [Сокол София](https://github.com/DeAiVil)                        |[ii02216](./trunk/ii02219)|:heavy_check_mark:|     |     |     |     |     |     |         |       7 |    0    |
