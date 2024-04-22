@@ -4,7 +4,7 @@ import numpy as np
 from math import pi, cos, sin, sqrt, atan2
 import random
 import scipy
-
+import secrets
 
 def bezier(points: np.array) -> tuple:
     first_x = points[0, 0]
@@ -21,7 +21,7 @@ def bezier(points: np.array) -> tuple:
 
     return x, y
 
-
+bits = 20
 radius = 150
 
 
@@ -46,12 +46,12 @@ class App:
         self.counter = -1
         self.fps = 100
         self.clock = pygame.time.Clock()
-
+        self.rng = np.random.default_rng(seed=42)
         self.n = 10
 
         self.points_prev = get_round_coords(self.n)
         self.points_new = get_round_coords(self.n)
-        self.t_prev = np.random.rand(self.n, 1)
+        self.t_prev = self.rng.random((self.n, 1))
         self.t_new = np.copy(self.t_prev)
 
         self.delta = np.zeros_like(self.points_prev)
@@ -63,7 +63,7 @@ class App:
         self.t_prev = np.copy(self.t_new)
 
         threshold = 0.3
-        self.t_new = np.random.rand(self.n, 1) * (1 - 2 * threshold) + threshold
+        self.t_new = self.rng.random((self.n, 1)) * (1 - 2 * threshold) + threshold
 
         self.delta = np.zeros_like(self.points_prev)
         self.delta_t = self.t_new - self.t_prev
@@ -76,7 +76,7 @@ class App:
             angle = atan2(y, x)
 
             new_angle = angle + common_angle
-            delta_r = (random.random() * 2 - 1) * 40
+            delta_r = 40 * ((secrets.randbits(bits) / (2 ** bits)) * 2 - 1) * 40
 
             if r + delta_r > radius * 1.5 or r + delta_r < radius * 0.55:
                 r -= 0.05 * delta_r * 0
