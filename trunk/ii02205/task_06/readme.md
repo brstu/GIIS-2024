@@ -69,6 +69,9 @@ class App:
 
 ## Результаты работы
 Референс
+
 ![](./images/reference.gif)
+
 Результат
+
 ![](./images/animation.gif)
