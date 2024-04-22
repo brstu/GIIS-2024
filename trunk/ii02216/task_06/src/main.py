@@ -1,4 +1,3 @@
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from PIL import Image
@@ -10,9 +9,7 @@ images = [Image.open(path) for path in image_paths]
 fig, ax = plt.subplots()
 ax.axis('off')
 
-
 img = ax.imshow(images[0])
-
 
 def update(frame):
     img.set_array(images[frame])
