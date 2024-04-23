@@ -2,6 +2,8 @@
 #define ADDRESSBOOK_H
 
 #include <QMainWindow>
+#include "ui_addressbook.h"
+#include <memory>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -14,17 +16,13 @@ class AddressBook : public QMainWindow
     Q_OBJECT
 
 public:
-    AddressBook(QWidget *parent = nullptr);
-    ~AddressBook();
+    explicit AddressBook(QWidget *parent = nullptr);
 
 private slots:
-
-
     void on_buttonAdd_clicked();
-
     void on_buttonRemove_clicked();
 
 private:
-    Ui::AddressBook *ui;
+    std::unique_ptr<Ui::AddressBook> ui;
 };
 #endif // ADDRESSBOOK_H
