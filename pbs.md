@@ -13,10 +13,10 @@
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |            |  |   |   |   |   |   |   |   |   |   |   |
 | 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |            |  |   |   |   |   |   |   |   |   |   |   |
 | 11  | [Кузьмич Вадим](https://github.com/orgs/brstu/people/vkn10)             |new         |:heavy_check_mark:|   |   |   |   |   |   |   |   |   |   |
-| 12  | [Любчук Илья](https://github.com/snep1one)                              |            |  |   |   |   |   |   |   |   |   |   |   |
+| 12  | [Любчук Илья](https://github.com/snep1one)                              |new         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |   |
 | 13  | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach)        |            |  |   |   |   |   |   |   |   |   |   |   |
 | 14  | [Нестерчук Дмитрий](https://github.com/nesterchuk11)                    |            |  |   |   |   |   |   |   |   |   |   |   |
-| 15  | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)         |            |  |   |   |   |   |   |   |   |   |   |   |
+| 15  | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)         |new         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |   |
 | 16  | [Полиенко Владислав](https://github.com/TomiokaGiuy)                    |new         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | 17  | [Сидоренко Александр](https://github.com/6mashina)                      |new         |  |   |   |   |   |   |   |   |   |   |   |
 | 18  | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan)        |            |  |   |   |   |   |   |   |   |   |   |   |
