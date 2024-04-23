@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+from pygame.locals import KEYDOWN, K_SPACE, K_LEFT, K_RIGHT
 from pygame import mixer
 import pickle
 from os import path
@@ -34,20 +34,20 @@ white = (255, 255, 255)
 blue = (0, 0, 255)
 
 # Загрузка изображений
-sun_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/sun.png")
-bg_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/sky.png")
-restart_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/restart_btn.png")
-start_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/start_btn.png")
-exit_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/exit_btn.png")
+sun_img = pygame.image.load("../images/sun.png")
+bg_img = pygame.image.load("../images/sky.png")
+restart_img = pygame.image.load("../images/restart_btn.png")
+start_img = pygame.image.load("../images/start_btn.png")
+exit_img = pygame.image.load("../images/exit_btn.png")
 
 # Загрузка звуков
-pygame.mixer.music.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/music.wav")
+pygame.mixer.music.load("../images/music.wav")
 pygame.mixer.music.play(-1, 0.0, 5000)
-coin_fx = pygame.mixer.Sound("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/coin.wav")
+coin_fx = pygame.mixer.Sound("../images/coin.wav")
 coin_fx.set_volume(0.5)
-jump_fx = pygame.mixer.Sound("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/jump.wav")
+jump_fx = pygame.mixer.Sound("../images/jump.wav")
 jump_fx.set_volume(0.5)
-game_over_fx = pygame.mixer.Sound("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/game_over.wav")
+game_over_fx = pygame.mixer.Sound("../images/game_over.wav")
 game_over_fx.set_volume(0.5)
 
 def draw_text(text, font, text_col, x, y):
@@ -64,9 +64,9 @@ def reset_level(level):
     exit_group.empty()
 
     # Загрузка данных уровня и создание мира
-    if path.exists(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/level{level}_data"):
-        pickle_in = open(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/level{level}_data", 'rb')
-        world_data = pickle.load(pickle_in)
+    if path.exists(f"../level{level}_data"):
+        with open(f"../level{level}_data", 'rb') as pickle_in:
+            world_data = pickle.load(pickle_in)
     world = World(world_data)
     # Создание фиктивной монеты для отображения счёта
     score_coin = Coin(tile_size // 2, tile_size // 2)
@@ -89,7 +89,7 @@ class Button():
 
         # Проверка наведения мыши и нажатия
         if self.rect.collidepoint(pos):
-            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
+            if pygame.mouse.get_pressed()[0] == 1 and not self.clicked:
                 action = True
                 self.clicked = True
 
@@ -113,22 +113,22 @@ class Player():
 
         if game_over == 0:
             # Получение нажатых клавиш
-            key = pygame.key.get_pressed()
-            if key[pygame.K_SPACE] and self.jumped == False and self.in_air == False:
+            keys = pygame.key.get_pressed()
+            if keys[K_SPACE] and not self.jumped and not self.in_air:
                 jump_fx.play()
                 self.vel_y = -15
                 self.jumped = True
-            if key[pygame.K_SPACE] == False:
+            if not keys[K_SPACE]:
                 self.jumped = False
-            if key[pygame.K_LEFT]:
+            if keys[K_LEFT]:
                 dx -= 5
                 self.counter += 1
                 self.direction = -1
-            if key[pygame.K_RIGHT]:
+            if keys[K_RIGHT]:
                 dx += 5
                 self.counter += 1
                 self.direction = 1
-            if key[pygame.K_LEFT] == False and key[pygame.K_RIGHT] == False:
+            if not keys[K_LEFT] and not keys[K_RIGHT]:
                 self.counter = 0
                 self.index = 0
                 if self.direction == 1:
@@ -226,12 +226,12 @@ class Player():
         self.index = 0
         self.counter = 0
         for num in range(1, 5):
-            img_right = pygame.image.load(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/guy{num}.png")
+            img_right = pygame.image.load(f"../images/guy{num}.png")
             img_right = pygame.transform.scale(img_right, (40, 80))
             img_left = pygame.transform.flip(img_right, True, False)
             self.images_right.append(img_right)
             self.images_left.append(img_left)
-        self.dead_image = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/ghost.png")
+        self.dead_image = pygame.image.load("../images/ghost.png")
         self.image = self.images_right[self.index]
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -248,8 +248,8 @@ class World():
         self.tile_list = []
 
         # Загрузка изображений
-        dirt_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/dirt.png")
-        grass_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/grass.png")
+        dirt_img = pygame.image.load("../images/dirt.png")
+        grass_img = pygame.image.load("../images/grass.png")
 
         row_count = 0
         for row in data:
@@ -285,8 +285,8 @@ class World():
                     coin = Coin(col_count * tile_size + (tile_size // 2), row_count * tile_size + (tile_size // 2))
                     coin_group.add(coin)
                 if tile == 8:
-                    exit = Exit(col_count * tile_size, row_count * tile_size - (tile_size // 2))
-                    exit_group.add(exit)
+                    exit_sprite = Exit(col_count * tile_size, row_count * tile_size - (tile_size // 2))
+                    exit_group.add(exit_sprite)
                 col_count += 1
             row_count += 1
 
@@ -297,7 +297,7 @@ class World():
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/blob.png")
+        self.image = pygame.image.load("../images/blob.png")
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -314,7 +314,7 @@ class Enemy(pygame.sprite.Sprite):
 class Platform(pygame.sprite.Sprite):
     def __init__(self, x, y, move_x, move_y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/platform.png")
+        img = pygame.image.load("../images/platform.png")
         self.image = pygame.transform.scale(img, (tile_size, tile_size // 2))
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -335,7 +335,7 @@ class Platform(pygame.sprite.Sprite):
 class Lava(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/lava.png")
+        img = pygame.image.load("../images/lava.png")
         self.image = pygame.transform.scale(img, (tile_size, tile_size // 2))
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -344,7 +344,7 @@ class Lava(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/coin.png")
+        img = pygame.image.load("../images/coin.png")
         self.image = pygame.transform.scale(img, (tile_size // 2, tile_size // 2))
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
@@ -352,7 +352,7 @@ class Coin(pygame.sprite.Sprite):
 class Exit(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/exit.png")
+        img = pygame.image.load("../images/exit.png")
         self.image = pygame.transform.scale(img, (tile_size, int(tile_size * 1.5)))
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -371,9 +371,9 @@ score_coin = Coin(tile_size // 2, tile_size // 2)
 coin_group.add(score_coin)
 
 # Загрузка данных уровня и создание мира
-if path.exists(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/level{level}_data"):
-    pickle_in = open(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/level{level}_data", 'rb')
-    world_data = pickle.load(pickle_in)
+if path.exists(f"../images/level{level}_data"):
+    with open(f"../images/level{level}_data", 'rb') as pickle_in:
+        world_data = pickle.load(pickle_in)
 world = World(world_data)
 
 # Создание кнопок
@@ -389,7 +389,7 @@ while run:
     screen.blit(bg_img, (0, 0))
     screen.blit(sun_img, (100, 100))
 
-    if main_menu == True:
+    if main_menu:
         if exit_button.draw():
             run = False
         if start_button.draw():
