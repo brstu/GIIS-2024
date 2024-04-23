@@ -2,7 +2,7 @@ import os
 from PIL import Image
 
 # Указываем путь к папке с изображениями
-image_folder = 'C:\\sdgdfhh\\git\\GIIS-2024\\trunk\\ii02219\\task_06\\Image'
+image_folder = '../Image'
 
 frames = []
 
