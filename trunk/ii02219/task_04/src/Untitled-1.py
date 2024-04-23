@@ -13,7 +13,7 @@ win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dino Game")
 
 # Загрузка изображения заднего фона
-background_image = pygame.image.load('C:/Users/dende/Desktop/task_04_05/clouds.png')
+background_image = pygame.image.load('../images/clouds.png')
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
 # Цвета
@@ -54,11 +54,6 @@ num_skin =0
 
 # Шрифт
 font = pygame.font.SysFont(None, 30)
-
-# Загрузка музыки
-pygame.mixer.music.load('C:/Users/dende/Desktop/task_04_05/Yoari - TRUE.mp3')
-pygame.mixer.music.play(-1)  # -1 означает проигрывание в бесконечном цикле
-
 
 # Загрузка и масштабирование всех изображений капибары
 capybara_images_folder = 'C:/Users/dende/Desktop/task_04_05/capybara_images'
