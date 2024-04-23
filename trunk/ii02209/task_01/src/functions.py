@@ -3,7 +3,7 @@ import numpy as np
 
 
 def add_noise(image, intensity=0.02):
-    rng = np.random.default_rng()
+    rng = np.random.default_rng(42)
 
     noisy_image = np.copy(image)
 
