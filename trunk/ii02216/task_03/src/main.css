@@ -120,7 +120,7 @@
     width: 100%;
     height: 50%;
     background-color: rgba(219, 241, 113, 50%);
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
 }
 
 .blog-entry-media img{
@@ -182,7 +182,7 @@
 }
 
 .home-tile-outline:last-child{
-    margin-right: 0px;
+    margin-right: 1px;
 }
 
 .home-tile-header{
