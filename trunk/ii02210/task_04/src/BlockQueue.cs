@@ -10,7 +10,7 @@ namespace tetris_
     {
         private readonly Block[] blocks = new Block[]
         {
-            new IBlock1(),
+            new IBlock(),
             new JBlock(),
             new LBlock(),
             new OBlock(),
