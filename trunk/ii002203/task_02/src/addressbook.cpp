@@ -109,7 +109,6 @@ void AddressBook::saveToFile()
 
     file.close();
     }
-}
 
 void AddressBook::loadFromFile()
 {
