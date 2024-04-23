@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from PIL import Image
 
-image_paths = ["1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png"]
+image_paths = ["image/1.png","image/2.png","image/3.png","image/4.png","image/5.png","image/6.png","image/7.png","image/8.png","image/9.png"]
 
 images = [Image.open(path) for path in image_paths]
 
