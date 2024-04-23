@@ -19,7 +19,6 @@
 | 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |                         |                  |     |     |     |     |     |     |         |        |        |
 | 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |     |   5      |   10     |    9    |
 
-
 ## Подруппа 2
 
 | №   | ФИО                                                              | Directory name | #1  | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг | Амбиции | Реальность |
