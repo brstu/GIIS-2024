@@ -254,7 +254,6 @@ public class HelloApplication extends Application {
     }
     private void run(){
         double deltaX = 0;
-        double deltaY = 0;
 
         if (moveLeft) {
             deltaX -= PLAYER_SPEED;
