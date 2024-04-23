@@ -51,7 +51,9 @@ def draw_over():
     screen.blit(game_over_text1, (130, 65))
     screen.blit(game_over_text2, (70, 105))
 
-def up(board, merged, score):
+
+def up(board, merged):
+    score_up = 0
     for i in range(4):
         for j in range(4):
             shift = 0
@@ -65,11 +67,13 @@ def up(board, merged, score):
                 if board[i - shift - 1][j] == board[i - shift][j] and not merged[i - shift][j] \
                         and not merged[i - shift - 1][j]:
                     board[i - shift - 1][j] *= 2
-                    score += board[i - shift - 1][j]
+                    score_up += board[i - shift - 1][j]
                     board[i - shift][j] = 0
                     merged[i - shift - 1][j] = True
+    return score_up
 
-def down(board, merged, score):
+def down(board, merged):
+    score_down = 0
     for i in range(3):
         for j in range(4):
             shift = 0
@@ -79,15 +83,16 @@ def down(board, merged, score):
             if shift > 0:
                 board[2 - i + shift][j] = board[2 - i][j]
                 board[2 - i][j] = 0
-            if 3 - i + shift <= 3:
-                if board[2 - i + shift][j] == board[3 - i + shift][j] and not merged[3 - i + shift][j] \
-                        and not merged[2 - i + shift][j]:
-                    board[3 - i + shift][j] *= 2
-                    score += board[3 - i + shift][j]
-                    board[2 - i + shift][j] = 0
-                    merged[3 - i + shift][j] = True
+            if 3 - i + shift <= 3 and board[2 - i + shift][j] == board[3 - i + shift][j] \
+                    and not merged[3 - i + shift][j] and not merged[2 - i + shift][j]:
+                board[3 - i + shift][j] *= 2
+                score_down += board[3 - i + shift][j]
+                board[2 - i + shift][j] = 0
+                merged[3 - i + shift][j] = True
+    return score_down
 
-def left(board, merged, score):
+def left(board, merged):
+    score_left = 0
     for i in range(4):
         for j in range(4):
             shift = 0
@@ -100,11 +105,13 @@ def left(board, merged, score):
             if board[i][j - shift] == board[i][j - shift - 1] and not merged[i][j - shift - 1] \
                     and not merged[i][j - shift]:
                 board[i][j - shift - 1] *= 2
-                score += board[i][j - shift - 1]
+                score_left += board[i][j - shift - 1]
                 board[i][j - shift] = 0
                 merged[i][j - shift - 1] = True
+    return score_left
 
-def right(board, merged, score):
+def right(board, merged):
+    score_right = 0
     for i in range(4):
         for j in range(4):
             shift = 0
@@ -114,13 +121,13 @@ def right(board, merged, score):
             if shift > 0:
                 board[i][3 - j + shift] = board[i][3 - j]
                 board[i][3 - j] = 0
-            if 4 - j + shift <= 3:
-                if board[i][4 - j + shift] == board[i][3 - j + shift] and not merged[i][4 - j + shift] \
-                        and not merged[i][3 - j + shift]:
-                    board[i][4 - j + shift] *= 2
-                    score += board[i][4 - j + shift]
-                    board[i][3 - j + shift] = 0
-                    merged[i][4 - j + shift] = True
+            if 4 - j + shift <= 3 and board[i][4 - j + shift] == board[i][3 - j + shift] \
+                    and not merged[i][4 - j + shift] and not merged[i][3 - j + shift]:
+                board[i][4 - j + shift] *= 2
+                score_right += board[i][4 - j + shift]
+                board[i][3 - j + shift] = 0
+                merged[i][4 - j + shift] = True
+    return score_right
 
 
 # take your turn based on direction
@@ -128,16 +135,16 @@ def take_turn(direc, board):
     global score
     merged = [[False for _ in range(4)] for _ in range(4)]
     if direc == 'UP':
-        up(board, merged, score)
+        score += up(board, merged)
 
     elif direc == 'DOWN':
-        down(board, merged, score)
+        score += down(board, merged)
 
     elif direc == 'LEFT':
-        left(board, merged, score)
+        score += left(board, merged)
 
     elif direc == 'RIGHT':
-        right(board, merged, score)
+        score += right(board, merged)
     return board
 
 
@@ -227,8 +234,7 @@ while run:
             elif event.key == pygame.K_RIGHT:
                 direction = 'RIGHT'
 
-            if game_over:
-                if event.key == pygame.K_RETURN:
+            if game_over and event.key == pygame.K_RETURN:
                     board_values = [[0 for _ in range(4)] for _ in range(4)]
                     spawn_new = True
                     init_count = 0
