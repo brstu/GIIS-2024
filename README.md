@@ -32,5 +32,3 @@
 | 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |         |         |
 | 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |         |         |
 | 9   | [Сокол София](https://github.com/DeAiVil)                        |[ii02216](./trunk/ii02219)|:heavy_check_mark:|     |     |     |     |     |     |         |       7 |    0    |
- 
- 
