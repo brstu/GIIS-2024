@@ -15,6 +15,7 @@ def update(frame):
     img.set_array(images[frame])
     return img,
 
+
 ani = FuncAnimation(fig, update, frames=len(images), interval=95)
 
 plt.show()
