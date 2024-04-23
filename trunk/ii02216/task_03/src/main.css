@@ -119,7 +119,7 @@
     position: absolute; 
     width: 100%;
     height: 50%;
-    background-color: rgba(219, 241, 113, 50%);
+    background-color: rgba(219 241 113 / 50%);
     border-radius: 5px 5px 0 0;
 }
 
@@ -251,7 +251,7 @@
 }
 
 .home-tile-footer{
-    border-top: 1px solid rgba(231, 225, 225, 100%);
+    border-top: 1px solid rgba(231 225 225 / 100%);
     width: 100%;
 }
 
