@@ -75,40 +75,39 @@ void AddressBook::saveToFile()
     QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Сохранение"), "",
                                                     tr("Таблица (*.csv);;All Files (*)"));
-
     if (fileName.isEmpty())
         return;
-    else {
-        QFile file(fileName);
-        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            qDebug() << "Не удалось открыть файл для записи";
-            return;
-        }
 
-        QTextStream out(&file);
-        out.setLocale(QLocale::c());
-        out.setGenerateByteOrderMark(true);
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "Не удалось открыть файл для записи";
+        return;
+    }
 
-        QStringList headers;
+    QTextStream out(&file);
+    out.setLocale(QLocale::c());
+    out.setGenerateByteOrderMark(true);
+
+    QStringList headers;
+    for (int col = 0; col < ui->tableAddress->columnCount(); ++col) {
+        headers << ui->tableAddress->horizontalHeaderItem(col)->text();
+    }
+    out << headers.join(";") << "\n";
+
+    for (int row = 0; row < ui->tableAddress->rowCount(); ++row) {
+        QStringList rowData;
         for (int col = 0; col < ui->tableAddress->columnCount(); ++col) {
-            headers << ui->tableAddress->horizontalHeaderItem(col)->text();
-        }
-        out << headers.join(";") << "\n";
-
-        for (int row = 0; row < ui->tableAddress->rowCount(); ++row) {
-            QStringList rowData;
-            for (int col = 0; col < ui->tableAddress->columnCount(); ++col) {
-                QTableWidgetItem *item = ui->tableAddress->item(row, col);
-                if (item) {
-                    rowData << item->text().replace(",", ";");
-                } else {
-                    rowData << "";
-                }
+            QTableWidgetItem *item = ui->tableAddress->item(row, col);
+            if (item) {
+                rowData << item->text().replace(",", ";");
+            } else {
+                rowData << "";
             }
-            out << rowData.join(";") << "\n";
         }
+        out << rowData.join(";") << "\n";
+    }
 
-        file.close();
+    file.close();
     }
 }
 
