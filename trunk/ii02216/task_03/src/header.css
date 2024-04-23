@@ -4,9 +4,9 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: Roboto, sans-serif;
     font-style: normal;
-    color: #333333;
+    color: #333;
 }
 
 #header{
@@ -21,12 +21,14 @@
     padding-top: 10px;
     float:left;
 }
+
 #menu{
     margin-left: 20px;
     line-height: 55px;
     font-weight:bold;
     float: left;
 }
+
 #menu a{
     text-decoration: none;
     color: gray;
@@ -35,44 +37,45 @@
 }
 
 #menu a:hover{
-    color:#333333;
+    color:#333;
 }
 
-
-#headerMenu{
+#header-menu{
     line-height: 55px;
     margin-left:6%;
     float: left;
 }
-#headerMenu li{
+
+#header-menu li{
     list-style: none;
     display:inline-block;
 }
-#headerMenu a{
+
+#header-menu a{
     color: black;
     font-size: 15px;
     margin-left: 15px;
     text-decoration: none;
 }
 
-#headerMenu a:hover{
+#header-menu a:hover{
     color:#ff6642;
 }
 
-#rightMenu{
+#right-menu{
     margin-left: 16.5%;
     line-height: 55px;
     float:left;
 }
 
-#rightMenu a{
+#right-menu a{
     color: #ff6642;
     font-size: 15px;
     text-decoration: none;
 }
 
-#rightMenu a:hover{
-    color:#333333;
+#right-menu a:hover{
+    color:#333;
 }
 
 .icon{
@@ -80,6 +83,7 @@
     width: 30px;
     height: 30px;
 }
+
 .view-icon{
     margin-bottom: 12px;
     width: 25px;

@@ -73,7 +73,7 @@
 }
 
 .footmenu-item:first-child{
-    margin-left: 0px;
+    margin-left: 1px;
 }
 
 .social-links-block{
@@ -92,12 +92,11 @@
     text-align: center;
     height: 30px;
     width: auto;
-    margin-top: 0px;
     margin-left: 15px;
 }
 
 .foot-extra-link{
-    color: #333333;
+    color: #333;
     margin-top: 20px;
     font-size: 13px;
 }
@@ -125,8 +124,8 @@
 }
 
 .sup-button:hover{
-    border: 1px solid #333333; 
-    color: #333333;
+    border: 1px solid #333; 
+    color: #333;
 }
 
 .copyright-text{
@@ -139,5 +138,5 @@
 }
 
 .copyright-text a:hover{
-    color:#333333;
+    color:#333;
 }
