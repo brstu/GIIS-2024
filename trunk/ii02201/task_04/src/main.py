@@ -36,7 +36,7 @@ game_over = False
 spawn_new = True
 init_count = 0
 direction = ''
-score = 0
+global_score = 0
 file = open('high_score', 'r')
 init_high = int(file.readline())
 file.close()
@@ -54,97 +54,147 @@ def draw_over():
 
 def up(board, merged):
     score_up = 0
-    for i in range(4):
+
+    for i in range(1, 4):  # Начинаем с индекса 1, так как первая строка не может быть смещена вверх
         for j in range(4):
-            shift = 0
-            if i > 0:
-                for q in range(i):
-                    if board[q][j] == 0:
-                        shift += 1
-                if shift > 0:
-                    board[i - shift][j] = board[i][j]
-                    board[i][j] = 0
-                if board[i - shift - 1][j] == board[i - shift][j] and not merged[i - shift][j] \
-                        and not merged[i - shift - 1][j]:
-                    board[i - shift - 1][j] *= 2
-                    score_up += board[i - shift - 1][j]
-                    board[i - shift][j] = 0
-                    merged[i - shift - 1][j] = True
+            score_up += shift_tile_up(board, merged, i, j)
+
     return score_up
+
+
+def shift_tile_up(board, merged, i, j):
+    score = 0
+    shift = 0
+
+    for q in range(i):
+        if board[q][j] == 0:
+            shift += 1
+
+    if shift > 0:
+        board[i - shift][j] = board[i][j]
+        board[i][j] = 0
+
+    if board[i - shift - 1][j] == board[i - shift][j] and not merged[i - shift][j] \
+            and not merged[i - shift - 1][j]:
+        board[i - shift - 1][j] *= 2
+        score = board[i - shift - 1][j]
+        board[i - shift][j] = 0
+        merged[i - shift - 1][j] = True
+
+    return score
+
 
 def down(board, merged):
     score_down = 0
-    for i in range(3):
+
+    for i in range(2, -1, -1):  # Начинаем с индекса 2, так как последняя строка не может быть смещена вниз
         for j in range(4):
-            shift = 0
-            for q in range(i + 1):
-                if board[3 - q][j] == 0:
-                    shift += 1
-            if shift > 0:
-                board[2 - i + shift][j] = board[2 - i][j]
-                board[2 - i][j] = 0
-            if 3 - i + shift <= 3 and board[2 - i + shift][j] == board[3 - i + shift][j] \
-                    and not merged[3 - i + shift][j] and not merged[2 - i + shift][j]:
-                board[3 - i + shift][j] *= 2
-                score_down += board[3 - i + shift][j]
-                board[2 - i + shift][j] = 0
-                merged[3 - i + shift][j] = True
+            score_down += shift_tile_down(board, merged, i, j)
+
     return score_down
+
+
+def shift_tile_down(board, merged, i, j):
+    score = 0
+    shift = 0
+
+    for q in range(i + 1):
+        if board[3 - q][j] == 0:
+            shift += 1
+
+    if shift > 0:
+        board[2 - i + shift][j] = board[2 - i][j]
+        board[2 - i][j] = 0
+
+    if 3 - i + shift <= 3 and board[2 - i + shift][j] == board[3 - i + shift][j] \
+            and not merged[3 - i + shift][j] and not merged[2 - i + shift][j]:
+        board[3 - i + shift][j] *= 2
+        score = board[3 - i + shift][j]
+        board[2 - i + shift][j] = 0
+        merged[3 - i + shift][j] = True
+
+    return score
+
 
 def left(board, merged):
     score_left = 0
+
     for i in range(4):
-        for j in range(4):
-            shift = 0
-            for q in range(j):
-                if board[i][q] == 0:
-                    shift += 1
-            if shift > 0:
-                board[i][j - shift] = board[i][j]
-                board[i][j] = 0
-            if board[i][j - shift] == board[i][j - shift - 1] and not merged[i][j - shift - 1] \
-                    and not merged[i][j - shift]:
-                board[i][j - shift - 1] *= 2
-                score_left += board[i][j - shift - 1]
-                board[i][j - shift] = 0
-                merged[i][j - shift - 1] = True
+        for j in range(1, 4):  # Начинаем с индекса 1, так как первый столбец не может быть смещен влево
+            score_left += shift_tile_left(board, merged, i, j)
+
     return score_left
+
+
+def shift_tile_left(board, merged, i, j):
+    score = 0
+    shift = 0
+
+    for q in range(j):
+        if board[i][q] == 0:
+            shift += 1
+
+    if shift > 0:
+        board[i][j - shift] = board[i][j]
+        board[i][j] = 0
+
+    if board[i][j - shift] == board[i][j - shift - 1] and not merged[i][j - shift - 1] \
+            and not merged[i][j - shift]:
+        board[i][j - shift - 1] *= 2
+        score = board[i][j - shift - 1]
+        board[i][j - shift] = 0
+        merged[i][j - shift - 1] = True
+
+    return score
+
 
 def right(board, merged):
     score_right = 0
+
     for i in range(4):
-        for j in range(4):
-            shift = 0
-            for q in range(j):
-                if board[i][3 - q] == 0:
-                    shift += 1
-            if shift > 0:
-                board[i][3 - j + shift] = board[i][3 - j]
-                board[i][3 - j] = 0
-            if 4 - j + shift <= 3 and board[i][4 - j + shift] == board[i][3 - j + shift] \
-                    and not merged[i][4 - j + shift] and not merged[i][3 - j + shift]:
-                board[i][4 - j + shift] *= 2
-                score_right += board[i][4 - j + shift]
-                board[i][3 - j + shift] = 0
-                merged[i][4 - j + shift] = True
+        for j in range(2, -1, -1):  # Начинаем с индекса 2, так как последний столбец не может быть смещен вправо
+            score_right += shift_tile_right(board, merged, i, j)
+
     return score_right
+
+
+def shift_tile_right(board, merged, i, j):
+    score = 0
+    shift = 0
+
+    for q in range(j):
+        if board[i][3 - q] == 0:
+            shift += 1
+
+    if shift > 0:
+        board[i][3 - j + shift] = board[i][3 - j]
+        board[i][3 - j] = 0
+
+    if 4 - j + shift <= 3 and board[i][4 - j + shift] == board[i][3 - j + shift] \
+            and not merged[i][4 - j + shift] and not merged[i][3 - j + shift]:
+        board[i][4 - j + shift] *= 2
+        score = board[i][4 - j + shift]
+        board[i][3 - j + shift] = 0
+        merged[i][4 - j + shift] = True
+
+    return score
 
 
 # take your turn based on direction
 def take_turn(direc, board):
-    global score
+    global global_score
     merged = [[False for _ in range(4)] for _ in range(4)]
     if direc == 'UP':
-        score += up(board, merged)
+        global_score += up(board, merged)
 
     elif direc == 'DOWN':
-        score += down(board, merged)
+        global_score += down(board, merged)
 
     elif direc == 'LEFT':
-        score += left(board, merged)
+        global_score += left(board, merged)
 
     elif direc == 'RIGHT':
-        score += right(board, merged)
+        global_score += right(board, merged)
     return board
 
 
@@ -169,7 +219,7 @@ def new_pieces(board):
 # draw background for the board
 def draw_board():
     pygame.draw.rect(screen, colors['bg'], [0, 0, 400, 400], 0, 10)
-    score_text = font.render(f'Score: {score}', True, 'black')
+    score_text = font.render(f'Score: {global_score}', True, 'black')
     high_score_text = font.render(f'High Score: {high_score}', True, 'black')
     screen.blit(score_text, (10, 410))
     screen.blit(high_score_text, (10, 450))
@@ -238,12 +288,12 @@ while run:
                     board_values = [[0 for _ in range(4)] for _ in range(4)]
                     spawn_new = True
                     init_count = 0
-                    score = 0
+                    global_score = 0
                     direction = ''
                     game_over = False
 
-    if score > high_score:
-        high_score = score
+    if global_score > high_score:
+        high_score = global_score
 
     pygame.display.flip()
 pygame.quit()
