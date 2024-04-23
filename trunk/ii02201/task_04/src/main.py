@@ -1,5 +1,5 @@
 import pygame
-import random
+import secrets
 
 pygame.init()
 
@@ -203,11 +203,11 @@ def new_pieces(board):
     count = 0
     full = False
     while any(0 in row for row in board) and count < 1:
-        row = random.randint(0, 3)
-        col = random.randint(0, 3)
+        row = secrets.randbelow(4)
+        col = secrets.randbelow(4)
         if board[row][col] == 0:
             count += 1
-            if random.randint(1, 10) == 10:
+            if secrets.randbelow(10) == 0:
                 board[row][col] = 4
             else:
                 board[row][col] = 2
