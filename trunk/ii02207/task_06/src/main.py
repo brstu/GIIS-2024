@@ -10,7 +10,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Анимация бегущего котенка")
 
 # Загрузка изображений для анимации котенка
-cat_frames = [pygame.image.load(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №6/images/cat{i}.png") for i in range(1, 6)]
+cat_frames = [pygame.image.load(f"../images/cat{i}.png") for i in range(1, 6)]
 
 # Создание класса для котенка
 class Cat:
