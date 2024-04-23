@@ -18,3 +18,4 @@
 Приложение с данными:
 
 ![](images/app_with_data.png)
+
