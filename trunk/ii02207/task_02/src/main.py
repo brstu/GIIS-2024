@@ -20,22 +20,22 @@ class AddressBook(QWidget):
         # Создание кнопок для добавления адреса, редактирования, удаления адреса, поиска, предыдущего и следующего адресов
         self.add_button = QPushButton('Добавить адрес')
         self.add_button.clicked.connect(self.addAddress)
-        
+
         self.edit_button = QPushButton('Редактировать')
         self.edit_button.clicked.connect(self.editAddress)
-        
+
         self.delete_button = QPushButton('Удалить')
         self.delete_button.clicked.connect(self.deleteAddress)
-        
+
         self.save_button = QPushButton('Сохранить')
         self.save_button.clicked.connect(self.saveData)
-        
+
         self.load_button = QPushButton('Загрузить')
         self.load_button.clicked.connect(self.loadData)
 
         self.prev_button = QPushButton('Предыдущий')
         self.prev_button.clicked.connect(self.showPreviousAddress)
-        
+
         self.next_button = QPushButton('Следующий')
         self.next_button.clicked.connect(self.showNextAddress)
 
