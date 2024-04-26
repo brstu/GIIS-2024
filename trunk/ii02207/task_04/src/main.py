@@ -38,11 +38,11 @@ exit_img = pygame.image.load("../images/exit_btn.png")
 
 pygame.mixer.music.load("../images/music.wav")
 pygame.mixer.music.play(-1, 0.0, 5000)
-coin_fx = pygame.mixer.Sound("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/coin.wav")
+coin_fx = pygame.mixer.Sound("../images/coin.wav")
 coin_fx.set_volume(0.5)
-jump_fx = pygame.mixer.Sound("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/jump.wav")
+jump_fx = pygame.mixer.Sound("../images/jump.wav")
 jump_fx.set_volume(0.5)
-game_over_fx = pygame.mixer.Sound("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/game_over.wav")
+game_over_fx = pygame.mixer.Sound("../images/game_over.wav")
 game_over_fx.set_volume(0.5)
 
 def draw_text(text, font, text_col, x, y):
@@ -165,12 +165,12 @@ class Player():
         self.index = 0
         self.counter = 0
         for num in range(1, 5):
-            img_right = pygame.image.load(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/guy{num}.png")
+            img_right = pygame.image.load(f"../images/guy{num}.png")
             img_right = pygame.transform.scale(img_right, (40, 80))
             img_left = pygame.transform.flip(img_right, True, False)
             self.images_right.append(img_right)
             self.images_left.append(img_left)
-        self.dead_image = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/ghost.png")
+        self.dead_image = pygame.image.load("../images/ghost.png")
         self.image = self.images_right[self.index]
         self.rect = self.image.get_rect(topleft=(x, y))
         self.width = self.image.get_width()
@@ -184,8 +184,8 @@ class World():
     def __init__(self, data):
         self.tile_list = []
 
-        dirt_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/dirt.png")
-        grass_img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/grass.png")
+        dirt_img = pygame.image.load("../images/dirt.png")
+        grass_img = pygame.image.load("../images/grass.png")
 
         row_count = 0
         for row in data:
@@ -229,7 +229,7 @@ class World():
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/blob.png")
+        self.image = pygame.image.load("../images/blob.png")
         self.rect = self.image.get_rect(topleft=(x, y))
         self.move_direction = 1
         self.move_counter = 0
@@ -244,7 +244,7 @@ class Enemy(pygame.sprite.Sprite):
 class Platform(pygame.sprite.Sprite):
     def __init__(self, x, y, move_x, move_y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/platform.png")
+        img = pygame.image.load("../images/platform.png")
         self.image = pygame.transform.scale(img, (tile_size, tile_size // 2))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.move_counter = 0
@@ -263,27 +263,28 @@ class Platform(pygame.sprite.Sprite):
 class Lava(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/lava.png")
+        img = pygame.image.load("../images/lava.png")
         self.image = pygame.transform.scale(img, (tile_size, tile_size // 2))
         self.rect = self.image.get_rect(topleft=(x, y))
 
 class Coin(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/coin.png")
+        img = pygame.image.load("../images/coin.png")
         self.image = pygame.transform.scale(img, (tile_size // 2, tile_size // 2))
         self.rect = self.image.get_rect(center=(x, y))
 
 class Exit(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load("D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/exit.png")
+        img = pygame.image.load("../images/exit.png")
         self.image = pygame.transform.scale(img, (tile_size, int(tile_size * 1.5)))
         self.rect = self.image.get_rect(topleft=(x, y))
 
 def reset_level(level):
-    if path.exists(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/level{level}_data"):
-        with open(f"D:/6 семестр/ГИИС лабы/ГИИС лаба №4/images/level{level}_data", 'rb') as pickle_in:
+    level_file_path = f"../images/level{level}_data"
+    if path.exists(level_file_path):
+        with open(level_file_path, 'rb') as pickle_in:
             return World(pickle.load(pickle_in))
     return None
 
@@ -300,9 +301,26 @@ coin_group.add(score_coin)
 
 world = reset_level(level)
 
-restart_button = Button(screen_width // 2 - 50, screen_height // 2 + 100, restart_img)
-start_button = Button(screen_width // 2 - 350, screen_height // 2, start_img)
+# Изменения для кнопок меню
 exit_button = Button(screen_width // 2 + 150, screen_height // 2, exit_img)
+start_button = Button(screen_width // 2 - 350, screen_height // 2, start_img)
+
+restart_button = Button(screen_width // 2 - 50, screen_height // 2 + 100, restart_img)
+exit_button = Button(screen_width // 2 + 150, screen_height // 2, exit_img)
+# Изменения для функции reset_level
+def reset_level(level):
+    level_file_path = f"../images/level{level}_data"
+    if path.exists(level_file_path):
+        with open(level_file_path, 'rb') as pickle_in:
+            return World(pickle.load(pickle_in))
+    return None
+
+# Изменения для функции reset_level
+def reset_level(level):
+    if path.exists(f"../images/level{level}_data"):
+        with open(f"../images/level{level}_data", 'rb') as pickle_in:
+            return World(pickle.load(pickle_in))
+    return None
 
 run = True
 while run:
