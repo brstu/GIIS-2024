@@ -301,8 +301,8 @@ class World():
 					coin = Coin(col_count * tile_size + (tile_size // 2), row_count * tile_size + (tile_size // 2))
 					coin_group.add(coin)
 				if tile == 8:
-					exit = Exit(col_count * tile_size, row_count * tile_size - (tile_size // 2))
-					exit_group.add(exit)
+					exit_sprite = Exit(col_count * tile_size, row_count * tile_size - (tile_size // 2))
+					exit_group.add(exit_sprite)
 				col_count += 1
 			row_count += 1
 
