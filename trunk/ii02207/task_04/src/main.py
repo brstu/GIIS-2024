@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+from pygame.locals import KEYDOWN, K_SPACE, K_LEFT, K_RIGHT
 from pygame import mixer
 import pickle
 from os import path
