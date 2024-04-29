@@ -1,4 +1,4 @@
-import random
+import secrets
 
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QIcon
@@ -12,8 +12,8 @@ import time
 red = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]
 black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]
 
-colorWhiteAndBorder = "color: rgb(255, 255, 255);\nborder: 1px solid #FFFFFF;\n"
-colorWhite = "color: rgb(255, 255, 255);\n"
+color_white_and_border  = "color: rgb(255, 255, 255);\nborder: 1px solid #FFFFFF;\n"
+color_white = "color: rgb(255, 255, 255);\n"
 
 
 class MainWindow(QMainWindow):
@@ -113,13 +113,13 @@ class MainWindow(QMainWindow):
         ]
 
         temp = len(self.buttons)
-        for i in range(len(button_positions)):
+        for i, position in enumerate(button_positions):
             button = QtWidgets.QPushButton(button_names[i], self.centralWidget)
-            button.setGeometry(button_positions[i][0], button_positions[i][1], 240, 60)
+            button.setGeometry(position[0], position[1], 240, 60)
             button.setFont(font)
-            button.setStyleSheet(colorWhiteAndBorder)
+            button.setStyleSheet(color_white_and_border)
 
-            button.clicked.connect(partial(self.onButtonAction, (i + temp)))
+            button.clicked.connect(partial(self.onButtonAction, i + temp))
             self.buttons.append(button)
         font.setFamily("Calibri")
         font.setPointSize(18)
@@ -131,7 +131,7 @@ class MainWindow(QMainWindow):
             button = QtWidgets.QPushButton("2 to 1", self.centralWidget)
             button.setGeometry(button_positions[i][0], button_positions[i][1], 100, 50)
             button.setFont(font)
-            button.setStyleSheet(colorWhiteAndBorder)
+            button.setStyleSheet(color_white_and_border)
             button.clicked.connect(partial(self.onButtonAction, (i + temp)))
             self.buttons.append(button)
         button_positions = [(140, 260), (260, 260), (620, 260), (740, 260)]
@@ -143,7 +143,7 @@ class MainWindow(QMainWindow):
             button = QtWidgets.QPushButton(button_names[i], self.centralWidget)
             button.setGeometry(button_positions[i][0], button_positions[i][1], 120, 60)
             button.setFont(font)
-            button.setStyleSheet(colorWhiteAndBorder)
+            button.setStyleSheet(color_white_and_border)
             button.clicked.connect(partial(self.onButtonAction, (i + temp)))
             self.buttons.append(button)
 
@@ -170,13 +170,13 @@ class MainWindow(QMainWindow):
         self.labelBalance = QtWidgets.QLabel(f"Баланс: {self.balance} руб.", self.centralWidget)
         self.labelBalance.setGeometry(20, 360, 400, 40)
         self.labelBalance.setFont(font)
-        self.labelBalance.setStyleSheet(colorWhite)
+        self.labelBalance.setStyleSheet(color_white)
 
         font.setPointSize(28)
         self.labelWinLoss = QtWidgets.QLabel(self.centralWidget)
         self.labelWinLoss.setGeometry(700, 360, 320, 160)
         self.labelWinLoss.setFont(font)
-        self.labelWinLoss.setStyleSheet(colorWhite)
+        self.labelWinLoss.setStyleSheet(color_white)
 
         font.setPointSize(20)
         self.buttonStartAgain = QtWidgets.QPushButton("Заново", self.centralWidget)
@@ -191,7 +191,7 @@ class MainWindow(QMainWindow):
         self.labelResultNumber.setGeometry(420, 370, 200, 200)
         self.labelResultNumber.setFont(font)
         self.labelResultNumber.setAlignment(Qt.AlignCenter)
-        self.labelResultNumber.setStyleSheet(colorWhite)
+        self.labelResultNumber.setStyleSheet(color_white)
 
         self.buttonStartAgain.clicked.connect(self.onButtonStartAgain)
 
@@ -514,17 +514,13 @@ class MainWindow(QMainWindow):
 
     def getCasinoNumber(self):
         for _ in range(40):
-            random.getrandbits(1)
-            i = random.randint(0, 36)
-            random.random()
+            i = secrets.randbelow(37)
             self.checkNumberOnColor(i)
             time.sleep(0.1)
             self.labelResultNumber.setText(f"{i}")
             QApplication.processEvents()
 
-        random.getrandbits(1)
-        self.casinoNumber = random.randint(0, 36)
-        random.random()
+        self.casinoNumber = secrets.randbelow(37)
         self.checkNumberOnColor(self.casinoNumber)
         time.sleep(0.08)
         self.labelResultNumber.setText(f"{self.casinoNumber}")
