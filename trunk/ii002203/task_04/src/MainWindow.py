@@ -12,6 +12,9 @@ import time
 red = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]
 black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]
 
+colorWhiteAndBorder = "color: rgb(255, 255, 255);\nborder: 1px solid #FFFFFF;\n"
+colorWhite = "color: rgb(255, 255, 255);\n"
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -88,7 +91,6 @@ class MainWindow(QMainWindow):
             button.clicked.connect(partial(self.onButtonAction, i))
             self.buttons.append(button)
             i += 1
-        print("1-36 -- ", len(self.buttons))
         font.setFamily("Calibri")
         font.setPointSize(24)
 
@@ -101,7 +103,6 @@ class MainWindow(QMainWindow):
         i = 0
         self.button0.clicked.connect(partial(self.onButtonAction, i))
         self.buttons.append(self.button0)
-        print("0 -- ", len(self.buttons))
         font.setFamily("Calibri")
         font.setPointSize(26)
 
@@ -116,12 +117,10 @@ class MainWindow(QMainWindow):
             button = QtWidgets.QPushButton(button_names[i], self.centralWidget)
             button.setGeometry(button_positions[i][0], button_positions[i][1], 240, 60)
             button.setFont(font)
-            button.setStyleSheet("color: rgb(255, 255, 255);\n"
-                                 "border: 1px solid #FFFFFF;\n")
+            button.setStyleSheet(colorWhiteAndBorder)
 
             button.clicked.connect(partial(self.onButtonAction, (i + temp)))
             self.buttons.append(button)
-        print("1to12 - 25to36 -- ", len(self.buttons))
         font.setFamily("Calibri")
         font.setPointSize(18)
 
@@ -132,11 +131,9 @@ class MainWindow(QMainWindow):
             button = QtWidgets.QPushButton("2 to 1", self.centralWidget)
             button.setGeometry(button_positions[i][0], button_positions[i][1], 100, 50)
             button.setFont(font)
-            button.setStyleSheet("color: rgb(255, 255, 255);\n"
-                                 "border: 1px solid #FFFFFF;\n")
+            button.setStyleSheet(colorWhiteAndBorder)
             button.clicked.connect(partial(self.onButtonAction, (i + temp)))
             self.buttons.append(button)
-        print("2to1*3 -- ", len(self.buttons))
         button_positions = [(140, 260), (260, 260), (620, 260), (740, 260)]
 
         button_names = (["1 to 18", "ЧЁТНОЕ", "НЕЧЁТНОЕ", "19 to 36"])
@@ -146,41 +143,40 @@ class MainWindow(QMainWindow):
             button = QtWidgets.QPushButton(button_names[i], self.centralWidget)
             button.setGeometry(button_positions[i][0], button_positions[i][1], 120, 60)
             button.setFont(font)
-            button.setStyleSheet("color: rgb(255, 255, 255);\n"
-                                 "border: 1px solid #FFFFFF;\n")
+            button.setStyleSheet(colorWhiteAndBorder)
             button.clicked.connect(partial(self.onButtonAction, (i + temp)))
             self.buttons.append(button)
 
-        buttonRed = QtWidgets.QPushButton("", self.centralWidget)
-        buttonRed.setGeometry(380, 260, 120, 60)
-        buttonRed.setFont(font)
-        buttonRed.setStyleSheet("color: rgb(255, 255, 255);\n"
+        button_red = QtWidgets.QPushButton(self.centralWidget)
+        button_red.setGeometry(380, 260, 120, 60)
+        button_red.setFont(font)
+        button_red.setStyleSheet("color: rgb(255, 255, 255);\n"
                                 "border: 1px solid #FFFFFF;\n"
                                 "background-color: rgb(255, 0, 0);\n")
-        buttonRed.clicked.connect(partial(self.onButtonAction, 47))
-        self.buttons.append(buttonRed)
+        button_red.clicked.connect(partial(self.onButtonAction, 47))
+        self.buttons.append(button_red)
 
-        buttonBlack = QtWidgets.QPushButton("", self.centralWidget)
-        buttonBlack.setGeometry(500, 260, 120, 60)
-        buttonBlack.setFont(font)
-        buttonBlack.setStyleSheet("color: rgb(255, 255, 255);\n"
+        button_black = QtWidgets.QPushButton(self.centralWidget)
+        button_black.setGeometry(500, 260, 120, 60)
+        button_black.setFont(font)
+        button_black.setStyleSheet("color: rgb(255, 255, 255);\n"
                                   "border: 1px solid #FFFFFF;\n"
                                   "background-color: rgb(0, 0, 0);\n")
-        buttonBlack.clicked.connect(partial(self.onButtonAction, 48))
-        self.buttons.append(buttonRed)
+        button_black.clicked.connect(partial(self.onButtonAction, 48))
+        self.buttons.append(button_black)
 
         font.setPointSize(26)
         font.setBold(True)
         self.labelBalance = QtWidgets.QLabel(f"Баланс: {self.balance} руб.", self.centralWidget)
         self.labelBalance.setGeometry(20, 360, 400, 40)
         self.labelBalance.setFont(font)
-        self.labelBalance.setStyleSheet("color: rgb(255, 255, 255);\n")
+        self.labelBalance.setStyleSheet(colorWhite)
 
         font.setPointSize(28)
         self.labelWinLoss = QtWidgets.QLabel(self.centralWidget)
         self.labelWinLoss.setGeometry(700, 360, 320, 160)
         self.labelWinLoss.setFont(font)
-        self.labelWinLoss.setStyleSheet("color: rgb(255, 255, 255);\n")
+        self.labelWinLoss.setStyleSheet(colorWhite)
 
         font.setPointSize(20)
         self.buttonStartAgain = QtWidgets.QPushButton("Заново", self.centralWidget)
@@ -194,8 +190,8 @@ class MainWindow(QMainWindow):
         self.labelResultNumber = QtWidgets.QLabel(self.centralWidget)
         self.labelResultNumber.setGeometry(420, 370, 200, 200)
         self.labelResultNumber.setFont(font)
-        self.labelResultNumber.setAlignment(Qt.AlignCenter | Qt.AlignCenter)
-        self.labelResultNumber.setStyleSheet("color: rgb(255, 255, 255);\n")
+        self.labelResultNumber.setAlignment(Qt.AlignCenter)
+        self.labelResultNumber.setStyleSheet(colorWhite)
 
         self.buttonStartAgain.clicked.connect(self.onButtonStartAgain)
 
@@ -479,7 +475,7 @@ class MainWindow(QMainWindow):
         self.betDialog.exec_()
 
     def getBet(self):
-        msgBox = QMessageBox(QMessageBox.Information, "WARNING", "Ставка превышает баланс!")
+        msg_box = QMessageBox(QMessageBox.Information, "WARNING", "Ставка превышает баланс!")
         if self.betDialog.lineInputBet.text().isdigit():
             if float(self.betDialog.lineInputBet.text()) <= self.balance:
                 self.bet = int(self.betDialog.lineInputBet.text())
@@ -493,7 +489,7 @@ class MainWindow(QMainWindow):
                 self.processCasinoNumber()
             else:
                 self.betDialog.lineInputBet.clear()
-                msgBox.exec_()
+                msg_box.exec_()
 
         else:
             self.betDialog.lineInputBet.clear()
@@ -512,19 +508,23 @@ class MainWindow(QMainWindow):
             self.labelBalance.setText(f"Баланс: {self.balance} руб.")
         else:
             self.labelWinLoss.setStyleSheet("color: rgb(255, 40, 0);\n")
-            self.labelWinLoss.setText(f"Проигрыш")
+            self.labelWinLoss.setText("Проигрыш")
 
         self.timer.start(4000)
 
     def getCasinoNumber(self):
         for _ in range(40):
+            random.getrandbits(1)
             i = random.randint(0, 36)
+            random.random()
             self.checkNumberOnColor(i)
             time.sleep(0.1)
             self.labelResultNumber.setText(f"{i}")
             QApplication.processEvents()
 
+        random.getrandbits(1)
         self.casinoNumber = random.randint(0, 36)
+        random.random()
         self.checkNumberOnColor(self.casinoNumber)
         time.sleep(0.08)
         self.labelResultNumber.setText(f"{self.casinoNumber}")
