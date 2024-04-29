@@ -17,11 +17,11 @@ screen_height = 1000
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Platformer')
 
-# Define font
+# Определение шрифта
 font = pygame.font.SysFont('Bauhaus 93', 70)
 font_score = pygame.font.SysFont('Bauhaus 93', 30)
 
-# Define game variables
+# Определение игровых переменных
 tile_size = 50
 game_over = 0
 main_menu = True
@@ -29,18 +29,18 @@ level = 3
 max_levels = 7
 score = 0
 
-# Define colors
+# Определение цвета
 white = (255, 255, 255)
 blue = (0, 0, 255)
 
-# Load images
+# Загрузка изображения
 sun_img = pygame.image.load("../images/sun.png")
 bg_img = pygame.image.load("../images/sky.png")
 restart_img = pygame.image.load("../images/restart_btn.png")
 start_img = pygame.image.load("../images/start_btn.png")
 exit_img = pygame.image.load("../images/exit_btn.png")
 
-# Load sounds
+# Загрузка звуков
 pygame.mixer.music.load("../images/music.wav")
 pygame.mixer.music.play(-1, 0.0, 5000)
 coin_fx = pygame.mixer.Sound("../images/coin.wav")
@@ -56,7 +56,7 @@ def draw_text(text, font, text_col, x, y):
     screen.blit(img, (x, y))
 
 
-# Function to reset level
+# Функция сброса уровня
 def reset_level(level):
     player.reset(100, screen_height - 130)
     blob_group.empty()
@@ -65,13 +65,13 @@ def reset_level(level):
     lava_group.empty()
     exit_group.empty()
 
-    # Load level data and create world
+    # Загрузка данных уровня и создание мира
     if path.exists(f"../images/level{level}_data"):
         pickle_in = open(f"../images/level{level}_data", 'rb')
         world_data = pickle.load(pickle_in)
     world = World(world_data)
 
-    # Create dummy coin for score display
+    # Создание фиктивной монеты для отображения результатов
     score_coin = Coin(tile_size // 2, tile_size // 2)
     coin_group.add(score_coin)
     return world
@@ -88,10 +88,10 @@ class Button():
     def draw(self):
         action = False
 
-        # Get mouse position
+        # Получаем положение мыши
         pos = pygame.mouse.get_pos()
 
-        # Check for mouse hover and click
+        # Проверяем правильность наведения курсора мыши и щелкаем
         if self.rect.collidepoint(pos):
             if pygame.mouse.get_pressed()[0] == 1 and not self.clicked:
                 action = True
@@ -100,7 +100,7 @@ class Button():
         if pygame.mouse.get_pressed()[0] == 0:
             self.clicked = False
 
-        # Draw button
+        # рисуем кнопку
         screen.blit(self.image, self.rect)
 
         return action
@@ -110,80 +110,93 @@ class Player():
     def __init__(self, x, y):
         self.reset(x, y)
 
+    def handle_input(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_SPACE] and not self.jumped and not self.in_air:
+            jump_fx.play()
+            self.vel_y = -15
+            self.jumped = True
+        if not keys[pygame.K_SPACE]:
+            self.jumped = False
+        if keys[pygame.K_LEFT]:
+            self.dx -= 5
+            self.counter += 1
+            self.direction = -1
+        if keys[pygame.K_RIGHT]:
+            self.dx += 5
+            self.counter += 1
+            self.direction = 1
+        if not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
+            self.counter = 0
+            self.index = 0
+            self.image = self.images_right[self.index] if self.direction == 1 else self.images_left[self.index]
+
+    def handle_animation(self):
+        walk_cooldown = 5
+        if self.counter > walk_cooldown:
+            self.counter = 0
+            self.index += 1
+            if self.index >= len(self.images_right):
+                self.index = 0
+            self.image = self.images_right[self.index] if self.direction == 1 else self.images_left[self.index]
+
+    def handle_movement(self):
+        self.vel_y += 1
+        if self.vel_y > 10:
+            self.vel_y = 10
+        self.dy += self.vel_y
+        self.in_air = True
+
+        # Проверка, нет ли столкновений со всеми плитками в мире
+        for tile in world.tile_list:
+            if tile[1].colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
+                self.dx = 0
+            if tile[1].colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
+                # Проверка, не падает ли игрок вниз
+                if self.vel_y < 0:
+                    self.dy = tile[1].bottom - self.rect.top
+                    self.vel_y = 0
+                # Проверка, прыгает ли игрок вверх
+                elif self.vel_y >= 0:
+                    self.dy = tile[1].top - self.rect.bottom
+                    self.vel_y = 0
+                    self.in_air = False
+
+        # Проверка, нет ли столкновений с платформами
+        for platform in platform_group:
+            if platform.rect.colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
+                self.dx = 0
+            if platform.rect.colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
+                # Проверка, не падает ли игрок вниз
+                if self.vel_y < 0:
+                    self.dy = platform.rect.bottom - self.rect.top
+                    self.vel_y = 0
+                # Проверка, прыгает ли игрок вверх
+                elif self.vel_y >= 0:
+                    self.dy = platform.rect.top - self.rect.bottom
+                    self.vel_y = 0
+                    self.in_air = False
+                    # Обновление позиции игрока с помощью платформы
+                    self.rect.x += platform.move_direction * platform.move_x
+                    self.rect.y += platform.move_direction * platform.move_y
+
     def update(self, game_over):
         if game_over == 0:
-            dx, dy = 0, 0
-            walk_cooldown = 5
-            col_thresh = 20
+            self.dx, self.dy = 0, 0
+            self.handle_input()
+            self.handle_animation()
+            self.handle_movement()
 
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_SPACE] and not self.jumped and not self.in_air:
-                jump_fx.play()
-                self.vel_y = -15
-                self.jumped = True
-            if not keys[pygame.K_SPACE]:
-                self.jumped = False
-            if keys[pygame.K_LEFT]:
-                dx -= 5
-                self.counter += 1
-                self.direction = -1
-            if keys[pygame.K_RIGHT]:
-                dx += 5
-                self.counter += 1
-                self.direction = 1
-            if not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
-                self.counter = 0
-                self.index = 0
-                self.image = self.images_right[self.index] if self.direction == 1 else self.images_left[self.index]
+            self.rect.x += self.dx
+            self.rect.y += self.dy
 
-            if self.counter > walk_cooldown:
-                self.counter = 0
-                self.index += 1
-                if self.index >= len(self.images_right):
-                    self.index = 0
-                self.image = self.images_right[self.index] if self.direction == 1 else self.images_left[self.index]
+            # Проверка столкновения с противниками
+            if pygame.sprite.spritecollide(self, blob_group, False):
+                game_over = -1  # Игрок умер
 
-            self.vel_y += 1
-            if self.vel_y > 10:
-                self.vel_y = 10
-            dy += self.vel_y
-
-            self.in_air = True
-            for tile in world.tile_list:
-                if tile[1].colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
-                    dx = 0
-                if tile[1].colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
-                    if self.vel_y < 0:
-                        dy = tile[1].bottom - self.rect.top
-                        self.vel_y = 0
-                    elif self.vel_y >= 0:
-                        dy = tile[1].top - self.rect.bottom
-                        self.vel_y = 0
-                        self.in_air = False
-
-            if pygame.sprite.spritecollide(self, blob_group, False) or pygame.sprite.spritecollide(self, lava_group, False):
-                game_over = -1
-                game_over_fx.play()
-
-            if pygame.sprite.spritecollide(self, exit_group, False):
-                game_over = 1
-
-            for platform in platform_group:
-                if platform.rect.colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
-                    dx = 0
-                if platform.rect.colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
-                    if abs((self.rect.top + dy) - platform.rect.bottom) < col_thresh:
-                        self.vel_y = 0
-                        dy = platform.rect.bottom - self.rect.top
-                    elif abs((self.rect.bottom + dy) - platform.rect.top) < col_thresh:
-                        self.rect.bottom = platform.rect.top - 1
-                        self.in_air = False
-                        dy = 0
-                    if platform.move_x != 0:
-                        self.rect.x += platform.move_direction
-
-            self.rect.x += dx
-            self.rect.y += dy
+            # Проверка столкновения с лавой
+            if pygame.sprite.spritecollide(self, lava_group, False):
+                game_over = -1  # Игрок умер
 
         elif game_over == -1:
             self.image = self.dead_image
@@ -419,6 +432,11 @@ while run:
                 world = reset_level(level)
                 game_over = 0
                 score = 0
+
+        # Если игрок приближается к порталу
+        if pygame.sprite.spritecollide(player, exit_group, False):
+            # Переход на следующий уровень
+            game_over = 1
 
         # Если игрок завершил уровень
         if game_over == 1:
