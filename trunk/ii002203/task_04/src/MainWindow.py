@@ -139,9 +139,9 @@ class MainWindow(QMainWindow):
         button_names = (["1 to 18", "ЧЁТНОЕ", "НЕЧЁТНОЕ", "19 to 36"])
         temp = len(self.buttons)
         font.setPointSize(16)
-        for i in range(len(button_positions)):
+        for i, position in enumerate(button_positions):
             button = QtWidgets.QPushButton(button_names[i], self.centralWidget)
-            button.setGeometry(button_positions[i][0], button_positions[i][1], 120, 60)
+            button.setGeometry(position[0], position[1], 120, 60)
             button.setFont(font)
             button.setStyleSheet(color_white_and_border)
             button.clicked.connect(partial(self.onButtonAction, (i + temp)))
