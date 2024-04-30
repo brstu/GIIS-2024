@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import KEYDOWN, K_SPACE, K_LEFT, K_RIGHT
+from pygame.locals import K_SPACE, K_LEFT, K_RIGHT
 from pygame import mixer
 import pickle
 from os import path
@@ -399,7 +399,7 @@ while run:
     screen.blit(bg_img, (0, 0))
     screen.blit(sun_img, (100, 100))
 
-    if main_menu == True:
+    if main_menu:
         if exit_button.draw():
             run = False
         if start_button.draw():
