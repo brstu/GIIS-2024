@@ -112,21 +112,21 @@ class Player():
 
     def handle_input(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and not self.jumped and not self.in_air:
+        if keys[pygame.locals.K_SPACE] and not self.jumped and not self.in_air:
             jump_fx.play()
             self.vel_y = -15
             self.jumped = True
-        if not keys[pygame.K_SPACE]:
+        if not keys[pygame.locals.K_SPACE]:
             self.jumped = False
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.locals.K_LEFT]:
             self.dx -= 5
             self.counter += 1
             self.direction = -1
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.locals.K_RIGHT]:
             self.dx += 5
             self.counter += 1
             self.direction = 1
-        if not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
+        if not keys[pygame.locals.K_LEFT] and not keys[pygame.locals.K_RIGHT]:
             self.counter = 0
             self.index = 0
             self.image = self.images_right[self.index] if self.direction == 1 else self.images_left[self.index]
@@ -416,7 +416,7 @@ while run:
                 score += 1
                 coin_fx.play()
             draw_text('X ' + str(score), font_score, white, tile_size - 10, 10)
-        
+
         blob_group.draw(screen)
         platform_group.draw(screen)
         lava_group.draw(screen)
