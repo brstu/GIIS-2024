@@ -140,45 +140,45 @@ class Player():
                 self.index = 0
             self.image = self.images_right[self.index] if self.direction == 1 else self.images_left[self.index]
 
-    def handle_movement(self):
+    def handle_collisions_with_tiles(self):
+        for tile in world.tile_list:
+            if tile[1].colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
+                self.dx = 0
+            if tile[1].colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
+                if self.vel_y < 0:
+                    self.dy = tile[1].bottom - self.rect.top
+                    self.vel_y = 0
+                elif self.vel_y >= 0:
+                    self.dy = tile[1].top - self.rect.bottom
+                    self.vel_y = 0
+                    self.in_air = False
+
+    def handle_collisions_with_platforms(self):
+        for platform in platform_group:
+            if platform.rect.colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
+                self.dx = 0
+            if platform.rect.colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
+                if self.vel_y < 0:
+                    self.dy = platform.rect.bottom - self.rect.top
+                    self.vel_y = 0
+                elif self.vel_y >= 0:
+                    self.dy = platform.rect.top - self.rect.bottom
+                    self.vel_y = 0
+                    self.in_air = False
+                    self.rect.x += platform.move_direction * platform.move_x
+                    self.rect.y += platform.move_direction * platform.move_y
+
+    def handle_vertical_movement(self):
         self.vel_y += 1
         if self.vel_y > 10:
             self.vel_y = 10
         self.dy += self.vel_y
         self.in_air = True
 
-        # Проверка, нет ли столкновений со всеми плитками в мире
-        for tile in world.tile_list:
-            if tile[1].colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
-                self.dx = 0
-            if tile[1].colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
-                # Проверка, не падает ли игрок вниз
-                if self.vel_y < 0:
-                    self.dy = tile[1].bottom - self.rect.top
-                    self.vel_y = 0
-                # Проверка, прыгает ли игрок вверх
-                elif self.vel_y >= 0:
-                    self.dy = tile[1].top - self.rect.bottom
-                    self.vel_y = 0
-                    self.in_air = False
-
-        # Проверка, нет ли столкновений с платформами
-        for platform in platform_group:
-            if platform.rect.colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
-                self.dx = 0
-            if platform.rect.colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
-                # Проверка, не падает ли игрок вниз
-                if self.vel_y < 0:
-                    self.dy = platform.rect.bottom - self.rect.top
-                    self.vel_y = 0
-                # Проверка, прыгает ли игрок вверх
-                elif self.vel_y >= 0:
-                    self.dy = platform.rect.top - self.rect.bottom
-                    self.vel_y = 0
-                    self.in_air = False
-                    # Обновление позиции игрока с помощью платформы
-                    self.rect.x += platform.move_direction * platform.move_x
-                    self.rect.y += platform.move_direction * platform.move_y
+    def handle_movement(self):
+        self.handle_vertical_movement()
+        self.handle_collisions_with_tiles()
+        self.handle_collisions_with_platforms()
 
     def update(self, game_over):
         if game_over == 0:
