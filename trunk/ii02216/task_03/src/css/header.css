@@ -1,0 +1,94 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    color: #333;
+}
+
+#header{
+    background-color: #fff;
+    height: 55px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0 0 0 / 10%);
+}
+
+#icon-menu{
+    margin-left:12%;
+    padding-top: 10px;
+    float:left;
+}
+
+#menu{
+    margin-left: 20px;
+    line-height: 55px;
+    font-weight:bold;
+    float: left;
+}
+
+#menu a{
+    text-decoration: none;
+    color: gray;
+    font-size: 13px;
+    font-weight: lighter;
+}
+
+#menu a:hover{
+    color:#333;
+}
+
+#header-menu{
+    line-height: 55px;
+    margin-left:6%;
+    float: left;
+}
+
+#header-menu li{
+    list-style: none;
+    display:inline-block;
+}
+
+#header-menu a{
+    color: black;
+    font-size: 15px;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+#header-menu a:hover{
+    color:#ff6642;
+}
+
+#right-menu{
+    margin-left: 16.5%;
+    line-height: 55px;
+    float:left;
+}
+
+#right-menu a{
+    color: #ff6642;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#right-menu a:hover{
+    color:#333;
+}
+
+.icon{
+    margin-top: 9px;
+    width: 30px;
+    height: 30px;
+}
+
+.view-icon{
+    margin-bottom: 12px;
+    width: 25px;
+    height: auto;
+}
+
+
+
