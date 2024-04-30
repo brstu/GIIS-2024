@@ -92,7 +92,7 @@ class App:
     def apply_filter(self):
         if self.image is None:
             return
-        
+
         self.progress_bar.config(text='')
         self.progress_bar.update()
 
