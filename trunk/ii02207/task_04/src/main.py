@@ -1,7 +1,4 @@
 import pygame
-from pygame.locals import K_SPACE
-from pygame.locals import K_LEFT
-from pygame.locals import K_RIGHT
 from pygame import mixer
 import pickle
 from os import path
@@ -114,21 +111,21 @@ class Player():
 
     def handle_input(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.locals.K_SPACE] and not self.jumped and not self.in_air:
+        if keys[pygame.K_SPACE] and not self.jumped and not self.in_air:
             jump_fx.play()
             self.vel_y = -15
             self.jumped = True
-        if not keys[pygame.locals.K_SPACE]:
+        if not keys[pygame.K_SPACE]:
             self.jumped = False
-        if keys[pygame.locals.K_LEFT]:
+        if keys[pygame.K_LEFT]:
             self.dx -= 5
             self.counter += 1
             self.direction = -1
-        if keys[pygame.locals.K_RIGHT]:
+        if keys[pygame.K_RIGHT]:
             self.dx += 5
             self.counter += 1
             self.direction = 1
-        if not keys[pygame.locals.K_LEFT] and not keys[pygame.locals.K_RIGHT]:
+        if not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
             self.counter = 0
             self.index = 0
             self.image = self.images_right[self.index] if self.direction == 1 else self.images_left[self.index]
