@@ -1,4 +1,3 @@
-import cv2
 import numpy as np
 
 
@@ -36,7 +35,7 @@ def median_filter(image, window_size: int, center_x: int, center_y: int, progres
             ] + [
                 filtered_image[i][j + x] for x in range(-center_x+1, -center_x+1+window_size) if x != 0
             ]
-            
+
             window.sort()
             median_value = window[(len(window)-1)//2+1]
             filtered_image[i, j] = median_value
