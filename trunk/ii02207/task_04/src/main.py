@@ -1,5 +1,7 @@
 import pygame
-from pygame.locals import K_SPACE, K_LEFT, K_RIGHT
+from pygame.locals import K_SPACE
+from pygame.locals import K_LEFT
+from pygame.locals import K_RIGHT
 from pygame import mixer
 import pickle
 from os import path
