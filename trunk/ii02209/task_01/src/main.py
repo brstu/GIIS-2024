@@ -68,7 +68,7 @@ class App:
         self.progress_bar.pack(pady=5)
 
     def load_image(self):
-        filename = filedialog.askopenfilename(initialdir=r"C:\Users\litvi\Documents\Studing\GIIS\Lab1\img", title="Select file",
+        filename = filedialog.askopenfilename(initialdir=r"Studing\GIIS\Lab1\img", title="Select file",
                                               filetypes=(("JPEG files", "*.jpg"), ("PNG files", "*.png"),
                                                          ("All files", "*.*")))
         if filename:
