@@ -37,7 +37,7 @@ obstacle_speed = 5.5 # было 5
 obstacle_images = []
 
 # Папка с изображениями препятствий
-obstacle_images_folder = 'C:/Users/dende/Desktop/task_04_05/enemy_images'
+obstacle_images_folder = '../images/enemy_images'
 
 # Загрузка и масштабирование всех изображений препятствий
 for filename in os.listdir(obstacle_images_folder):
@@ -45,7 +45,6 @@ for filename in os.listdir(obstacle_images_folder):
     image = pygame.image.load(image_path)
     scaled_image = pygame.transform.scale(image, (obstacle_width, obstacle_height))
     obstacle_images.append(scaled_image)
-
 
 
 # Переменная для счета
@@ -56,7 +55,7 @@ num_skin =0
 font = pygame.font.SysFont(None, 30)
 
 # Загрузка и масштабирование всех изображений капибары
-capybara_images_folder = 'C:/Users/dende/Desktop/task_04_05/capybara_images'
+capybara_images_folder = '../images/capybara_images'
 target_size = (145, 145)  # Целевой размер для всех изображений (ширина, высота)
 capybara_images = []
 for filename in os.listdir(capybara_images_folder):
