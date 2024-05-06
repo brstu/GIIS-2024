@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+ORIGINAL_IMAGE_TEXT = 'Original Image'
 
 def add_noise(image, intensity=0.02, seed=None):
     noisy_image = np.copy(image)
@@ -17,35 +18,13 @@ def add_noise(image, intensity=0.02, seed=None):
 
     return noisy_image
 
-
 if __name__ == '__main__':
     image = cv2.imread(r'D:\PyCharm project\GIIS\lab1\img\photo.jpg', cv2.IMREAD_GRAYSCALE)
     noisy_image = add_noise(image, intensity=0.05, seed=42)
 
-    cv2.imshow('Original Image', image)
+    cv2.imshow(ORIGINAL_IMAGE_TEXT, image)
     cv2.imshow('Noisy Image', noisy_image)
     cv2.imwrite(r'D:\PyCharm project\GIIS\lab1\img\noise.jpg', noisy_image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-if __name__ == '__main__':
-    image = cv2.imread(r'D:\PyCharm project\GIIS\lab1\img\photo.jpg', cv2.IMREAD_GRAYSCALE)
-
-    noisy_image = add_noise(image, intensity=0.05)
-
-    cv2.imshow('Original Image', image)
-    cv2.imshow('Noisy Image', noisy_image)
-    cv2.imwrite(r'D:\PyCharm project\GIIS\lab1\img\noise.jpg', noisy_image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-if __name__ == '__main__':
-    image = cv2.imread(r'D:\PyCharm project\GIIS\lab1\img\noise.jpg', cv2.IMREAD_GRAYSCALE)
-
-    window_size = 5
-    center_x = 3
-    center_y = 2
-
-    cv2.imshow('Original Image', image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
