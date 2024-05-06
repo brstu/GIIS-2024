@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#main{
+    margin-top: 7px;
+    background-color: #f7f7f7;
+    height: 1550px;
+    overflow: hidden;
+}
+
+.home-selection{
+    padding-top: 42px;
+    width: 58%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-page-title{
+    color: #333;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.home-search-bar{
+    position: relative;
+    padding-top: 30px;
+}
+
+.search {
+    border: 1px solid #ff6642;
+    border-radius: 5px;
+    padding-left: 15px;
+    width: 98%; 
+    height: 60px;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+  .search:focus{
+    outline: #ff6642;
+  }
+  
+.home-selection-blog{
+    padding-top: 42px;
+    width: 58%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-selection-head{
+    display: flex;
+    margin-top: 15px;
+}
+
+.title-icon{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background: white;
+}
+
+.title-content{ 
+    padding-left: 9px;
+    padding-top: 8px;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.title-action{
+    padding: 8px;
+    margin-left: auto; 
+}
+
+.title-action a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    color:#ff6642;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.title-action a:hover{
+    color:#333;
+}
+
+.home-selection-body{
+    display: inline-flex;
+    margin-top: 20px;
+}
+
+.blog-entries{
+    display: inline-flex;
+}
+
+.blog-entry{
+    position: relative;
+    overflow: hidden; 
+    margin-right: 15px;
+    height: 270px;
+}
+
+.blog-entry:hover .blog-entry-details .blog-entry-title {
+    color:#ff6642;
+}
+
+.blog-entry-media{
+    position: relative;
+    color:#333;
+    height: 270px;
+    width: 285px;
+}
+
+.overlay{
+    position: absolute; 
+    width: 100%;
+    height: 50%;
+    background-color: rgba(219 241 113 / 50%);
+    border-radius: 5px 5px 0 0;
+}
+
+.blog-entry-media img{
+    background-color: #333;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-entry-details{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 50%;
+    border-radius: 0 0 5px 5px;
+    background-color: white;
+}
+
+.blog-entry-author{
+    padding-top: 10px;
+    padding-left: 15px;
+    color: gray;
+    font-size: 12px;
+}
+
+.blog-entry-title{
+    position:absolute;
+    padding: 15px;
+    padding-top: 10px;
+    color:#333;
+    font-size: 15px;
+}
+
+.blog-entry-metainfo{
+    display: inline-flex;
+    position: absolute;
+    top:75%;
+    left: 15px;
+}
+
+.blog-entry-metainfo-viewers{
+    margin-left: 7px;
+    margin-top: 6px;
+    color:gray;
+    font-size: 13px;
+}
+
+.home-title-item{
+    display: inline-flex;
+    width: 100%;
+}
+
+.home-tile-outline{
+    width: 48%;
+    border: 1px solid #ff6642;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 40px;
+}
+
+.home-tile-outline:last-child{
+    margin-right: 1px;
+}
+
+.home-tile-header{
+    display: inline-flex;
+    width: 100%;
+    height: 80px;
+}
+
+.tile-icon-white{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-left: 30px;
+    text-align: center;
+    background: white;
+}
+
+.tile-icon{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-left: 30px;
+    text-align: center;
+    background: #fff0e0;
+}
+
+.tile-content{
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.tile-action{
+    margin-top: 35px;
+    margin-right: 30px;
+    margin-left: auto;
+}
+
+.home-tile-body{
+    height: 40px;
+    Line-height: 25px;
+    margin: 10px 20px 30px 30px;
+    font-size: 15px;
+    text-decoration:none;
+    color:#333
+}
+
+.home-tile-fill .home-tile-body{
+    height: 70px;
+}
+
+.home-tile-fill{
+    width: 48%;
+    height: 250px;
+    background: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 40px;
+}
+
+.home-tile-fill:last-child{
+    margin-right: 1px;
+}
+
+.home-tile-footer{
+    border-top: 1px solid rgba(231 225 225 / 100%);
+    width: 100%;
+}
+
+.home-tile-footer-action{
+    margin-top: 20px;
+    margin-left: 30px;
+    color: #ff6642;
+    font-weight: bold;
+}
+
+.home-tile-fill:hover .home-tile-footer-action{
+    color:#333;
+}

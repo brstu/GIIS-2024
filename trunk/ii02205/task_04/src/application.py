@@ -215,7 +215,7 @@ class Game:
                     self.game_over()
 
 
-class App:
+class  App:
     is_running: bool = True
     clock: pygame.time.Clock = pygame.time.Clock()
     game: Game = Game()
