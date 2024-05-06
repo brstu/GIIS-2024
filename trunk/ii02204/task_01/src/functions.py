@@ -3,6 +3,7 @@ import numpy as np
 
 ORIGINAL_IMAGE_TEXT = 'Original Image'
 
+
 def add_noise(image, intensity=0.02, seed=None):
     noisy_image = np.copy(image)
     rng = np.random.default_rng(seed)
@@ -18,6 +19,7 @@ def add_noise(image, intensity=0.02, seed=None):
 
     return noisy_image
 
+
 if __name__ == '__main__':
     image = cv2.imread(r'D:\PyCharm project\GIIS\lab1\img\photo.jpg', cv2.IMREAD_GRAYSCALE)
     noisy_image = add_noise(image, intensity=0.05, seed=42)
@@ -27,4 +29,3 @@ if __name__ == '__main__':
     cv2.imwrite(r'D:\PyCharm project\GIIS\lab1\img\noise.jpg', noisy_image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
