@@ -1,7 +1,6 @@
 import sys
 import copy
 import pygame
-import random
 import secrets
 
 
