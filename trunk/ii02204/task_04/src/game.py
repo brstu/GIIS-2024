@@ -183,53 +183,64 @@ def show_win_screen(screen, font):
                 return
 
 
-def main():
-    # Инициализация окна и объекта шрифта.
-    screen, font = init()
-    # Отображение стартового экрана
+def handle_game_events():
+    """Handle events during the game."""
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            return pygame.mouse.get_pos()
+    return None
+
+
+def draw_game_screen(screen, font, board_copy):
+    """Draw the game screen."""
+    draw_board(screen, font, board_copy)
+    pygame.display.flip()
+
+
+def handle_game_over_events():
+    """Handle events after the game is over."""
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            return
+
+
+def handle_game_restart(screen, font):
+    """Handle events to restart the game."""
+    screen.fill(pygame.Color(255, 255, 255))
     start_screen(screen, font)
-    # Создание и перемешивание игрового поля.
     board, board_copy = create_board()
-    # Проверка на решаемость
+    if not is_solvable(board_copy):
+        board, board_copy = create_board()
+    return board, board_copy, False
+
+
+def main():
+    screen, font = init()
+    start_screen(screen, font)
+    board, board_copy = create_board()
     if not is_solvable(board_copy):
         board, board_copy = create_board()
 
-    # Переменная состояния для отслеживания завершения игры
     game_over = False
 
-    # Главный игровой цикл
     while True:
         if not game_over:
-            # Обработка событий.
-            pos = handle_events()
-            # Отрисовка игрового поля на экране.
-            draw_board(screen, font, board_copy)
-            # Обновление игрового поля при кликах пользователя.
+            pos = handle_game_events()
+            draw_game_screen(screen, font, board_copy)
             update_board(board_copy, pos)
-            # Обновление экрана.
-            pygame.display.flip()
 
-            # Проверка на победу.
             if check_win(board, board_copy):
                 print("Вы выиграли!")
                 game_over = True
-                # Отображение окна победы.
                 show_win_screen(screen, font)
         else:
-            # Ожидание нажатия любой кнопки для перезапуска игры.
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    # Очистка экрана
-                    screen.fill(pygame.Color(255, 255, 255))
-                    # Отображение стартового экрана
-                    start_screen(screen, font)
-                    # Создание и перемешивание игрового поля
-                    board, board_copy = create_board()
-                    if not is_solvable(board_copy):
-                        # Повторное перемешивание игрового поля
-                        board, board_copy = create_board()
-                    game_over = False
+            handle_game_over_events()
+            board, board_copy, game_over = handle_game_restart(screen, font)
 
 
 if __name__ == "__main__":
-    main()  # Запуск основной функции игры.
+    main()
