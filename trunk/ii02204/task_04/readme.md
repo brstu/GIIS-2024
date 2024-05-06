@@ -14,11 +14,7 @@ main.py (отвечает за запуск приложения приложе�
 import sys
 import copy
 import pygame
-import random
-<<<<<<< HEAD
 import secrets
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 
 
 def init():
@@ -34,10 +30,7 @@ def init():
     # Создание окна и объекта шрифта.
     return pygame.display.set_mode((600, 600)), pygame.font.SysFont('Consolas', 36)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def start_screen(screen, font):
     # Отрисовка стартового экрана.
     screen.fill(pygame.Color(255, 255, 255))
@@ -45,12 +38,8 @@ def start_screen(screen, font):
     left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2, screen.get_height() / 4 - fontsurf.get_height() / 2)
     screen.blit(fontsurf, (left, top))
     fontsurf = font.render("Нажмите любую кнопку", True, pygame.Color(0, 0, 0))  # Изменение текста
-<<<<<<< HEAD
     left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2,
                  screen.get_height() / 2 - fontsurf.get_height())  # Изменение расположения
-=======
-    left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2, screen.get_height() / 2 - fontsurf.get_height())  # Изменение расположения
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
     screen.blit(fontsurf, (left, top))
     fontsurf = font.render("для начала игры", True, pygame.Color(0, 0, 0))  # Изменение текста
     left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2, screen.get_height() / 2)  # Изменение расположения
@@ -66,10 +55,7 @@ def start_screen(screen, font):
                 screen.fill('black')
                 return
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def create_board():
     # Создать решенное поле.
     board = [
@@ -81,25 +67,15 @@ def create_board():
 
     # Выполнить серию случайных допустимых ходов для перемешивания фишек.
     board_copy = copy.deepcopy(board)
-<<<<<<< HEAD
     for _ in range(secrets.randbelow(51) + 50):
         x, y = find_empty_tile(board_copy)
         valid_moves = get_valid_moves(x, y)
         random_move = secrets.choice(valid_moves)
-=======
-    for _ in range(random.randint(50, 100)):  # Выполнить случайное количество ходов
-        x, y = find_empty_tile(board_copy)
-        valid_moves = get_valid_moves(x, y)
-        random_move = random.choice(valid_moves)
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
         swap_tiles(board_copy, (x, y), random_move)
 
     return board, board_copy
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def find_empty_tile(board):
     # Найти пустую клетку.
     for i in range(4):
@@ -107,10 +83,7 @@ def find_empty_tile(board):
             if board[i][j] == 0:
                 return i, j
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def get_valid_moves(x, y):
     # Получить допустимые ходы для пустой клетки.
     moves = []
@@ -124,37 +97,24 @@ def get_valid_moves(x, y):
         moves.append((x, y + 1))  # Вправо
     return moves
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def swap_tiles(board, pos1, pos2):
     # Поменять местами фишки на заданных позициях.
     board[pos1[0]][pos1[1]], board[pos2[0]][pos2[1]] = board[pos2[0]][pos2[1]], board[pos1[0]][pos1[1]]
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def is_solvable(board):
     # Преобразование двумерного списка в одномерный
     flat_board = [elem for row in board for elem in row]
 
     # Подсчет количества инверсий
-<<<<<<< HEAD
     inversions = sum(
         1 for i in range(len(flat_board)) for j in range(i + 1, len(flat_board)) if flat_board[i] > flat_board[j])
-=======
-    inversions = sum(1 for i in range(len(flat_board)) for j in range(i + 1, len(flat_board)) if flat_board[i] > flat_board[j])
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
     print("Количество инверсий:", inversions)
     # Проверка на четность количества инверсий
     return inversions % 2 == 0
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def handle_events():
     # Обработка событий (нажатие на кнопку "выход" и клик мышью).
     for event in pygame.event.get():
@@ -192,7 +152,6 @@ def update_board(board, pos):
         x, y = pos
         x, y = (x - 10) // 150, (y - 10) // 150  # Вычисление координат фишки, на которую кликнул пользователь.
         current_piece = board[y][x]  # Получение цифры на фишке.
-<<<<<<< HEAD
         if x > 0 and board[y][x - 1] == 0:
             board[y][x - 1] = current_piece
             board[y][x] = 0
@@ -208,30 +167,11 @@ def update_board(board, pos):
 
 
 def check_win(board, board_copy):
-=======
-        if x > 0 and board[y][x-1] == 0:
-            board[y][x-1] = current_piece
-            board[y][x] = 0
-        if x < 3 and board[y][x+1] == 0:
-            board[y][x+1] = current_piece
-            board[y][x] = 0
-        if y > 0 and board[y-1][x] == 0:
-            board[y-1][x] = current_piece
-            board[y][x] = 0
-        if y < 3 and board[y+1][x] == 0:
-            board[y+1][x] = current_piece
-            board[y][x] = 0  # Обновление игрового поля.
-
-def check_win(board,board_copy):
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
     # Проверка, выиграл ли пользователь.
     if board == board_copy:
         return True
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 def show_win_screen(screen, font):
     # Отображение окна победы и кнопки для перезапуска игры.
     screen.fill(pygame.Color(255, 255, 255))
@@ -239,12 +179,8 @@ def show_win_screen(screen, font):
     left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2, screen.get_height() / 4 - fontsurf.get_height() / 2)
     screen.blit(fontsurf, (left, top))
     fontsurf = font.render("Нажмите любую кнопку", True, pygame.Color(0, 0, 0))  # Изменение текста
-<<<<<<< HEAD
     left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2,
                  screen.get_height() / 2 - fontsurf.get_height())  # Изменение расположения
-=======
-    left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2, screen.get_height() / 2 - fontsurf.get_height())  # Изменение расположения
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
     screen.blit(fontsurf, (left, top + 30))  # Подвинули текст немного ниже
     fontsurf = font.render("для перезапуска игры", True, pygame.Color(0, 0, 0))  # Изменение текста
     left, top = (screen.get_width() / 2 - fontsurf.get_width() / 2, screen.get_height() / 2)  # Изменение расположения
@@ -260,96 +196,68 @@ def show_win_screen(screen, font):
                 return
 
 
-<<<<<<< HEAD
-def main():
-    # Инициализация окна и объекта шрифта.
-    screen, font = init()
-    # Отображение стартового экрана
+def handle_game_events():
+    """Handle events during the game."""
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            return pygame.mouse.get_pos()
+    return None
+
+
+def draw_game_screen(screen, font, board_copy):
+    """Draw the game screen."""
+    draw_board(screen, font, board_copy)
+    pygame.display.flip()
+
+
+def handle_game_over_events():
+    """Handle events after the game is over."""
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            return
+
+
+def handle_game_restart(screen, font):
+    """Handle events to restart the game."""
+    screen.fill(pygame.Color(255, 255, 255))
     start_screen(screen, font)
-    # Создание и перемешивание игрового поля.
     board, board_copy = create_board()
-    # Проверка на решаемость
+    if not is_solvable(board_copy):
+        board, board_copy = create_board()
+    return board, board_copy, False
+
+
+def main():
+    screen, font = init()
+    start_screen(screen, font)
+    board, board_copy = create_board()
     if not is_solvable(board_copy):
         board, board_copy = create_board()
 
-    # Переменная состояния для отслеживания завершения игры
     game_over = False
 
-    # Главный игровой цикл
     while True:
         if not game_over:
-            # Обработка событий.
-            pos = handle_events()
-            # Отрисовка игрового поля на экране.
-            draw_board(screen, font, board_copy)
-            # Обновление игрового поля при кликах пользователя.
+            pos = handle_game_events()
+            draw_game_screen(screen, font, board_copy)
             update_board(board_copy, pos)
-            # Обновление экрана.
-            pygame.display.flip()
 
-            # Проверка на победу.
             if check_win(board, board_copy):
                 print("Вы выиграли!")
                 game_over = True
-                # Отображение окна победы.
                 show_win_screen(screen, font)
         else:
-            # Ожидание нажатия любой кнопки для перезапуска игры.
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    # Очистка экрана
-                    screen.fill(pygame.Color(255, 255, 255))
-                    # Отображение стартового экрана
-                    start_screen(screen, font)
-                    # Создание и перемешивание игрового поля
-                    board, board_copy = create_board()
-                    if not is_solvable(board_copy):
-                        # Повторное перемешивание игрового поля
-                        board, board_copy = create_board()
-                    game_over = False
+            handle_game_over_events()
+            board, board_copy, game_over = handle_game_restart(screen, font)
 
-=======
-
-def main():
-    # Основная функция игры.
-    screen, font = init()  # Инициализация окна и объекта шрифта.
-    start_screen(screen, font)
-    board, board_copy = create_board()  # Создание и перемешивание игрового поля.
-    if not is_solvable(board_copy):
-        board, board_copy = create_board()  # Создание и перемешивание игрового поля.
-
-    game_over = False  # Переменная состояния для отслеживания завершения игры
-
-    while True:
-        if not game_over:  # Проверка, не закончилась ли игра
-            pos = handle_events()  # Обработка событий.
-            draw_board(screen, font, board_copy)  # Отрисовка игрового поля на экране.
-            update_board(board_copy, pos)  # Обновление игрового поля при кликах пользователя.
-            pygame.display.flip()  # Обновление экрана.
-
-            if check_win(board, board_copy):  # Проверка на победу.
-                print("Вы выиграли!")
-                game_over = True  # Установка переменной состояния в True
-                show_win_screen(screen, font)  # Отображение окна победы.
-        else:
-            # Цикл ожидания нажатия любой кнопки для перезапуска игры.
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    screen.fill(pygame.Color(255, 255, 255))  # Очистка экрана
-                    start_screen(screen, font)  # Отображение стартового экрана
-                    board, board_copy = create_board()  # Создание и перемешивание игрового поля
-                    if not is_solvable(board_copy):
-                        board, board_copy = create_board()  # Повторное перемешивание игрового поля
-                    game_over = False  # Сброс переменной состояния
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 
 if __name__ == "__main__":
-    main()  # Запуск основной функции игры.
+    main()
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 89de91dc8ea97bf6e61fcd4c01dbe581f07f997b
 ```
 
 ## Результаты работы
