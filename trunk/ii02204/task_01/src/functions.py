@@ -4,17 +4,17 @@ import numpy as np
 
 def add_noise(image, intensity=0.02):
     noisy_image = np.copy(image)
+    rng = np.random.default_rng()
 
     num_salt = np.ceil(intensity * image.size * 0.5)
     num_pepper = np.ceil(intensity * image.size * 0.5)
 
-    salt_coords = [np.random.randint(0, i - 1, int(num_salt))
-                   for i in image.shape]
+    salt_coords = [rng.integers(0, i - 1, int(num_salt)) for i in image.shape]
     noisy_image[salt_coords[0], salt_coords[1]] = 255
 
-    pepper_coords = [np.random.randint(
-        0, i - 1, int(num_pepper)) for i in image.shape]
+    pepper_coords = [rng.integers(0, i - 1, int(num_pepper)) for i in image.shape]
     noisy_image[pepper_coords[0], pepper_coords[1]] = 0
+
     return noisy_image
 
 
