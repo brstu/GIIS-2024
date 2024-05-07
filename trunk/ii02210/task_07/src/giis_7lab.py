@@ -28,7 +28,6 @@ def lower_hull(points):
         hull.append(p)
     return hull
 
-
 def upper_hull(points):
     hull = []
     for p in reversed(points):
@@ -36,7 +35,6 @@ def upper_hull(points):
             hull.pop()
         hull.append(p)
     return hull
-
 
 def merge_hulls(A, B):
 
@@ -49,10 +47,8 @@ def merge_hulls(A, B):
     merged = A[:idx_min_A] + B[idx_min_B:] + B[:idx_max_B] + A[idx_max_A:]
     return merged
 
-
 def cross(o, a, b):
     return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
-
 
 surface = pv.read('./AHRI.stl')
 volume = do_delaunay_3d(surface, alpha=1)
