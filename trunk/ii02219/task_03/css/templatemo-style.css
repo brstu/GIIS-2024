@@ -336,11 +336,6 @@ p, address {
   flex-wrap: wrap;
 }
 
-.tm-gallery-page
-{
-  padding-left: 15px;
-  padding-right: 15px;
-}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .tm-gallery-page {
@@ -804,7 +799,6 @@ address {
 }
 
 .accordion:after {
-  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   animation: changeIconBack 0.3s linear;
   content: '\f0d9';
