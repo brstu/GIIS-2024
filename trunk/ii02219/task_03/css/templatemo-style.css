@@ -336,10 +336,6 @@ p, address {
   flex-wrap: wrap;
 }
 
-.tm-gallery-description {
-  font-size: 0.95rem;
-}
-
 .tm-section,
 .tm-container-inner
 {
