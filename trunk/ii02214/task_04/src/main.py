@@ -1,7 +1,6 @@
 # Вызов библиотек
 import tkinter as tk
 import secrets
-from random import randint
 
 
 class Game:
@@ -18,7 +17,7 @@ class Game:
 
     # Метод для нового положения "Яблока"
     def set_apple(self):
-        self.apple_coords = [randint(0, 29) for i in range(2)]
+        self.apple_coords = [secrets.randbelow(30) for _ in range(2)]
         # Условие, для того чтобы яблоко не лежало на змейке
         if self.apple_coords in self.snake_coords:
             self.set_apple()
