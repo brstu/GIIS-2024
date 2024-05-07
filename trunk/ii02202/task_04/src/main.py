@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+import secrets  # Добавлено для генерации криптографически безопасных случайных чисел
 
 # Определение цветов
 BLACK = (0, 0, 0)
@@ -53,11 +54,11 @@ class Tetris:
         self.score = 0
         self.game_over = False
         self.last_drop_time = time.time()
-        self.drop_interval = 1.0  # 1 second drop interval
-        self.drop_acceleration = 0.05  # Speed increase per tick when down arrow is held
+        self.drop_interval = 1.0  # Интервал сброса 1 секунда
+        self.drop_acceleration = 0.05  # Увеличение скорости при удержании клавиши вниз
 
     def new_piece(self):
-        shape = secrets.choice(SHAPES)
+        shape = secrets.choice(SHAPES)  # Генерация случайной формы с использованием криптографически безопасного генератора
         piece = {'shape': shape,
                  'x': BOARD_WIDTH // 2 - len(shape[0]) // 2,
                  'y': 0}
@@ -82,9 +83,9 @@ class Tetris:
         return colors[num]
 
     def valid_position(self, shape, x, y):
-        for i in range(len(shape)):
-            for j in range(len(shape[i])):
-                if shape[i][j]:
+        for i, row in enumerate(shape):
+            for j, cell in enumerate(row):
+                if cell:
                     if not (0 <= x + j < BOARD_WIDTH and 0 <= y + i < BOARD_HEIGHT) or self.board[y + i][x + j]:
                         return False
         return True
@@ -110,10 +111,10 @@ class Tetris:
     def lock_piece(self):
         shape = self.current_piece['shape']
         x, y = self.current_piece['x'], self.current_piece['y']
-        for i in range(len(shape)):
-            for j in range(len(shape[i])):
-                if shape[i][j]:
-                    self.board[y + i][x + j] = shape[i][j]
+        for i, row in enumerate(shape):
+            for j, cell in enumerate(row):
+                if cell:
+                    self.board[y + i][x + j] = cell
         self.clear_lines()
         self.current_piece = self.new_piece()
         if not self.valid_position(self.current_piece['shape'], self.current_piece['x'], self.current_piece['y']):
@@ -135,7 +136,7 @@ class Tetris:
 def main():
     pygame.init()
     screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-    pygame.display.set_caption('Tetris')
+    pygame.display.set_caption('Тетрис')
 
     clock = pygame.time.Clock()
     tetris = Tetris()
@@ -155,7 +156,7 @@ def main():
                     tetris.rotate()
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_DOWN]:  # If the down arrow key is held
+        if keys[pygame.K_DOWN]:  # Если клавиша вниз удерживается
             tetris.drop_interval = max(0.1, tetris.drop_interval - tetris.drop_acceleration)
         else:
             tetris.drop_interval = 1.0
@@ -167,6 +168,5 @@ def main():
     pygame.quit()
 
 if __name__ == '__main__':
-
-
     main()
+
