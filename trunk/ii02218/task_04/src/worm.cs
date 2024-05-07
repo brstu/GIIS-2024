@@ -14,7 +14,7 @@ public class worm : entity
             lives--;
             Debug.Log("у червя" + lives);
         }
-        if (lives < 1) Die();
+        if (lives < 1) { Die(); }
     }
 
 }

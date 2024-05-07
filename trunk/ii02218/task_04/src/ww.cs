@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ww : entity
 {
-    private float speed = 2f;
+    private readonly float speed = 2f;
     private Vector3 dir;
     private SpriteRenderer sprite;
 
@@ -22,7 +22,7 @@ public class ww : entity
     private void Move()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.up * 0.1f + transform.right * dir.x * 0.7f, 0.1f);
-        if (colliders.Length > 0) dir *= -1f;
+        if (colliders.Length > 0) { dir *= -1f; }
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
         sprite.flipX = dir.x > 0.0f; 
     }

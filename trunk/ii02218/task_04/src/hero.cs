@@ -9,7 +9,7 @@ public class hero : entity
     [SerializeField] private float speed = 3f;
     [SerializeField] private int lives = 3;
     [SerializeField] private float jumpforce = 12f;
-    private bool isGrounded = false;
+    private bool isGrounded;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -38,14 +38,14 @@ public class hero : entity
 
     private void Update()
     {
-        if (isGrounded)  State = States.idle; 
+        if (isGrounded) { State = States.idle; }
 
         if (Input.GetButton("Horizontal"))
-            Run();
+        { Run(); }
         if (isGrounded && Input.GetButtonDown("Jump"))
-            Jump();
+        { Jump(); }
         if (transform.position.y < -9f)
-            SceneManager.LoadScene(1);
+        { SceneManager.LoadScene(1); }
     }
 
     private void Run()
@@ -67,9 +67,11 @@ public class hero : entity
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f);
         isGrounded = collider.Length > 1;
 
-        if (!isGrounded) State = States.jump;
+        if (!isGrounded)
+        {
+            State = States.jump;
+        }
     }
-
     public override void GetDamage()
     {
         lives -= 1;
