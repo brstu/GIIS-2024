@@ -26,12 +26,6 @@ html {
   box-sizing: inherit;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .tm-container-inner,
 .tm-container-inner-2 {
@@ -347,12 +341,11 @@ p, address {
 }
 
 .tm-section,
-.tm-container-inner,
-.tm-container-inner-2 {
-  margin-left: auto;
-  margin-right: auto;
+.tm-container-inner
+{
+  padding-left: 15px;
+  padding-right: 15px;
 }
-
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .tm-gallery-page {
