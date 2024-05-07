@@ -21,7 +21,7 @@ def add_noise(image, intensity=0.02, seed=None):
 
 
 if __name__ == '__main__':
-    image = cv2.imread(r'.\img\photo.jpg', cv2.IMREAD_GRAYSCALE)
+    image = cv2.imread(r'./images/photo.jpg', cv2.IMREAD_GRAYSCALE)
     noisy_image = add_noise(image, intensity=0.05, seed=42)
 
     cv2.imshow(ORIGINAL_IMAGE_TEXT, image)
