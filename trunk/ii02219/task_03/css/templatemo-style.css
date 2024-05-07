@@ -336,8 +336,7 @@ p, address {
   flex-wrap: wrap;
 }
 
-.tm-section,
-.tm-container-inner
+.tm-gallery-page
 {
   padding-left: 15px;
   padding-right: 15px;
@@ -435,15 +434,6 @@ p, address {
 .tm-description-box {
   margin-left: auto;
   margin-right: auto;
-}
-
-.tm-description-box {
-  padding-left: 0;
-  padding-right: 0;
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  max-width: 530px;
 }
 
 @media (min-width: 768px) {
