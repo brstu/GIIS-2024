@@ -20,6 +20,7 @@ def get_r(points):
     a = points[0]
     b = points[1]
     c = points[2]
+    m_c = points[3]
 
     if np.array_equal(a, c) or np.array_equal(b, c) or sum([int(np.array_equal(point, c)) for point in block_list]):
         return -inf
@@ -47,7 +48,6 @@ def get_r(points):
     for i in range(4):
         ab_coef = (i % 2) * 2 - 1
         ac_coef = (i // 2) * 2 - 1
-        pass
         if np.sum(np.abs(m_ab + d_ab * ab_coef * n_ab - (m_ac + d_ac * ac_coef * n_ac))) <= 3 * 1e-4:
             center = m_ab + d_ab * ab_coef * n_ab
             break
@@ -58,7 +58,7 @@ def get_r(points):
 
 def get_triangles(list_groups):
     triangles = []
-    for index, points in enumerate(list_groups):
+    for points in list_groups:
         if len(points) == 3:
             triangle = np.zeros((1, 3, 3))
             triangle[0, 0, :] = points[0]
@@ -90,7 +90,6 @@ def get_triangles(list_groups):
                 result = np.concatenate((result, triangle), axis=0)
             triangles.append(result[1:])
 
-            pass
         elif len(points) == 5:
             a1 = points_5_to_triangles(points, (0, 1, 2, 3, 4))
             a2 = points_5_to_triangles(points, (1, 2, 3, 0, 4))
@@ -125,8 +124,6 @@ def get_triangles(list_groups):
                 triangle[0, 2, :] = points[mask[2]]
                 result = np.concatenate((result, triangle), axis=0)
             triangles.append(result[1:])
-
-            pass
 
     return triangles
 
@@ -164,7 +161,6 @@ def points_4_to_triangles(points, order):
     for i in range(4):
         ab_coef = (i % 2) * 2 - 1
         ac_coef = (i // 2) * 2 - 1
-        pass
         if np.sum(np.abs(m_ab + d_ab * ab_coef * n_ab - (m_ac + d_ac * ac_coef * n_ac))) <= 3 * 1e-4:
             center = m_ab + d_ab * ab_coef * n_ab
             break
@@ -227,7 +223,7 @@ def join(groups):
 block_list = []
 
 
-def join_2_groups(groups):
+def get_begin_end(groups):
     global block_list
     block_list = []
     group0 = groups[0]
@@ -298,7 +294,12 @@ def join_2_groups(groups):
     else:
         begin.append(res_points1[1])
         end.append(res_points1[0])
+    return begin, end, center_of_points0, center_of_points1, points0, points1
 
+def join_2_groups(groups):
+    group0 = groups[0]
+    group1 = groups[1]
+    begin, end, center_of_points0, center_of_points1, points0, points1 = get_begin_end(groups)
     result = np.zeros((1, 3, 3))
 
     while not np.array_equal(begin, end):
@@ -342,7 +343,6 @@ def join_2_groups(groups):
             if dist_a == min(dist_a, dist_b, dist_c) and np.array_equal(a, near_point) or \
                     dist_b == min(dist_a, dist_b, dist_c) and np.array_equal(b, near_point) or \
                     dist_c == min(dist_a, dist_b, dist_c) and np.array_equal(c, near_point):
-                pass
             else:
                 del_index.append(index)
             result = np.concatenate((result, np.array([
