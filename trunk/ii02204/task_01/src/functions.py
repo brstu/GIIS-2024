@@ -26,6 +26,6 @@ if __name__ == '__main__':
 
     cv2.imshow(ORIGINAL_IMAGE_TEXT, image)
     cv2.imshow('Noisy Image', noisy_image)
-    cv2.imwrite(r'D:\PyCharm project\GIIS\lab1\img\noise.jpg', noisy_image)
+    cv2.imwrite(r'./images/noise.jpg', noisy_image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
