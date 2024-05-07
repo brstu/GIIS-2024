@@ -1,5 +1,4 @@
 import pygame
-import random
 import time
 import secrets  # Добавлено для генерации криптографически безопасных случайных чисел
 
