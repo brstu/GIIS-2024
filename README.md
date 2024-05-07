@@ -15,8 +15,8 @@
 | 5   | [Заречный Адриан](https://github.com/orgs/brstu/people/Adryian4ik)      |[ii02205](/trunk/ii02205)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |   5      |    10    |  10      |
 | 6   | [Исаенко Никита](https://github.com/IsaenkoNikita)|                         |                  |     |     |     |     |     |     |     |     5    |     0    |
 | 7   | [Клебанович Владимир](https://github.com/KlebanovichVladimir)           |[II02207](./trunk/ii02207)|:heavy_check_mark:|:heavy_check_mark:|  |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|         |        | 8 | 7|
-| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |    5     |    10    |   10     |
-| 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |[II2209](./trunk/ii02209)| ||:heavy_check_mark:|     |     |     |     |         |       10 |      0  |
+| 8   | [Копанчук Евгений](https://github.com/orgs/brstu/people/Corowka)        |[II2208](./trunk/ii02208) |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|    5     |    10    |   10     
+| 9   | [Кузюк Дмитрий](https://github.com/NeDoReAn)                            |[II2209](./trunk/ii02209)|:heavy_check_mark:||:heavy_check_mark:|     |     |     |     |         |       10 |      0  |
 | 10  | [Леваневская Ника](https://github.com/orgs/brstu/people/neonchikCallMe) |[ii02210](./trunk/ii02210)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|     |   5      |   10     |    10    |
 
 ## Подруппа 2
@@ -28,8 +28,8 @@
 | 3   | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach) |                |     |     |     |     |     |     |     |         |         |         |
 | 4   | [Нестерчук Дмитрий](https://github.com/nesterchuk11)             |[ii02214](./trunk/ii02216)|     |     |     |:heavy_check_mark:|:heavy_check_mark:|     |     |         |  5      |    0    |
 | 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |                |     |     |     |     |     |     |     |         |    4    |    0    |
-| 6   | [Полиенко Владислав](https://github.com/TomiokaGiuy)             |[ii02216](./trunk/ii02216)|:heavy_check_mark:|:heavy_check_mark:|     |:heavy_check_mark:|:heavy_check_mark:|     |     |    5     |  8      |    4    |
+| 6 | [Полиенко Владислав](https://github.com/TomiokaGiuy) |[ii02216](./trunk/ii02216)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:| 5 | 10 | 8 |
 | 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |         |         |
 | 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |         |         |
-| 9   | [Сокол София](https://github.com/DeAiVil)                        |[ii02216](./trunk/ii02219)|:heavy_check_mark:|:heavy_check_mark:|     |     |     |     |     |         |       7 |    7    |
+| 9   | [Сокол София](https://github.com/DeAiVil)                        |[ii02216](./trunk/ii02219)|:heavy_check_mark:|     |     |     |    |:heavy_check_mark:|     |         |       7 |    4    |
 
