@@ -27,7 +27,7 @@
 | 2   | [Любчук Илья](https://github.com/snep1one)                       |                |     |     |     |     |     |     |     |         |    5    |   0     |
 | 3   | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach) |                |     |     |     |     |     |     |     |         |         |         |
 | 4   | [Нестерчук Дмитрий](https://github.com/nesterchuk11)             |                |     |     |     |     |     |     |     |         |  5      |    0    |
-| 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |                |     |     |     |     |     |     |     |         |    4    |    0    |
+| 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |[ii02215](./trunk/ii02215)|     |     |     |:heavy_check_mark:|:heavy_check_mark:|     |     |         |    4    |    0    |
 | 6 | [Полиенко Владислав](https://github.com/TomiokaGiuy) |[ii02216](./trunk/ii02216)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:| 5 | 10 | 8 |
 | 7   | [Сидоренко Александр](https://github.com/6mashina)               |                |     |     |     |     |     |     |     |         |         |         |
 | 8   | [Сиротюк Никита](https://github.com/orgs/brstu/people/SirnikSan) |                |     |     |     |     |     |     |     |         |         |         |
