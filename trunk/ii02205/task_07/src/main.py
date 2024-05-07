@@ -340,10 +340,9 @@ def join_2_groups(groups):
             dist_a = vec_len(a - (center_of_points0, center_of_points1)[int(is_in_group0)])
             dist_b = vec_len(b - (center_of_points0, center_of_points1)[int(is_in_group0)])
             dist_c = vec_len(c - (center_of_points0, center_of_points1)[int(is_in_group0)])
-            if dist_a == min(dist_a, dist_b, dist_c) and np.array_equal(a, near_point) or \
+            if not (dist_a == min(dist_a, dist_b, dist_c) and np.array_equal(a, near_point) or \
                     dist_b == min(dist_a, dist_b, dist_c) and np.array_equal(b, near_point) or \
-                    dist_c == min(dist_a, dist_b, dist_c) and np.array_equal(c, near_point):
-            else:
+                    dist_c == min(dist_a, dist_b, dist_c) and np.array_equal(c, near_point)):
                 del_index.append(index)
             result = np.concatenate((result, np.array([
                 begin[0],
