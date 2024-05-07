@@ -1,5 +1,6 @@
 # Вызов библиотек
-from tkinter import *
+import tkinter as tk
+import secrets
 from random import randint
 
 
@@ -8,7 +9,7 @@ class Game:
     def __init__(self, canvas):
         self.canvas = canvas
         self.snake_coords = [[14, 14]]
-        self.apple_coords = [randint(0, 29) for i in range(2)]
+        self.apple_coords = [secrets.randbelow(30) for _ in range(2)]
         self.vector = {"Up": (0, -1), "Down": (0, 1), "Left": (-1, 0), "Right": (1, 0)}
         self.direction = self.vector["Right"]
         self.canvas.focus_set()
@@ -30,7 +31,7 @@ class Game:
 
     # Отрисовка игры
     def draw(self):
-        self.canvas.delete(ALL)
+        self.canvas.delete(tk.ALL)
         x_apple, y_apple = self.apple_coords
         self.canvas.create_rectangle(x_apple * 10, y_apple * 10, (x_apple + 1) * 10, (y_apple + 1) * 10, fill="red",
                                      width=0)
@@ -61,8 +62,8 @@ class Game:
 
 
 # Каркас игры
-root = Tk()
-canvas = Canvas(root, width=300, height=300, bg="black")
+root = tk.Tk()
+canvas = tk.Canvas(root, width=300, height=300, bg="black")
 canvas.pack()
 game = Game(canvas)
 root.mainloop()
