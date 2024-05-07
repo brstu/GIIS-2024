@@ -57,7 +57,7 @@ class Tetris:
         self.drop_acceleration = 0.05  # Speed increase per tick when down arrow is held
 
     def new_piece(self):
-        shape = random.choice(SHAPES)
+        shape = secrets.choice(SHAPES)
         piece = {'shape': shape,
                  'x': BOARD_WIDTH // 2 - len(shape[0]) // 2,
                  'y': 0}
@@ -66,10 +66,11 @@ class Tetris:
     def draw_piece(self, surface):
         shape = self.current_piece['shape']
         x, y = self.current_piece['x'], self.current_piece['y']
-        for i in range(len(shape)):
-            for j in range(len(shape[i])):
-                if shape[i][j]:
-                    pygame.draw.rect(surface, self.piece_color(shape[i][j]), pygame.Rect((x + j) * CELL_SIZE, (y + i) * CELL_SIZE, CELL_SIZE, CELL_SIZE))
+        for i, row in enumerate(shape):
+            for j, cell in enumerate(row):
+                if cell:
+                    pygame.draw.rect(surface, self.piece_color(cell),
+                                     pygame.Rect((x + j) * CELL_SIZE, (y + i) * CELL_SIZE, CELL_SIZE, CELL_SIZE))
 
     def draw_board(self, surface):
         for i in range(BOARD_HEIGHT):
@@ -166,4 +167,6 @@ def main():
     pygame.quit()
 
 if __name__ == '__main__':
+
+
     main()
