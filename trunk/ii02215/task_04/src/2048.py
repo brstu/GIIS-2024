@@ -1,4 +1,4 @@
-import random
+import secrets
 import tkinter as tk
 
 class Game2048(tk.Frame):
@@ -36,8 +36,8 @@ class Game2048(tk.Frame):
     def add_new_tile(self):
         empty_cells = [(i, j) for i in range(4) for j in range(4) if self.matrix[i][j] == 0]
         if empty_cells:
-            row, col = random.choice(empty_cells)
-            self.matrix[row][col] = random.choice([2, 4])
+            row, col = secrets.choice(empty_cells)
+            self.matrix[row][col] = secrets.choice([2, 4])
 
     def update_grid_cells(self):
         for i in range(4):
@@ -61,7 +61,7 @@ class Game2048(tk.Frame):
     def key_pressed(self, event):
         key = event.keysym.upper()
         if key in self.commands:
-            new_matrix, changed, score = getattr(self, self.commands[key])(self.matrix)
+            new_matrix, changed, _ = getattr(self, self.commands[key])(self.matrix)
             if changed:
                 self.matrix = new_matrix
                 self.add_new_tile()
