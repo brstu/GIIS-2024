@@ -122,4 +122,5 @@ class Game2048(tk.Frame):
             new_line.append(0)
         return new_line, score
 
+
 game = Game2048()
