@@ -249,7 +249,7 @@ body {
 }
 
 .popular-ways-img {
-	margin: 80px 0 25px 0;
+	margin: 80px 0 25px;
 	display: flex;
     justify-content: center;
 }
@@ -272,7 +272,7 @@ body {
 
 th, td {
 	border: 2px solid #cdcdcd;
-	padding: 0 10px 0 10px;
+	padding: 0 10px;
 	width: 30vw;
 	vertical-align: text-top;
 	background-color: #EFF1F4;
