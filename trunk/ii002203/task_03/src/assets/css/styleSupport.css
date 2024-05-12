@@ -74,7 +74,7 @@ body {
 /* Logo */
 .logo_text {
 	margin-left: 10px;
-	font-family: 'Numans';
+	font-family: 'Numans', sans-serif;
 	font-size: 18px;
 	font-weight: 700;
 }
