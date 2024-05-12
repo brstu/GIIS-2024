@@ -2,7 +2,6 @@
 
 | №   | ФИО                                                                     | Lab version|        #1        |        #2        |        #3        |        #4        |        #5        |       #6         |        #7        |        #8        |        #9        |        #10      |        #11       |
 | --- | ----------------------------------------------------------------------- | ---------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |
-
 | 1  | [Кузьмич Вадим](https://github.com/orgs/brstu/people/vkn10)             |new         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | 2  | [Любчук Илья](https://github.com/snep1one)                              |new         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 | 3  | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach)        |            |  |   |   |   |   |   |   |   |   |   |   |
