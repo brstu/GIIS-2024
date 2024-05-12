@@ -294,6 +294,7 @@ th, td {
 	background-color: #EFF1F4;
 
 	border-radius: 20px;
+	font-weight: normal;
 
 	transition: background-color 0.3s;
 }
