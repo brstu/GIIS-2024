@@ -1,6 +1,6 @@
 *,
-*:before,
-*:after {
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
@@ -31,20 +31,18 @@ body {
 	background-size: cover;
 }
 
-.intro__title {
+.intro-title {
 	color: #FFF;
-
 	text-align: center;
 	padding-top: 100px;
-	font-family: 'Verdana', sans-serif;
+	font-family: Verdana, sans-serif;
 	font-size: 40px;
 }
 
-.intro__subtitle {
+.intro-subtitle {
 	color: #FFF;
-
 	text-align: center;
-	font-family: 'Verdana', sans-serif;
+	font-family: Verdana, sans-serif;
 	font-size: 17px;
 }
 
@@ -59,7 +57,7 @@ body {
 	z-index: 1000;
 }
 
-.header__inner {
+.header-inner {
 	margin-top: 10px;
 	display: flex;
 	justify-content: space-between;
@@ -68,14 +66,14 @@ body {
 
 
 /* Logo */
-.logo_text {
+.logo-text {
 	margin-left: 10px;
-	font-family: 'Numans', sans-serif;
+	font-family: Numans, sans-serif;
 	font-size: 18px;
 	font-weight: 700;
 }
 
-.logo_button {
+.logo-button {
 	margin: 0;
 	display: flex;
 	text-decoration: none;
@@ -84,7 +82,7 @@ body {
 
 
 /* Support */
-.support_text {
+.support-text {
 	margin-left: 10px;
 }
 
@@ -92,7 +90,7 @@ body {
 	border-radius: 15px;
 	display: inline-flex;
 	transition: background-color 0.5s;
-	padding: 5px 10px 5px 10px;
+	padding: 5px 10px;
 	justify-content: center;
 	align-items: center;
 }
@@ -120,23 +118,23 @@ body {
 
 /* Nav */
 .nav {
-	font-family: 'Calibri', sans-serif;
+	font-family: Calibri, sans-serif;
 	font-size: 16px;
 	font-weight: 700;
 }
 
-.nav__link {
+.nav-link {
 	display: inline-block;
 	vertical-align: top;
 	color:#FFF;
 	text-decoration: none;
-	margin: 0px 5px
+	margin: 0 5px
 }
 
 
 
-/* Container__buttons */
-.container__buttons {
+/* Container-buttons */
+.container-buttons {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -147,7 +145,7 @@ body {
 	margin-top: 35px;
 }
 
-.avia__hotel {
+.avia-hotel {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
@@ -155,11 +153,11 @@ body {
     padding: 0;
 }
 
-.button_page {
+.button-page {
 	margin: 0 2px;
 }
 
-.avia__link {
+.avia-link {
 	color: #FFF;
     text-decoration: none;
     margin: 0;
@@ -167,16 +165,15 @@ body {
     border-radius: 10px;
     background-color: #0C7EFE;
 	transition: background-color 0.3s;
-
-	font-family: 'Verdana', sans-serif;
+	font-family: Verdana, sans-serif;
 	font-size: 16px;
 }
 
-.avia__link:hover {
+.avia-link:hover {
 	background-color: #0C8EFE;
 }
 
-.hotel__link {
+.hotel-link {
     color: #0C7EFE;
     text-decoration: none;
     font-weight: bold;
@@ -184,14 +181,13 @@ body {
     padding: 5px 20px;
     border-radius: 10px;
     background-color: #FFF;
-
-	font-family: 'Verdana', sans-serif;
+	font-family: Verdana, sans-serif;
 	font-size: 16px;
 }
 
 
 /* Buttons ticket */
-.buttons__ticket {
+.buttons-ticket {
 	position: absolute;
 	left: 50%;
     transform: translateX(-50%);
@@ -200,89 +196,78 @@ body {
     align-items: center;
 }
 
-.buttons__ticket input {
+.buttons-ticket input {
     width: 190px;
 	height: 60px;
     padding: 8px;
     margin-right: 3px;
     border: none;
     outline: none;
-
-	font-family: 'Verdana', sans-serif;
+	font-family: Verdana, sans-serif;
 	font-size: 15px;
 }
 
-.buttons__ticket input:focus {
+.buttons-ticket input:focus {
 	border: 2px solid #F25122;
 }
 
-.buttons__ticket button {
+.buttons-ticket button {
 	width: 200px;
 	height: 60px;
 	margin-left: 5px;
 	border: none;
-
-	font-family: 'Verdana', sans-serif;
+	font-family: Verdana, sans-serif;
 	font-size: 18px;
 	font-weight: bolder;
-
 	background-color: #FA742D;
 	color: #FFF;
 	border-radius: 15px;
-
 	cursor: pointer;
-
 	transition: background-color 0.1s;
 }
 
-.buttons__ticket button:hover {
+.buttons-ticket button:hover {
 	background-color: #EB7231;
 }
 
-.city_hotel {
+.city-hotel {
 	border-bottom-left-radius: 15px;
 	border-top-left-radius: 15px;
 }
 
-.date__picker2 {
+.date-picker2 {
 	border-bottom-right-radius: 15px;
 	border-top-right-radius: 15px;
 }
 
-
-
-
 /* Popular Ways */
-.popular_ways {
+.popular-ways {
 	width: 100%;
 	background-color: #FFF;
 	background-size: cover;
 	padding-bottom: 100px;
 }
 
-.popular_ways__img {
+.popular-ways-img {
 	margin: 80px 0 25px 0;
 	display: flex;
     justify-content: center;
 }
 
-.popular_ways__text {
+.popular-ways-text {
 	text-align: center;
-	font-family: 'Calibri', sans-serif;
+	font-family: Calibri, sans-serif;
 	font-size: 32px;
 	font-weight: bold;
-
 	margin-bottom: 25px;
 }
 
-
 /* Popular ways Table */
-.popular_ways__table {
+.popular-ways-table {
 	display: flex;
     justify-content: center;
 	border-spacing: 10px;
-
-	font-family: 'Verdana', sans-serif;
+	font-family: Verdana, sans-serif;
 }
 
 th, td {
@@ -290,12 +275,9 @@ th, td {
 	padding: 0 10px 0 10px;
 	width: 30vw;
 	vertical-align: text-top;
-
 	background-color: #EFF1F4;
-
 	border-radius: 20px;
 	font-weight: normal;
-
 	transition: background-color 0.3s;
 }
 
@@ -307,12 +289,11 @@ td:hover {
 .cost {
 	display: flex;
 	justify-content: space-between;
-
 	text-decoration: none;
 	color: #2592ff;
 }
 
-.country__title {
+.country-title {
 	display: flex;
     justify-content: center;
     align-items: center;
@@ -321,7 +302,7 @@ td:hover {
 	padding-top: 10px;
 }
 
-.country_flag {
+.country-flag {
 	margin: 5px 5px 5px 0;
 	width: 90px;
 	height: 45px;
@@ -329,7 +310,7 @@ td:hover {
 	justify-content: left;
 }
 
-.country_name {
+.country-name {
 	vertical-align: middle;
 	justify-content: center;
 }
@@ -338,35 +319,35 @@ td:hover {
 /* Footer */
 .footer {
 	background: #EFF1F4;
-	padding: 30px 0 30px 0;
+	padding: 30px 0;
 }
 
-.different_links {
+.different-links {
 	display: flex;
 	margin-bottom: 10px;
 }
 
-.link_bottom {
+.link-bottom {
 	text-decoration: none;
 	color: #000;
 	transition: color 0.2s;
 }
 
-.link_bottom:hover {
+.link-bottom:hover {
 	color: #FB832D;
 }
 
 .point {
-	margin: 0 5px 0 5px;
+	margin: 0 5px;
 }
 
-.footer__style {
+.footer-style {
 	display: flex;
 	justify-content: center;
 	padding: 15px;
 }
 
-.copywrite_info {
+.copywrite-info {
 	display: flex;
 	justify-content: center;
 }
