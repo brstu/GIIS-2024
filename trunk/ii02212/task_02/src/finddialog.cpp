@@ -7,14 +7,15 @@
 #include <QPushButton>
 
 FindDialog::FindDialog(QWidget *parent)
-    : QDialog(parent)
+    : QDialog(parent),findText("")
 {
     QLabel findLabel(tr("Enter the name of a contact:"));
     lineEdit = std::make_unique<QLineEdit>();
     findButton = std::make_unique<QPushButton>(tr("&Find"));
-    findText = "";
     
-    QHBoxLayout *layout = new QHBoxLayout;
+    
+    auto layout = std::make_unique<QHBoxLayout>();
+
     layout->addWidget(&findLabel);
     layout->addWidget(lineEdit.get());
     layout->addWidget(findButton.get());

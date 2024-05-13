@@ -64,7 +64,7 @@ AddressBook::AddressBook(QWidget *parent)
     connect(saveButton.get(), SIGNAL(clicked()), this, SLOT(saveToFile()));
     connect(exportButton.get(), SIGNAL(clicked()), this, SLOT(exportAsVCard()));
 
-    QVBoxLayout *buttonLayout1 = new QVBoxLayout;
+    auto buttonLayout1 = std::make_unique<QVBoxLayout>();
     buttonLayout1->addWidget(addButton.get(), Qt::AlignTop);
     buttonLayout1->addWidget(submitButton.get());
     buttonLayout1->addWidget(cancelButton.get());
@@ -76,11 +76,11 @@ AddressBook::AddressBook(QWidget *parent)
     buttonLayout1->addWidget(exportButton.get());
     buttonLayout1->addStretch();
 
-    QHBoxLayout *buttonLayout2 = new QHBoxLayout;
+    auto buttonLayout2 = std::make_unique<QHBoxLayout>();
     buttonLayout2->addWidget(previousButton.get());
     buttonLayout2->addWidget(nextButton.get());
 
-    QGridLayout *mainLayout = new QGridLayout;
+    auto mainLayout = std::make_unique<QGridLayout>();
     mainLayout->addWidget(&nameLabel, 0, 0);
     mainLayout->addWidget(nameLine.get(), 0, 1);
     mainLayout->addWidget(&addressLabel, 1, 0, Qt::AlignTop);
