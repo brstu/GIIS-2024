@@ -63,7 +63,7 @@ class ImageProcessingApp:
             noise_level = self.noise_scale.get() / 100
             width, height = self.original_image.size
             pixels = self.original_image.load()
-            for i in range(int(width * height * noise_level)):
+            for _ in range(int(width * height * noise_level)):
                 x = secrets.randbelow(width)
                 y =secrets.randbelow(height)
                 color = secrets.choice([0, 255])  # 0 for black, 255 for white
