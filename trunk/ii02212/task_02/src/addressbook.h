@@ -9,9 +9,9 @@ class AddressBook : public QWidget
      Q_OBJECT
 
  public:
-     AddressBook(QWidget *parent = 0);
+     explicit AddressBook(QWidget *parent = nullptr);
 
-     enum Mode { NavigationMode, AddingMode, EditingMode };
+     enum class Mode { NavigationMode, AddingMode, EditingMode };
 
  private:
      void updateInterface(Mode mode);

@@ -9,73 +9,82 @@
 AddressBook::AddressBook(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *nameLabel = new QLabel(tr("Name:"));
-    nameLine = new QLineEdit;
+    QLabel nameLabel(tr("Name:"));
+    nameLine = std::make_unique<QLineEdit>();
     nameLine->setReadOnly(true);
 
-    QLabel *addressLabel = new QLabel(tr("Address:"));
-    addressText = new QTextEdit;
+    QLabel addressLabel(tr("Address:"));
+    addressText = std::make_unique<QTextEdit>();
     addressText->setReadOnly(true);
 
-    addButton = new QPushButton(tr("&Add"));
+    addButton = std::make_unique<QPushButton>(tr("&Add"));
     addButton->show();
-    submitButton = new QPushButton(tr("&Submit"));
+
+    submitButton = std::make_unique<QPushButton>(tr("&Submit"));
     submitButton->hide();
-    cancelButton = new QPushButton(tr("&Cancel"));
+
+    cancelButton = std::make_unique<QPushButton>(tr("&Cancel"));
     cancelButton->hide();
-    nextButton = new QPushButton(tr("&Next"));
+
+    nextButton = std::make_unique<QPushButton>(tr("&Next"));
     nextButton->setEnabled(false);
-    previousButton = new QPushButton(tr("&Previous"));
+
+    previousButton = std::make_unique<QPushButton>(tr("&Previous"));
     previousButton->setEnabled(false);
-    editButton = new QPushButton(tr("&Edit"));
+
+    editButton = std::make_unique<QPushButton>(tr("&Edit"));
     editButton->setEnabled(false);
-    removeButton = new QPushButton(tr("&Remove"));
+
+    removeButton = std::make_unique<QPushButton>(tr("&Remove"));
     removeButton->setEnabled(false);
-    findButton = new QPushButton(tr("&Find"));
+
+    findButton = std::make_unique<QPushButton>(tr("&Find"));
     findButton->setEnabled(false);
-    loadButton = new QPushButton(tr("&Load..."));
+
+    loadButton = std::make_unique<QPushButton>(tr("&Load..."));
     loadButton->setToolTip(tr("Load contacts from a file"));
-    saveButton = new QPushButton(tr("&Save..."));
+
+    saveButton = std::make_unique<QPushButton>(tr("&Save..."));
     saveButton->setToolTip(tr("Save contacts to a file"));
-    exportButton = new QPushButton(tr("E&xport"));
+
+    exportButton = std::make_unique<QPushButton>(tr("E&xport"));
     exportButton->setToolTip(tr("Export as vCard"));
 
-    dialog = new FindDialog;
+    dialog = std::make_unique<FindDialog>();
 
-    connect(addButton, SIGNAL(clicked()), this, SLOT(addContact()));
-    connect(submitButton, SIGNAL(clicked()), this, SLOT(submitContact()));
-    connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancel()));
-    connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
-    connect(previousButton, SIGNAL(clicked()), this, SLOT(previous()));
-    connect(editButton, SIGNAL(clicked()), this, SLOT(editContact()));
-    connect(removeButton, SIGNAL(clicked()), this, SLOT(removeContact()));
-    connect(findButton, SIGNAL(clicked()), this, SLOT(findContact()));
-    connect(loadButton, SIGNAL(clicked()), this, SLOT(loadFromFile()));
-    connect(saveButton, SIGNAL(clicked()), this, SLOT(saveToFile()));
-    connect(exportButton, SIGNAL(clicked()), this, SLOT(exportAsVCard()));
-
+    connect(addButton.get(), SIGNAL(clicked()), this, SLOT(addContact()));
+    connect(submitButton.get(), SIGNAL(clicked()), this, SLOT(submitContact()));
+    connect(cancelButton.get(), SIGNAL(clicked()), this, SLOT(cancel()));
+    connect(nextButton.get(), SIGNAL(clicked()), this, SLOT(next()));
+    connect(previousButton.get(), SIGNAL(clicked()), this, SLOT(previous()));
+    connect(editButton.get(), SIGNAL(clicked()), this, SLOT(editContact()));
+    connect(removeButton.get(), SIGNAL(clicked()), this, SLOT(removeContact()));
+    connect(findButton.get(), SIGNAL(clicked()), this, SLOT(findContact()));
+    connect(loadButton.get(), SIGNAL(clicked()), this, SLOT(loadFromFile()));
+    connect(saveButton.get(), SIGNAL(clicked()), this, SLOT(saveToFile()));
+    connect(exportButton.get(), SIGNAL(clicked()), this, SLOT(exportAsVCard()));
 
     QVBoxLayout *buttonLayout1 = new QVBoxLayout;
-    buttonLayout1->addWidget(addButton, Qt::AlignTop);
-    buttonLayout1->addWidget(submitButton);
-    buttonLayout1->addWidget(cancelButton);
-    buttonLayout1->addWidget(findButton);
-    buttonLayout1->addWidget(editButton);
-    buttonLayout1->addWidget(removeButton);
-    buttonLayout1->addWidget(loadButton);
-    buttonLayout1->addWidget(saveButton);
-    buttonLayout1->addWidget(exportButton);
+    buttonLayout1->addWidget(addButton.get(), Qt::AlignTop);
+    buttonLayout1->addWidget(submitButton.get());
+    buttonLayout1->addWidget(cancelButton.get());
+    buttonLayout1->addWidget(findButton.get());
+    buttonLayout1->addWidget(editButton.get());
+    buttonLayout1->addWidget(removeButton.get());
+    buttonLayout1->addWidget(loadButton.get());
+    buttonLayout1->addWidget(saveButton.get());
+    buttonLayout1->addWidget(exportButton.get());
     buttonLayout1->addStretch();
 
     QHBoxLayout *buttonLayout2 = new QHBoxLayout;
-    buttonLayout2->addWidget(previousButton);
-    buttonLayout2->addWidget(nextButton);
+    buttonLayout2->addWidget(previousButton.get());
+    buttonLayout2->addWidget(nextButton.get());
 
     QGridLayout *mainLayout = new QGridLayout;
-    mainLayout->addWidget(nameLabel, 0, 0);
-    mainLayout->addWidget(nameLine, 0, 1);
-    mainLayout->addWidget(addressLabel, 1, 0, Qt::AlignTop);
-    mainLayout->addWidget(addressText, 1, 1);
+    mainLayout->addWidget(&nameLabel, 0, 0);
+    mainLayout->addWidget(nameLine.get(), 0, 1);
+    mainLayout->addWidget(&addressLabel, 1, 0, Qt::AlignTop);
+    mainLayout->addWidget(addressText.get(), 1, 1);
     mainLayout->addLayout(buttonLayout1, 1, 2);
     mainLayout->addLayout(buttonLayout2, 2, 1);
 
@@ -291,11 +300,12 @@ void AddressBook::findContact()
 
 void AddressBook::saveToFile()
 {
-    QString fileName = QFileDialog::getSaveFileName(this,
-                                                    tr("Save Address Book"), "",
-                                                    tr("Address Book (*.abk);;All Files (*)"));
-    if (fileName.isEmpty())
-        return;
+    if (QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Open Address Book"), "",
+                                                    tr("Address Book (*.abk);;All Files (*)"));fileName.isEmpty())
+{
+    return;
+}
     else {
         QFile file(fileName);
         if (!file.open(QIODevice::WriteOnly)) {
@@ -334,7 +344,7 @@ void AddressBook::loadFromFile()
             QMessageBox::information(this, tr("No contacts in file"),
                                      tr("The file you are attempting to open contains no contacts."));
         } else {
-            QMap<QString, QString>::iterator i = contacts.begin();
+            auto i = contacts.begin();
             nameLine->setText(i.key());
             addressText->setText(i.value());
         }
