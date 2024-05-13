@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
-from PIL import Image, ImageTks
+from PIL import Image, ImageTk
 import math
 import secrets
 
