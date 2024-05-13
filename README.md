@@ -24,7 +24,7 @@
 | №   | ФИО                                                              | Directory name | #1  | #2  | #3  | #4  | #5  | #6  | #7  | Рейтинг | Амбиции | Реальность |
 | --- | ---------------------------------------------------------------- | -------------- | --- | --- | --- | --- | --- | --- | --- | ------- | ------- | ------- |
 | 1   | [Кузьмич Вадим](https://github.com/orgs/brstu/people/vkn10)      |                |     |     |     |     |     |     |     |         |         |         |
-| 2   | [Любчук Илья](https://github.com/snep1one)                       |                |     |     |     |     |     |     |     |         |    5    |   0     |
+| 2   | [Любчук Илья](https://github.com/snep1one)|[ii02212]./trunk/ii02212)|:heavy_check_mark:|     |     |     |     |     |     |         |    5    |   0     |
 | 3   | [Марач Максим](https://github.com/orgs/brstu/people/MaximMarach) |                |     |     |     |     |     |     |     |         |         |         |
 | 4   | [Нестерчук Дмитрий](https://github.com/nesterchuk11)             |[ii02214](./trunk/ii02216)|     |     |     |:heavy_check_mark:|:heavy_check_mark:|     |     |         |  5      |    0    |
 | 5   | [Павлюкович Игорь](https://github.com/orgs/brstu/people/Kre1kh)  |[ii02215](./trunk/ii02215)|     |     |     |:heavy_check_mark:|:heavy_check_mark:|     |     |         |    4    |    0    |
