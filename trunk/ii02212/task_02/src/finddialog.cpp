@@ -6,8 +6,26 @@
 #include <QMessageBox>
 #include <QPushButton>
 
+class FindDialog : public QDialog {
+    Q_OBJECT
+
+public:
+    explicit FindDialog(QWidget *parent = nullptr);
+
+    QString getFindText() const; // Объявление публичного метода для получения текста поиска
+
+private slots:
+    void findClicked(); // Объявление приватного слота для обработки клика по кнопке
+
+private:
+    QString findText = ""; // Приватная переменная-член
+    std::unique_ptr<QLineEdit> lineEdit;
+    std::unique_ptr<QPushButton> findButton;
+};
+
+
 FindDialog::FindDialog(QWidget *parent)
-    : QDialog(parent),findText("")
+    : QDialog(parent)
 {
     QLabel findLabel(tr("Enter the name of a contact:"));
     lineEdit = std::make_unique<QLineEdit>();
