@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
-from PIL import Image, ImageTk
-import random
+from PIL import Image, ImageTks
 import math
+import secrets
 
 
 class ImageProcessingApp:
