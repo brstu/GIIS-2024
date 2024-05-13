@@ -64,9 +64,9 @@ class ImageProcessingApp:
             width, height = self.original_image.size
             pixels = self.original_image.load()
             for i in range(int(width * height * noise_level)):
-                x = random.randint(0, width - 1)
-                y = random.randint(0, height - 1)
-                color = random.choice([0, 255])  # 0 for black, 255 for white
+                x = secrets.randbelow(width)
+                y =secrets.randbelow(height)
+                color = secrets.choice([0, 255])  # 0 for black, 255 for white
                 pixels[x, y] = (color, color, color)
             self.display_image(self.original_image)
 
