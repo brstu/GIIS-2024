@@ -17,12 +17,8 @@
 
 ### Результат работы
 
-![добавление](./images/image.png)
+![добавление](./images/image1.png)
 ![изменение](./images/image2.png)
-![удаление](./images/image3.png)
-![поиск](./images/image6.png)
-![сохранение](./images/image4.png)
-![экспорт](./images/image5.png)
 
 ### Код программы
 
