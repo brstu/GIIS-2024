@@ -15,9 +15,9 @@
 
 Исходное изображение:
 
-![](images/photo.jpg)
+![](images/oooohhh.jpg)
 
 Зашумленное изображение:
 
-![](images/noise.png)
+![](images/oooohhh2.png)
 
