@@ -93,7 +93,7 @@ class ContactsApp:
 
 def main():
     root = tk.Tk()
-    app = ContactsApp(root)
+    _ = ContactsApp(root)
     root.mainloop()
 
 if __name__ == "__main__":
