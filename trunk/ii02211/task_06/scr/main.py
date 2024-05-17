@@ -1,7 +1,7 @@
 import cv2
 import os
 
-path_to_images = 'C:\\Users\\VKN\\AppData\\Local\\Programs\\Python\\giis\\lab6\\img'
+path_to_images = '../Images'
 
 frames_list = []
 
